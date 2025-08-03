@@ -1,35 +1,1258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohamed Drugs Shop</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Drugs Shop | Premium Pharmacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00c3ff;
+            --secondary: #8e44ad;
+            --dark-bg: #0d0d0d;
+            --darker-bg: #121212;
+            --card-bg: #1a1a1a;
+            --text-light: #e0e0e0;
+            --text-muted: #aaa;
+            --accent-purple: #9c27b0;
+            --accent-blue: #2196f3;
+            --accent-green: #4caf50;
+            --accent-orange: #ff9800;
+            --accent-red: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--text-light);
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        .site-header {
+            background: var(--dark-bg);
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .store-name {
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(0,195,255,0.3);
+        }
+        
+        .country-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .country-list span {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .country-list span:hover {
+            background: rgba(0,195,255,0.1);
+            color: var(--primary);
+        }
+        
+        /* Hero Image */
+        .hero-image {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        /* Country Selection */
+        .country-selection {
+            padding: 40px 20px;
+            background: #111;
+            text-align: center;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #00aaff);
+            border-radius: 4px;
+        }
+        
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .country-card {
+            text-decoration: none;
+            background: var(--card-bg);
+            padding: 25px;
+            color: var(--primary);
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .country-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,195,255,0.3);
+            background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
+        }
+        
+        .country-card img {
+            width: 36px;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 3px rgba(0,195,255,0.5));
+        }
+        
+        /* Ratings Section */
+        .ratings-container {
+            background: linear-gradient(135deg, var(--dark-bg), var(--card-bg));
+            color: #eee;
+            padding: 40px 30px;
+            border-radius: 15px;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .rating-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .rating-value {
+            font-size: 46px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(0,195,255,0.3);
+        }
+        
+        .stars {
+            font-size: 36px;
+            color: gold;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        
+        .rating-subtitle {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .divider {
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+        
+        .rating-form {
+            text-align: center;
+        }
+        
+        .star-rating {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        
+        .star-rating label {
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        
+        .star-rating input[type="radio"] + span {
+            color: #444;
+            transition: all 0.3s ease;
+        }
+        
+        .star-rating input[type="radio"]:checked ~ span {
+            color: #444;
+        }
+        
+        .star-rating input[type="radio"]:checked + span,
+        .star-rating input[type="radio"]:hover + span {
+            color: gold;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+        
+        .rating-select {
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #eee;
+            margin-bottom: 25px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        .code-input {
+            padding: 14px;
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: var(--card-bg);
+            color: #fff;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), #00aaff);
+            color: #000;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,195,255,0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,195,255,0.5);
+        }
+        
+        /* Review Section */
+        .review-section {
+            background: linear-gradient(135deg, var(--card-bg), var(--dark-bg));
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .review-title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .review-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .review-form input, 
+        .review-form select, 
+        .review-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background-color: #2c2c2c;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .review-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .review-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent-blue), #0288d1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(3,169,244,0.3);
+        }
+        
+        .review-form button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(3,169,244,0.5);
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 18px;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+        
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        
+        /* Comment Section */
+        .comment-section {
+            background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin: 50px auto;
+            max-width: 1000px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .comment-header {
+            padding: 20px 30px;
+            background: var(--card-bg);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .comment-count {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .sort-options select {
+            background: #252525;
+            color: var(--text-light);
+            border: 1px solid #444;
+            padding: 10px 18px;
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .comments-container {
+            padding: 25px;
+            min-height: 500px;
+        }
+        
+        .comment {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--secondary);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .comment:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 20px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+        }
+        
+        .user-details {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 20px;
+            color: #f0f0f0;
+        }
+        
+        .user-location {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .comment-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ccc;
+            padding-left: 70px;
+        }
+        
+        .comment-date {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 16px;
+            color: #777;
+        }
+        
+        /* Colorful comment accents */
+        .comment:nth-child(3n+1) {
+            border-left-color: var(--accent-purple);
+        }
+        .comment:nth-child(3n+2) {
+            border-left-color: var(--accent-blue);
+        }
+        .comment:nth-child(3n+3) {
+            border-left-color: var(--accent-green);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 1000px;
+            margin: 40px auto;
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .pagination button {
+            background: #252525;
+            color: var(--text-light);
+            border: 1px solid #444;
+            border-radius: 10px;
+            min-width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 0 15px;
+        }
+        
+        .pagination button:hover:not(:disabled) {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination .page-btn.active {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+            box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+        }
+        
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #777;
+            font-size: 16px;
+            padding: 25px;
+            width: 100%;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .site-header {
+                padding: 18px 25px;
+            }
+            
+            .store-name {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .country-grid {
+                gap: 20px;
+            }
+            
+            .country-card {
+                padding: 22px;
+                font-size: 20px;
+            }
+            
+            .rating-value {
+                font-size: 40px;
+            }
+            
+            .stars, .star-rating {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 15px 20px;
+            }
+            
+            .store-name {
+                font-size: 26px;
+            }
+            
+            .country-list span {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-title::after {
+                width: 80px;
+                height: 3px;
+            }
+            
+            .country-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 18px;
+            }
+            
+            .country-card {
+                padding: 20px;
+                font-size: 18px;
+            }
+            
+            .country-card img {
+                width: 32px;
+            }
+            
+            .ratings-container, 
+            .review-section {
+                padding: 30px 20px;
+            }
+            
+            .comment-text {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+            
+            .user-info {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .comment-date {
+                position: static;
+                margin-top: 15px;
+                text-align: right;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-header {
+                padding: 12px 15px;
+            }
+            
+            .store-name {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .country-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 400px;
+            }
+            
+            .country-card {
+                padding: 18px;
+                font-size: 20px;
+                max-width: 100%;
+            }
+            
+            .comment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            
+            .sort-options select {
+                width: 100%;
+            }
+            
+            .pagination button {
+                min-width: 38px;
+                height: 38px;
+                font-size: 16px;
+                padding: 0 12px;
+            }
+            
+            .comment {
+                padding: 20px;
+            }
+            
+            .avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .user-name {
+                font-size: 18px;
+            }
+            
+            .user-location {
+                font-size: 15px;
+            }
+            
+            .comment-text {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Mohamed Drugs Shop</h1>
-  </header>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="store-name">Mohamed Drugs Shop</div>
+        <div class="country-list">
+            <span>🧭 مصر</span>
+            <span>🧭 الإمارات</span>
+            <span>🧭 السعودية</span>
+            <span>🧭 قطر</span>
+            <span>🧭 الكويت</span>
+            <span>🧭 عمان</span>
+            <span>🧭 البحرين</span>
+        </div>
+    </header>
 
-  <section class="banner">
-    <img src="images/banner.jpg" alt="Store Banner">
-  </section>
-
-  <section class="country-grid">
-    <h2>Select Your Country</h2>
-    <div class="grid">
-      <a href="Countries/egypt.html" class="country">🇪🇬 Egypt</a>
-      <a href="Countries/ksa.html" class="country">🇸🇦 Saudi Arabia</a>
-      <a href="Countries/uae.html" class="country">🇦🇪 UAE</a>
-      <a href="Countries/oman.html" class="country">🇴🇲 Oman</a>
-      <a href="Countries/qatar.html" class="country">🇶🇦 Qatar</a>
-      <a href="Countries/kuwait.html" class="country">🇰🇼 Kuwait</a>
-      <a href="Countries/bahrain.html" class="country">🇧🇭 Bahrain</a>
+    <!-- Hero Image -->
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Pharmacy Products">
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Mohamed Drugs Shop. All rights reserved.</p>
-  </footer>
+    <!-- Country Selection -->
+    <section class="country-selection">
+        <h2 class="section-title">Choose Your Country</h2>
+        <div class="country-grid">
+            <a href="egypt.html" class="country-card">
+                <img src="https://flagcdn.com/w40/eg.png" alt="Egypt"> Egypt
+            </a>
+            <a href="uae.html" class="country-card">
+                <img src="https://flagcdn.com/w40/ae.png" alt="UAE"> UAE
+            </a>
+            <a href="saudi.html" class="country-card">
+                <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"> Saudi Arabia
+            </a>
+            <a href="qatar.html" class="country-card">
+                <img src="https://flagcdn.com/w40/qa.png" alt="Qatar"> Qatar
+            </a>
+            <a href="kuwait.html" class="country-card">
+                <img src="https://flagcdn.com/w40/kw.png" alt="Kuwait"> Kuwait
+            </a>
+            <a href="oman.html" class="country-card">
+                <img src="https://flagcdn.com/w40/om.png" alt="Oman"> Oman
+            </a>
+            <a href="bahrain.html" class="country-card">
+                <img src="https://flagcdn.com/w40/bh.png" alt="Bahrain"> Bahrain
+            </a>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <div class="ratings-container">
+        <div class="rating-header">
+            <div class="rating-value">4.9</div>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <div class="rating-subtitle">Based on 247 customer reviews</div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="rating-form">
+            <div class="star-rating">
+                <label><input type="radio" name="rating" value="5"><span>★</span></label>
+                <label><input type="radio" name="rating" value="4"><span>★</span></label>
+                <label><input type="radio" name="rating" value="3"><span>★</span></label>
+                <label><input type="radio" name="rating" value="2"><span>★</span></label>
+                <label><input type="radio" name="rating" value="1"><span>★</span></label>
+            </div>
+            
+            <select class="rating-select">
+                <option>Select product/service</option>
+                <option>Medication Delivery</option>
+                <option>Consultation</option>
+                <option>Customer Service</option>
+                <option>Product Quality</option>
+            </select>
+            
+            <input type="text" class="code-input" placeholder="Enter product code (optional)">
+            
+            <button class="submit-btn">Submit Review</button>
+        </div>
+    </div>
+
+    <!-- Review Section -->
+    <section class="review-section">
+        <h2 class="review-title">Leave Your Review</h2>
+        <p class="review-subtitle">Your feedback helps us improve our services</p>
+        
+        <form class="review-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <select required>
+                <option value="">Select Country</option>
+                <option>Egypt</option>
+                <option>UAE</option>
+                <option>Saudi Arabia</option>
+                <option>Qatar</option>
+                <option>Kuwait</option>
+                <option>Oman</option>
+                <option>Bahrain</option>
+            </select>
+            <textarea placeholder="Your Review" required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+        
+        <div class="message error-message" id="error-message">
+            Please fill all required fields
+        </div>
+        
+        <div class="message success-message" id="success-message">
+            Thank you for your review!
+        </div>
+    </section>
+
+    <!-- Comment Section -->
+    <section class="comment-section">
+        <div class="comment-header">
+            <div class="comment-count">
+                <i class="fas fa-comments"></i> 247 Customer Reviews
+            </div>
+            <div class="sort-options">
+                <select id="sort-comments">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="comments-container" id="comments-container">
+            <!-- Comments will be dynamically inserted here -->
+        </div>
+        
+        <div class="pagination">
+            <button class="page-btn" id="prev-page" disabled>Previous</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn" id="next-page">Next</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2024 Mohamed Drugs Shop. All rights reserved.</p>
+        <p>Premium Pharmacy Services Across the Middle East</p>
+    </footer>
+
+    <script>
+        // Sample comment data with dates from September 2024 to current date
+        const comments = [
+            {
+                id: 1,
+                name: "Ahmed Mohamed",
+                location: "Cairo, Egypt",
+                text: "Excellent service! My medication arrived within 24 hours as promised. The packaging was discreet and professional. Will definitely order again.",
+                date: "2024-09-15",
+                rating: 5
+            },
+            {
+                id: 2,
+                name: "Fatima Al-Mansoori",
+                location: "Dubai, UAE",
+                text: "The customer service team was very helpful when I had questions about my prescription. They went above and beyond to assist me.",
+                date: "2024-09-18",
+                rating: 4
+            },
+            {
+                id: 3,
+                name: "Khalid Abdullah",
+                location: "Riyadh, Saudi Arabia",
+                text: "Fast delivery and genuine products. I've been using this pharmacy for 2 years now and never had any issues.",
+                date: "2024-09-22",
+                rating: 5
+            },
+            {
+                id: 4,
+                name: "Mariam Hassan",
+                location: "Doha, Qatar",
+                text: "I appreciate the detailed product information provided with each order. It shows they care about customer education.",
+                date: "2024-09-28",
+                rating: 5
+            },
+            {
+                id: 5,
+                name: "Yousef Ibrahim",
+                location: "Kuwait City, Kuwait",
+                text: "Good prices compared to local pharmacies. The mobile app makes ordering very convenient.",
+                date: "2024-10-05",
+                rating: 4
+            },
+            {
+                id: 6,
+                name: "Layla Omar",
+                location: "Muscat, Oman",
+                text: "Had a small issue with my order but their support team resolved it immediately. Very professional.",
+                date: "2024-10-12",
+                rating: 4
+            },
+            {
+                id: 7,
+                name: "Nasser Al-Hamad",
+                location: "Manama, Bahrain",
+                text: "The best online pharmacy in the region. I recommend them to all my friends and family.",
+                date: "2024-10-18",
+                rating: 5
+            },
+            {
+                id: 8,
+                name: "Aisha Salem",
+                location: "Alexandria, Egypt",
+                text: "I love the subscription service for my regular medications. Saves me time and money.",
+                date: "2024-10-25",
+                rating: 5
+            },
+            {
+                id: 9,
+                name: "Omar Farouk",
+                location: "Abu Dhabi, UAE",
+                text: "Quick response to my inquiries. The pharmacist was very knowledgeable.",
+                date: "2024-11-02",
+                rating: 5
+            },
+            {
+                id: 10,
+                name: "Samira Khaled",
+                location: "Jeddah, Saudi Arabia",
+                text: "The packaging is always secure and temperature-controlled for sensitive medications.",
+                date: "2024-11-09",
+                rating: 4
+            },
+            {
+                id: 11,
+                name: "Tariq Mahmoud",
+                location: "Doha, Qatar",
+                text: "Competitive prices and regular discounts. Very satisfied with their service.",
+                date: "2024-11-15",
+                rating: 5
+            },
+            {
+                id: 12,
+                name: "Huda Ali",
+                location: "Kuwait City, Kuwait",
+                text: "The delivery was a day late, but they apologized and gave me a discount on my next order.",
+                date: "2024-11-22",
+                rating: 4
+            },
+            {
+                id: 13,
+                name: "Karim Rashid",
+                location: "Muscat, Oman",
+                text: "Excellent selection of international medications not available locally.",
+                date: "2024-11-29",
+                rating: 5
+            },
+            {
+                id: 14,
+                name: "Noor Ahmed",
+                location: "Manama, Bahrain",
+                text: "The website is easy to navigate and the checkout process is smooth.",
+                date: "2024-12-06",
+                rating: 5
+            },
+            {
+                id: 15,
+                name: "Adel Mohammed",
+                location: "Cairo, Egypt",
+                text: "I appreciate the multiple payment options available. Makes shopping convenient.",
+                date: "2024-12-13",
+                rating: 4
+            },
+            {
+                id: 16,
+                name: "Rania Faisal",
+                location: "Dubai, UAE",
+                text: "Their loyalty program is fantastic! I've earned many rewards points.",
+                date: "2024-12-20",
+                rating: 5
+            },
+            {
+                id: 17,
+                name: "Waleed Hassan",
+                location: "Riyadh, Saudi Arabia",
+                text: "Always my first choice for online pharmacy needs. Never disappointed.",
+                date: "2024-12-27",
+                rating: 5
+            },
+            {
+                id: 18,
+                name: "Salma Kamal",
+                location: "Doha, Qatar",
+                text: "The mobile app notifications keep me updated on my order status.",
+                date: "2025-01-03",
+                rating: 4
+            },
+            {
+                id: 19,
+                name: "Faisal Nasser",
+                location: "Kuwait City, Kuwait",
+                text: "Great customer service and fast shipping. Highly recommended.",
+                date: "2025-01-10",
+                rating: 5
+            },
+            {
+                id: 20,
+                name: "Lina Mahmoud",
+                location: "Muscat, Oman",
+                text: "I had a question about drug interactions and their pharmacist called me within an hour to explain.",
+                date: "2025-01-17",
+                rating: 5
+            },
+            {
+                id: 21,
+                name: "Bassam Ali",
+                location: "Manama, Bahrain",
+                text: "The best prices I've found online for my prescription medications.",
+                date: "2025-01-24",
+                rating: 4
+            },
+            {
+                id: 22,
+                name: "Dalia Samir",
+                location: "Cairo, Egypt",
+                text: "Discreet packaging and prompt delivery. Very professional service.",
+                date: "2025-01-31",
+                rating: 5
+            },
+            {
+                id: 23,
+                name: "Tamer Hosny",
+                location: "Abu Dhabi, UAE",
+                text: "I've been using Mohamed Drugs for all my family's medical needs. Always reliable.",
+                date: "2025-02-07",
+                rating: 5
+            },
+            {
+                id: 24,
+                name: "Hanan Yousef",
+                location: "Jeddah, Saudi Arabia",
+                text: "The quality of their products is consistently excellent.",
+                date: "2025-02-14",
+                rating: 5
+            },
+            {
+                id: 25,
+                name: "Majid Khalid",
+                location: "Doha, Qatar",
+                text: "Fast delivery even during holidays. Impressed with their service.",
+                date: "2025-02-21",
+                rating: 4
+            },
+            {
+                id: 26,
+                name: "Amira Said",
+                location: "Kuwait City, Kuwait",
+                text: "Their customer service representatives are very polite and helpful.",
+                date: "2025-02-28",
+                rating: 5
+            },
+            {
+                id: 27,
+                name: "Ziad Omar",
+                location: "Muscat, Oman",
+                text: "The website has a great search function that makes finding medications easy.",
+                date: "2025-03-07",
+                rating: 4
+            },
+            {
+                id: 28,
+                name: "Farida Ahmed",
+                location: "Manama, Bahrain",
+                text: "I appreciate that they carry hard-to-find medications from Europe.",
+                date: "2025-03-14",
+                rating: 5
+            },
+            {
+                id: 29,
+                name: "Hamza Ali",
+                location: "Cairo, Egypt",
+                text: "The express delivery option is worth every penny when you need meds urgently.",
+                date: "2025-03-21",
+                rating: 5
+            },
+            {
+                id: 30,
+                name: "Yasmin Karim",
+                location: "Dubai, UAE",
+                text: "Always fresh medications with long expiration dates. Never received anything close to expiry.",
+                date: "2025-03-28",
+                rating: 5
+            }
+        ];
+
+        // Function to format date as "Month Day, Year"
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to render comments
+        function renderComments(sortedComments) {
+            const container = document.getElementById('comments-container');
+            container.innerHTML = '';
+            
+            sortedComments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = `
+                    <div class="user-info">
+                        <div class="avatar">${comment.name.charAt(0)}</div>
+                        <div class="user-details">
+                            <div class="user-name">${comment.name}</div>
+                            <div class="user-location">
+                                <i class="fas fa-map-marker-alt"></i> ${comment.location}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-date">${formatDate(comment.date)}</div>
+                    <div class="comment-text">${comment.text}</div>
+                `;
+                container.appendChild(commentElement);
+            });
+        }
+
+        // Function to sort comments
+        function sortComments(order) {
+            const sorted = [...comments];
+            if (order === 'newest') {
+                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else {
+                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+            }
+            renderComments(sorted);
+        }
+
+        // Initial render
+        sortComments('newest');
+
+        // Event listener for sort change
+        document.getElementById('sort-comments').addEventListener('change', function() {
+            sortComments(this.value);
+        });
+
+        // Pagination functionality
+        let currentPage = 1;
+        const commentsPerPage = 10;
+        const totalPages = Math.ceil(comments.length / commentsPerPage);
+
+        function updatePagination() {
+            const prevBtn = document.getElementById('prev-page');
+            const nextBtn = document.getElementById('next-page');
+            
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+            
+            // Update active page button
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                if (btn.textContent == currentPage && !isNaN(btn.textContent)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Event listeners for pagination buttons
+        document.getElementById('prev-page').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePagination();
+                // Here you would fetch/display comments for the new page
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePagination();
+                // Here you would fetch/display comments for the new page
+            }
+        });
+
+        // Event listeners for page number buttons
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            if (!isNaN(btn.textContent)) {
+                btn.addEventListener('click', function() {
+                    currentPage = parseInt(this.textContent);
+                    updatePagination();
+                    // Here you would fetch/display comments for the new page
+                });
+            }
+        });
+
+        // Initialize pagination
+        updatePagination();
+
+        // Review form submission
+        document.querySelector('.review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation
+            const inputs = this.querySelectorAll('input, select, textarea');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (input.required && !input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--accent-red)';
+                } else {
+                    input.style.borderColor = '#444';
+                }
+            });
+            
+            if (isValid) {
+                document.getElementById('error-message').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+                this.reset();
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 3000);
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('success-message').style.display = 'none';
+            }
+        });
+
+        // Rating stars interaction
+        document.querySelectorAll('.star-rating input').forEach(star => {
+            star.addEventListener('change', function() {
+                const rating = this.value;
+                // You would typically send this rating to your server
+                console.log(`User rated: ${rating} stars`);
+            });
+        });
+    </script>
 </body>
 </html>
