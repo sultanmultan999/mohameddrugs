@@ -1,18 +1,69 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e0e0e;
+  color: #fff;
+}
 
-body.dark-theme {
-    background-color: #121212;
-    color: #f1f1f1;
-    font-family: Arial, sans-serif;
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #333;
 }
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #00e1ff;
+}
+
+.banner {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #000;
+}
+
+main {
+  padding: 20px;
+}
+
 .country-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  text-align: center;
 }
+
 .country-grid a {
-    background: #1e1e1e;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.country-grid a:hover {
+  background-color: #333;
+}
+
+.country-grid img {
+  width: 40px;
+  height: 30px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  background-color: #1c1c1c;
+  color: #aaa;
+  border-top: 1px solid #333;
 }
