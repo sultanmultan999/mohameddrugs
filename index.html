@@ -81,20 +81,38 @@
         }
         
         /* Hero Image */
-        .hero-image {
-            display: block;
+        .hero-container {
+            position: relative;
             width: 100%;
             max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
         }
         
-        .hero-image img {
+        .hero-image {
             width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.5);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         /* Country Selection */
@@ -107,10 +125,17 @@
         .section-title {
             color: var(--primary);
             font-size: 36px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             font-weight: 700;
             position: relative;
             display: inline-block;
+        }
+        
+        .section-subtitle {
+            color: #00c3ff;
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: block;
         }
         
         .section-title::after {
@@ -142,6 +167,7 @@
             font-size: 22px;
             font-weight: bold;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
@@ -157,8 +183,24 @@
         
         .country-card img {
             width: 36px;
-            margin-right: 15px;
+            margin-bottom: 15px;
             filter: drop-shadow(0 0 3px rgba(0,195,255,0.5));
+        }
+        
+        .country-name {
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .arabic-name {
+            font-size: 20px;
+            display: block;
+        }
+        
+        .english-name {
+            font-size: 18px;
+            display: block;
+            color: var(--text-muted);
         }
         
         /* Ratings Section */
@@ -365,192 +407,6 @@
             border: 1px solid var(--accent-green);
         }
         
-        /* Comment Section */
-        .comment-section {
-            background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            margin: 50px auto;
-            max-width: 1000px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,195,255,0.1);
-        }
-        
-        .comment-header {
-            padding: 20px 30px;
-            background: var(--card-bg);
-            border-bottom: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .comment-count {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .sort-options select {
-            background: #252525;
-            color: var(--text-light);
-            border: 1px solid #444;
-            padding: 10px 18px;
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        
-        .comments-container {
-            padding: 25px;
-            min-height: 500px;
-        }
-        
-        .comment {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--secondary);
-            transition: all 0.3s ease;
-            position: relative;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .comment:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-            margin-right: 20px;
-            color: white;
-            flex-shrink: 0;
-            box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
-        }
-        
-        .user-details {
-            flex: 1;
-        }
-        
-        .user-name {
-            font-weight: 600;
-            font-size: 20px;
-            color: #f0f0f0;
-        }
-        
-        .user-location {
-            font-size: 16px;
-            color: var(--text-muted);
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .comment-text {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #ccc;
-            padding-left: 70px;
-        }
-        
-        .comment-date {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 16px;
-            color: #777;
-        }
-        
-        /* Colorful comment accents */
-        .comment:nth-child(3n+1) {
-            border-left-color: var(--accent-purple);
-        }
-        .comment:nth-child(3n+2) {
-            border-left-color: var(--accent-blue);
-        }
-        .comment:nth-child(3n+3) {
-            border-left-color: var(--accent-green);
-        }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 1000px;
-            margin: 40px auto;
-            border: 1px solid rgba(0,195,255,0.1);
-        }
-        
-        .pagination button {
-            background: #252525;
-            color: var(--text-light);
-            border: 1px solid #444;
-            border-radius: 10px;
-            min-width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 18px;
-            padding: 0 15px;
-        }
-        
-        .pagination button:hover:not(:disabled) {
-            background: var(--secondary);
-            border-color: var(--secondary);
-            transform: scale(1.1);
-        }
-        
-        .pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .pagination .page-btn.active {
-            background: var(--secondary);
-            border-color: var(--secondary);
-            color: white;
-            box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
-        }
-        
         /* Footer */
         .site-footer {
             text-align: center;
@@ -559,6 +415,58 @@
             font-size: 16px;
             padding: 25px;
             width: 100%;
+        }
+        
+        /* Modal for messages */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,195,255,0.3);
+            border: 1px solid var(--primary);
+        }
+        
+        .modal h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal p {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        
+        .modal-btn {
+            background: linear-gradient(135deg, var(--primary), #00aaff);
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,195,255,0.5);
         }
         
         /* Responsive Design */
@@ -573,6 +481,10 @@
             
             .section-title {
                 font-size: 32px;
+            }
+            
+            .section-subtitle {
+                font-size: 24px;
             }
             
             .country-grid {
@@ -590,6 +502,11 @@
             
             .stars, .star-rating {
                 font-size: 32px;
+            }
+            
+            .hero-text {
+                font-size: 20px;
+                padding: 10px 20px;
             }
         }
         
@@ -609,6 +526,10 @@
             
             .section-title {
                 font-size: 28px;
+            }
+            
+            .section-subtitle {
+                font-size: 22px;
             }
             
             .section-title::after {
@@ -635,20 +556,8 @@
                 padding: 30px 20px;
             }
             
-            .comment-text {
-                padding-left: 0;
-                margin-top: 20px;
-            }
-            
-            .user-info {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .comment-date {
-                position: static;
-                margin-top: 15px;
-                text-align: right;
+            .hero-text {
+                font-size: 18px;
             }
         }
         
@@ -665,6 +574,10 @@
                 font-size: 26px;
             }
             
+            .section-subtitle {
+                font-size: 20px;
+            }
+            
             .country-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -677,43 +590,9 @@
                 max-width: 100%;
             }
             
-            .comment-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 18px;
-            }
-            
-            .sort-options select {
-                width: 100%;
-            }
-            
-            .pagination button {
-                min-width: 38px;
-                height: 38px;
+            .hero-text {
                 font-size: 16px;
-                padding: 0 12px;
-            }
-            
-            .comment {
-                padding: 20px;
-            }
-            
-            .avatar {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            
-            .user-name {
-                font-size: 18px;
-            }
-            
-            .user-location {
-                font-size: 15px;
-            }
-            
-            .comment-text {
-                font-size: 16px;
+                padding: 8px 16px;
             }
         }
     </style>
@@ -733,35 +612,68 @@
         </div>
     </header>
 
-    <!-- Hero Image -->
-    <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Pharmacy Products">
+    <!-- Hero Image with Text -->
+    <div class="hero-container">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+             alt="Pharmacy Products" class="hero-image">
+        <div class="hero-text">
+            <i class="fas fa-shipping-fast"></i> أسرع وأكثر أمانًا للتسليم
+        </div>
     </div>
 
     <!-- Country Selection -->
     <section class="country-selection">
         <h2 class="section-title">Choose Your Country</h2>
+        <span class="section-subtitle">اختر بلدك</span>
         <div class="country-grid">
             <a href="egypt.html" class="country-card">
-                <img src="https://flagcdn.com/w40/eg.png" alt="Egypt"> Egypt
+                <img src="https://flagcdn.com/w40/eg.png" alt="Egypt">
+                <div class="country-name">
+                    <span class="arabic-name">مصر</span>
+                    <span class="english-name">Egypt</span>
+                </div>
             </a>
             <a href="uae.html" class="country-card">
-                <img src="https://flagcdn.com/w40/ae.png" alt="UAE"> UAE
+                <img src="https://flagcdn.com/w40/ae.png" alt="UAE">
+                <div class="country-name">
+                    <span class="arabic-name">الإمارات</span>
+                    <span class="english-name">UAE</span>
+                </div>
             </a>
             <a href="saudi.html" class="country-card">
-                <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"> Saudi Arabia
+                <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia">
+                <div class="country-name">
+                    <span class="arabic-name">السعودية</span>
+                    <span class="english-name">Saudi Arabia</span>
+                </div>
             </a>
             <a href="qatar.html" class="country-card">
-                <img src="https://flagcdn.com/w40/qa.png" alt="Qatar"> Qatar
+                <img src="https://flagcdn.com/w40/qa.png" alt="Qatar">
+                <div class="country-name">
+                    <span class="arabic-name">قطر</span>
+                    <span class="english-name">Qatar</span>
+                </div>
             </a>
             <a href="kuwait.html" class="country-card">
-                <img src="https://flagcdn.com/w40/kw.png" alt="Kuwait"> Kuwait
+                <img src="https://flagcdn.com/w40/kw.png" alt="Kuwait">
+                <div class="country-name">
+                    <span class="arabic-name">الكويت</span>
+                    <span class="english-name">Kuwait</span>
+                </div>
             </a>
             <a href="oman.html" class="country-card">
-                <img src="https://flagcdn.com/w40/om.png" alt="Oman"> Oman
+                <img src="https://flagcdn.com/w40/om.png" alt="Oman">
+                <div class="country-name">
+                    <span class="arabic-name">عمان</span>
+                    <span class="english-name">Oman</span>
+                </div>
             </a>
             <a href="bahrain.html" class="country-card">
-                <img src="https://flagcdn.com/w40/bh.png" alt="Bahrain"> Bahrain
+                <img src="https://flagcdn.com/w40/bh.png" alt="Bahrain">
+                <div class="country-name">
+                    <span class="arabic-name">البحرين</span>
+                    <span class="english-name">Bahrain</span>
+                </div>
             </a>
         </div>
     </section>
@@ -769,7 +681,7 @@
     <!-- Ratings Section -->
     <div class="ratings-container">
         <div class="rating-header">
-            <div class="rating-value">4.9</div>
+            <div class="rating-value">4.8<span style="font-size: 24px;">/5.0</span></div>
             <div class="stars">
                 ★★★★★
             </div>
@@ -789,15 +701,14 @@
             
             <select class="rating-select">
                 <option>Select product/service</option>
-                <option>Medication Delivery</option>
-                <option>Consultation</option>
-                <option>Customer Service</option>
+                <option>Product Delivery</option>
                 <option>Product Quality</option>
+                <option>Customer Service</option>
             </select>
             
             <input type="text" class="code-input" placeholder="Enter product code (optional)">
             
-            <button class="submit-btn">Submit Review</button>
+            <button class="submit-btn" id="rating-submit">Submit Review</button>
         </div>
     </div>
 
@@ -806,9 +717,9 @@
         <h2 class="review-title">Leave Your Review</h2>
         <p class="review-subtitle">Your feedback helps us improve our services</p>
         
-        <form class="review-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
+        <form class="review-form" id="review-form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="City" required>
             <select required>
                 <option value="">Select Country</option>
                 <option>Egypt</option>
@@ -832,424 +743,44 @@
         </div>
     </section>
 
-    <!-- Comment Section -->
-    <section class="comment-section">
-        <div class="comment-header">
-            <div class="comment-count">
-                <i class="fas fa-comments"></i> 247 Customer Reviews
-            </div>
-            <div class="sort-options">
-                <select id="sort-comments">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="comments-container" id="comments-container">
-            <!-- Comments will be dynamically inserted here -->
-        </div>
-        
-        <div class="pagination">
-            <button class="page-btn" id="prev-page" disabled>Previous</button>
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn" id="next-page">Next</button>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="site-footer">
         <p>© 2024 Mohamed Drugs Shop. All rights reserved.</p>
         <p>Premium Pharmacy Services Across the Middle East</p>
     </footer>
+    
+    <!-- Modal for Messages -->
+    <div class="modal" id="message-modal">
+        <div class="modal-content">
+            <h2>Purchase Required</h2>
+            <p id="modal-message">Invalid purchasing code, please make a purchase to submit ratings</p>
+            <button class="modal-btn" onclick="document.getElementById('message-modal').style.display='none'">OK</button>
+        </div>
+    </div>
 
     <script>
-        // Sample comment data with dates from September 2024 to current date
-        const comments = [
-            {
-                id: 1,
-                name: "Ahmed Mohamed",
-                location: "Cairo, Egypt",
-                text: "Excellent service! My medication arrived within 24 hours as promised. The packaging was discreet and professional. Will definitely order again.",
-                date: "2024-09-15",
-                rating: 5
-            },
-            {
-                id: 2,
-                name: "Fatima Al-Mansoori",
-                location: "Dubai, UAE",
-                text: "The customer service team was very helpful when I had questions about my prescription. They went above and beyond to assist me.",
-                date: "2024-09-18",
-                rating: 4
-            },
-            {
-                id: 3,
-                name: "Khalid Abdullah",
-                location: "Riyadh, Saudi Arabia",
-                text: "Fast delivery and genuine products. I've been using this pharmacy for 2 years now and never had any issues.",
-                date: "2024-09-22",
-                rating: 5
-            },
-            {
-                id: 4,
-                name: "Mariam Hassan",
-                location: "Doha, Qatar",
-                text: "I appreciate the detailed product information provided with each order. It shows they care about customer education.",
-                date: "2024-09-28",
-                rating: 5
-            },
-            {
-                id: 5,
-                name: "Yousef Ibrahim",
-                location: "Kuwait City, Kuwait",
-                text: "Good prices compared to local pharmacies. The mobile app makes ordering very convenient.",
-                date: "2024-10-05",
-                rating: 4
-            },
-            {
-                id: 6,
-                name: "Layla Omar",
-                location: "Muscat, Oman",
-                text: "Had a small issue with my order but their support team resolved it immediately. Very professional.",
-                date: "2024-10-12",
-                rating: 4
-            },
-            {
-                id: 7,
-                name: "Nasser Al-Hamad",
-                location: "Manama, Bahrain",
-                text: "The best online pharmacy in the region. I recommend them to all my friends and family.",
-                date: "2024-10-18",
-                rating: 5
-            },
-            {
-                id: 8,
-                name: "Aisha Salem",
-                location: "Alexandria, Egypt",
-                text: "I love the subscription service for my regular medications. Saves me time and money.",
-                date: "2024-10-25",
-                rating: 5
-            },
-            {
-                id: 9,
-                name: "Omar Farouk",
-                location: "Abu Dhabi, UAE",
-                text: "Quick response to my inquiries. The pharmacist was very knowledgeable.",
-                date: "2024-11-02",
-                rating: 5
-            },
-            {
-                id: 10,
-                name: "Samira Khaled",
-                location: "Jeddah, Saudi Arabia",
-                text: "The packaging is always secure and temperature-controlled for sensitive medications.",
-                date: "2024-11-09",
-                rating: 4
-            },
-            {
-                id: 11,
-                name: "Tariq Mahmoud",
-                location: "Doha, Qatar",
-                text: "Competitive prices and regular discounts. Very satisfied with their service.",
-                date: "2024-11-15",
-                rating: 5
-            },
-            {
-                id: 12,
-                name: "Huda Ali",
-                location: "Kuwait City, Kuwait",
-                text: "The delivery was a day late, but they apologized and gave me a discount on my next order.",
-                date: "2024-11-22",
-                rating: 4
-            },
-            {
-                id: 13,
-                name: "Karim Rashid",
-                location: "Muscat, Oman",
-                text: "Excellent selection of international medications not available locally.",
-                date: "2024-11-29",
-                rating: 5
-            },
-            {
-                id: 14,
-                name: "Noor Ahmed",
-                location: "Manama, Bahrain",
-                text: "The website is easy to navigate and the checkout process is smooth.",
-                date: "2024-12-06",
-                rating: 5
-            },
-            {
-                id: 15,
-                name: "Adel Mohammed",
-                location: "Cairo, Egypt",
-                text: "I appreciate the multiple payment options available. Makes shopping convenient.",
-                date: "2024-12-13",
-                rating: 4
-            },
-            {
-                id: 16,
-                name: "Rania Faisal",
-                location: "Dubai, UAE",
-                text: "Their loyalty program is fantastic! I've earned many rewards points.",
-                date: "2024-12-20",
-                rating: 5
-            },
-            {
-                id: 17,
-                name: "Waleed Hassan",
-                location: "Riyadh, Saudi Arabia",
-                text: "Always my first choice for online pharmacy needs. Never disappointed.",
-                date: "2024-12-27",
-                rating: 5
-            },
-            {
-                id: 18,
-                name: "Salma Kamal",
-                location: "Doha, Qatar",
-                text: "The mobile app notifications keep me updated on my order status.",
-                date: "2025-01-03",
-                rating: 4
-            },
-            {
-                id: 19,
-                name: "Faisal Nasser",
-                location: "Kuwait City, Kuwait",
-                text: "Great customer service and fast shipping. Highly recommended.",
-                date: "2025-01-10",
-                rating: 5
-            },
-            {
-                id: 20,
-                name: "Lina Mahmoud",
-                location: "Muscat, Oman",
-                text: "I had a question about drug interactions and their pharmacist called me within an hour to explain.",
-                date: "2025-01-17",
-                rating: 5
-            },
-            {
-                id: 21,
-                name: "Bassam Ali",
-                location: "Manama, Bahrain",
-                text: "The best prices I've found online for my prescription medications.",
-                date: "2025-01-24",
-                rating: 4
-            },
-            {
-                id: 22,
-                name: "Dalia Samir",
-                location: "Cairo, Egypt",
-                text: "Discreet packaging and prompt delivery. Very professional service.",
-                date: "2025-01-31",
-                rating: 5
-            },
-            {
-                id: 23,
-                name: "Tamer Hosny",
-                location: "Abu Dhabi, UAE",
-                text: "I've been using Mohamed Drugs for all my family's medical needs. Always reliable.",
-                date: "2025-02-07",
-                rating: 5
-            },
-            {
-                id: 24,
-                name: "Hanan Yousef",
-                location: "Jeddah, Saudi Arabia",
-                text: "The quality of their products is consistently excellent.",
-                date: "2025-02-14",
-                rating: 5
-            },
-            {
-                id: 25,
-                name: "Majid Khalid",
-                location: "Doha, Qatar",
-                text: "Fast delivery even during holidays. Impressed with their service.",
-                date: "2025-02-21",
-                rating: 4
-            },
-            {
-                id: 26,
-                name: "Amira Said",
-                location: "Kuwait City, Kuwait",
-                text: "Their customer service representatives are very polite and helpful.",
-                date: "2025-02-28",
-                rating: 5
-            },
-            {
-                id: 27,
-                name: "Ziad Omar",
-                location: "Muscat, Oman",
-                text: "The website has a great search function that makes finding medications easy.",
-                date: "2025-03-07",
-                rating: 4
-            },
-            {
-                id: 28,
-                name: "Farida Ahmed",
-                location: "Manama, Bahrain",
-                text: "I appreciate that they carry hard-to-find medications from Europe.",
-                date: "2025-03-14",
-                rating: 5
-            },
-            {
-                id: 29,
-                name: "Hamza Ali",
-                location: "Cairo, Egypt",
-                text: "The express delivery option is worth every penny when you need meds urgently.",
-                date: "2025-03-21",
-                rating: 5
-            },
-            {
-                id: 30,
-                name: "Yasmin Karim",
-                location: "Dubai, UAE",
-                text: "Always fresh medications with long expiration dates. Never received anything close to expiry.",
-                date: "2025-03-28",
-                rating: 5
-            }
-        ];
-
-        // Function to format date as "Month Day, Year"
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('en-US', options);
+        // Show modal with message
+        function showModal(message) {
+            document.getElementById('modal-message').textContent = message;
+            document.getElementById('message-modal').style.display = 'flex';
         }
-
-        // Function to render comments
-        function renderComments(sortedComments) {
-            const container = document.getElementById('comments-container');
-            container.innerHTML = '';
-            
-            sortedComments.forEach(comment => {
-                const commentElement = document.createElement('div');
-                commentElement.className = 'comment';
-                commentElement.innerHTML = `
-                    <div class="user-info">
-                        <div class="avatar">${comment.name.charAt(0)}</div>
-                        <div class="user-details">
-                            <div class="user-name">${comment.name}</div>
-                            <div class="user-location">
-                                <i class="fas fa-map-marker-alt"></i> ${comment.location}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-date">${formatDate(comment.date)}</div>
-                    <div class="comment-text">${comment.text}</div>
-                `;
-                container.appendChild(commentElement);
-            });
-        }
-
-        // Function to sort comments
-        function sortComments(order) {
-            const sorted = [...comments];
-            if (order === 'newest') {
-                sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else {
-                sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-            }
-            renderComments(sorted);
-        }
-
-        // Initial render
-        sortComments('newest');
-
-        // Event listener for sort change
-        document.getElementById('sort-comments').addEventListener('change', function() {
-            sortComments(this.value);
-        });
-
-        // Pagination functionality
-        let currentPage = 1;
-        const commentsPerPage = 10;
-        const totalPages = Math.ceil(comments.length / commentsPerPage);
-
-        function updatePagination() {
-            const prevBtn = document.getElementById('prev-page');
-            const nextBtn = document.getElementById('next-page');
-            
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
-            
-            // Update active page button
-            document.querySelectorAll('.page-btn').forEach(btn => {
-                if (btn.textContent == currentPage && !isNaN(btn.textContent)) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-        }
-
-        // Event listeners for pagination buttons
-        document.getElementById('prev-page').addEventListener('click', function() {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePagination();
-                // Here you would fetch/display comments for the new page
-            }
-        });
-
-        document.getElementById('next-page').addEventListener('click', function() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                updatePagination();
-                // Here you would fetch/display comments for the new page
-            }
-        });
-
-        // Event listeners for page number buttons
-        document.querySelectorAll('.page-btn').forEach(btn => {
-            if (!isNaN(btn.textContent)) {
-                btn.addEventListener('click', function() {
-                    currentPage = parseInt(this.textContent);
-                    updatePagination();
-                    // Here you would fetch/display comments for the new page
-                });
-            }
-        });
-
-        // Initialize pagination
-        updatePagination();
-
-        // Review form submission
-        document.querySelector('.review-form').addEventListener('submit', function(e) {
+        
+        // Rating submission
+        document.getElementById('rating-submit').addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Simple validation
-            const inputs = this.querySelectorAll('input, select, textarea');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (input.required && !input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = 'var(--accent-red)';
-                } else {
-                    input.style.borderColor = '#444';
-                }
-            });
-            
-            if (isValid) {
-                document.getElementById('error-message').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-                this.reset();
-                
-                // Hide success message after 3 seconds
-                setTimeout(() => {
-                    document.getElementById('success-message').style.display = 'none';
-                }, 3000);
-            } else {
-                document.getElementById('error-message').style.display = 'block';
-                document.getElementById('success-message').style.display = 'none';
-            }
+            showModal("Invalid purchasing code, please make a purchase to submit ratings");
         });
-
+        
+        // Review form submission
+        document.getElementById('review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showModal("Invalid purchasing code, please make a purchase to submit reviews");
+        });
+        
         // Rating stars interaction
         document.querySelectorAll('.star-rating input').forEach(star => {
             star.addEventListener('change', function() {
                 const rating = this.value;
-                // You would typically send this rating to your server
                 console.log(`User rated: ${rating} stars`);
             });
         });
