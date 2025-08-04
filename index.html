@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Store Style Star Rating</title>
+    <title>Mohamed Drugs Shop | Premium Pharmacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #00c3ff;
+            --secondary: #8e44ad;
+            --dark-bg: #0d0d0d;
+            --darker-bg: #121212;
+            --card-bg: #1a1a1a;
+            --text-light: #e0e0e0;
+            --text-muted: #aaa;
+            --accent-purple: #9c27b0;
+            --accent-blue: #2196f3;
+            --accent-green: #4caf50;
+            --accent-orange: #ff9800;
+            --accent-red: #f44336;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,264 +29,777 @@
         }
         
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--text-light);
             min-height: 100vh;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            padding: 20px;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-bottom: 40px;
+            overflow-x: hidden;
         }
         
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
+        /* Header Styles */
+        .site-header {
+            background: var(--dark-bg);
+            padding: 20px 30px;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.5rem;
+        .store-name {
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(0,195,255,0.3);
         }
         
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .rating-container {
-            margin: 30px 0;
+        .country-list {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
         }
         
-        .stars {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-        }
-        
-        .star {
-            position: relative;
-            font-size: 3.5rem;
-            color: #ddd;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin: 0 3px;
-        }
-        
-        .star:hover,
-        .star:hover ~ .star {
-            color: #ffd700;
-        }
-        
-        .star::before {
-            content: "★";
-            position: absolute;
-            left: 0;
-            overflow: hidden;
-            width: 0;
-            transition: width 0.2s ease;
-        }
-        
-        .star.half::before {
-            width: 50%;
-            color: #ffd700;
-        }
-        
-        .star.full {
-            color: #ffd700;
-        }
-        
-        .rating-result {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-top: 20px;
-            height: 45px;
-            color: #333;
+        .country-list span {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
         
-        .rating-value {
-            color: #ff6b00;
-            font-size: 2.5rem;
-            display: inline-block;
-            min-width: 60px;
+        .country-list span:hover {
+            background: rgba(0,195,255,0.1);
+            color: var(--primary);
         }
         
-        .description {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            text-align: left;
-            border-left: 4px solid #4CAF50;
+        /* Hero Image */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto 0;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
-        .description h3 {
-            color: #333;
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .hero-text {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(0,0,0,0.7);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary);
+        }
+        
+        .delivery-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        
+        /* Country Selection */
+        .country-selection {
+            padding: 40px 20px;
+            background: #111;
+            text-align: center;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 36px;
             margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
         }
         
-        .description p {
-            color: #555;
-            line-height: 1.6;
+        .section-subtitle {
+            color: #00c3ff;
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: block;
         }
         
-        .instructions {
-            margin-top: 20px;
-            color: #666;
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-        
-        .highlight {
-            background: #fff9c4;
-            padding: 2px 5px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #00aaff);
             border-radius: 4px;
         }
         
-        @media (max-width: 500px) {
-            .container {
-                padding: 25px;
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .country-card {
+            text-decoration: none;
+            background: var(--card-bg);
+            padding: 25px;
+            color: var(--primary);
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .country-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,195,255,0.3);
+            background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
+        }
+        
+        .country-card img {
+            width: 36px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 3px rgba(0,195,255,0.5));
+        }
+        
+        .country-name {
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .arabic-name {
+            font-size: 20px;
+            display: block;
+        }
+        
+        .english-name {
+            font-size: 18px;
+            display: block;
+            color: var(--text-muted);
+        }
+        
+        /* Ratings Section */
+        .ratings-container {
+            background: linear-gradient(135deg, var(--dark-bg), var(--card-bg));
+            color: #eee;
+            padding: 40px 30px;
+            border-radius: 15px;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .rating-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .rating-value {
+            font-size: 46px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(0,195,255,0.3);
+        }
+        
+        .stars {
+            font-size: 36px;
+            color: gold;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        
+        .rating-subtitle {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .divider {
+            border: 1px solid #333;
+            margin: 30px 0;
+        }
+        
+        .rating-form {
+            text-align: center;
+        }
+        
+        .star-rating {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        
+        .star-rating label {
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        
+        .star-rating input[type="radio"] + span {
+            color: #444;
+            transition: all 0.3s ease;
+        }
+        
+        .star-rating input[type="radio"]:checked ~ span {
+            color: #444;
+        }
+        
+        .star-rating input[type="radio"]:checked + span,
+        .star-rating input[type="radio"]:hover + span {
+            color: gold;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+        
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            max-width: 500px;
+            margin: 0 auto 25px;
+            color: var(--text-muted);
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-label {
+            flex: 1;
+            min-width: 100px;
+            padding: 8px 5px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 5px;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .rating-label:hover {
+            background: rgba(0,195,255,0.1);
+            color: var(--primary);
+        }
+        
+        .rating-label[data-rating="5"] {
+            border: 1px solid var(--accent-green);
+        }
+        
+        .rating-label[data-rating="4"] {
+            border: 1px solid var(--accent-blue);
+        }
+        
+        .rating-label[data-rating="3"] {
+            border: 1px solid var(--accent-orange);
+        }
+        
+        .rating-label[data-rating="2"] {
+            border: 1px solid var(--accent-orange);
+        }
+        
+        .rating-label[data-rating="1"] {
+            border: 1px solid var(--accent-red);
+        }
+        
+        .rating-select {
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #eee;
+            margin-bottom: 25px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        .code-input {
+            padding: 14px;
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: var(--card-bg);
+            color: #fff;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), #00aaff);
+            color: #000;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,195,255,0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,195,255,0.5);
+        }
+        
+        /* Review Section */
+        .review-section {
+            background: linear-gradient(135deg, var(--card-bg), var(--dark-bg));
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,195,255,0.1);
+        }
+        
+        .review-title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .review-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .review-form input, 
+        .review-form select, 
+        .review-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background-color: #2c2c2c;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .review-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .review-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent-blue), #0288d1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(3,169,244,0.3);
+        }
+        
+        .review-form button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(3,169,244,0.5);
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 18px;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+        
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #777;
+            font-size: 16px;
+            padding: 25px;
+            width: 100%;
+        }
+        
+        /* Modal for messages */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,195,255,0.3);
+            border: 1px solid var(--primary);
+        }
+        
+        .modal h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal p {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        
+        .modal-btn {
+            background: linear-gradient(135deg, var(--primary), #00aaff);
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,195,255,0.5);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .site-header {
+                padding: 18px 25px;
             }
             
-            h1 {
-                font-size: 2rem;
+            .store-name {
+                font-size: 28px;
             }
             
-            .star {
-                font-size: 2.8rem;
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .section-subtitle {
+                font-size: 24px;
+            }
+            
+            .country-grid {
+                gap: 20px;
+            }
+            
+            .country-card {
+                padding: 22px;
+                font-size: 20px;
+            }
+            
+            .rating-value {
+                font-size: 40px;
+            }
+            
+            .stars, .star-rating {
+                font-size: 32px;
+            }
+            
+            .hero-text {
+                font-size: 20px;
+                padding: 10px 20px;
+            }
+            
+            .rating-labels {
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 15px 20px;
+            }
+            
+            .store-name {
+                font-size: 26px;
+            }
+            
+            .country-list span {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-subtitle {
+                font-size: 22px;
+            }
+            
+            .section-title::after {
+                width: 80px;
+                height: 3px;
+            }
+            
+            .country-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 18px;
+            }
+            
+            .country-card {
+                padding: 20px;
+                font-size: 18px;
+            }
+            
+            .country-card img {
+                width: 32px;
+            }
+            
+            .ratings-container, 
+            .review-section {
+                padding: 30px 20px;
+            }
+            
+            .hero-text {
+                font-size: 18px;
+            }
+            
+            .rating-labels {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-header {
+                padding: 12px 15px;
+            }
+            
+            .store-name {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .section-subtitle {
+                font-size: 20px;
+            }
+            
+            .country-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 400px;
+            }
+            
+            .country-card {
+                padding: 18px;
+                font-size: 20px;
+                max-width: 100%;
+            }
+            
+            .hero-text {
+                font-size: 16px;
+                padding: 8px 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Interactive Star Rating</h1>
-        <p class="subtitle">Rate your experience just like the Play Store</p>
-        
-        <div class="rating-container">
-            <div class="stars">
-                <div class="star" data-value="0.5"></div>
-                <div class="star" data-value="1"></div>
-                <div class="star" data-value="1.5"></div>
-                <div class="star" data-value="2"></div>
-                <div class="star" data-value="2.5"></div>
-                <div class="star" data-value="3"></div>
-                <div class="star" data-value="3.5"></div>
-                <div class="star" data-value="4"></div>
-                <div class="star" data-value="4.5"></div>
-                <div class="star" data-value="5"></div>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="store-name">Mohamed Drugs Shop</div>
+        <div class="country-list">
+            <span>🚚 مصر</span>
+            <span>🚚 الإمارات</span>
+            <span>🚚 السعودية</span>
+            <span>🚚 قطر</span>
+            <span>🚚 الكويت</span>
+            <span>🚚 عمان</span>
+            <span>🚚 البحرين</span>
+        </div>
+    </header>
+
+    <!-- Hero Image with Text -->
+    <div class="hero-container">
+        <div class="hero-text">
+            <i class="fas fa-shipping-fast"></i> أسرع وأكثر أمانًا للتسليم
+            <div class="delivery-icons">
+                <i class="fas fa-truck"></i>
+                <i class="fas fa-box"></i>
+                <i class="fas fa-shipping-fast"></i>
             </div>
         </div>
-        
-        <div class="rating-result">
-            Your rating: <span class="rating-value">0</span> star(s)
-        </div>
-        
-        <div class="description">
-            <h3>How it works</h3>
-            <p>This star rating system allows for precise ratings with half-star increments:</p>
-            <ul style="margin-top: 10px; padding-left: 20px;">
-                <li>Click on the <span class="highlight">right side</span> of a star to give a full star</li>
-                <li>Click on the <span class="highlight">left side</span> of a star to give a half star</li>
-                <li>For example: Click left side of 3rd star = 2.5 rating</li>
-                <li>Click right side of 4th star = 4.0 rating</li>
-            </ul>
-        </div>
-        
-        <p class="instructions">Try it out! Hover over stars to preview, click to set your rating.</p>
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+             alt="Pharmacy Products" class="hero-image">
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stars = document.querySelectorAll('.star');
-            const ratingValue = document.querySelector('.rating-value');
+    <!-- Country Selection -->
+    <section class="country-selection">
+        <h2 class="section-title">Choose Your Country</h2>
+        <span class="section-subtitle">اختر بلدك</span>
+        <div class="country-grid">
+            <a href="egypt.html" class="country-card">
+                <img src="https://flagcdn.com/w40/eg.png" alt="Egypt">
+                <div class="country-name">
+                    <span class="arabic-name">مصر</span>
+                    <span class="english-name">Egypt</span>
+                </div>
+            </a>
+            <a href="uae.html" class="country-card">
+                <img src="https://flagcdn.com/w40/ae.png" alt="UAE">
+                <div class="country-name">
+                    <span class="arabic-name">الإمارات</span>
+                    <span class="english-name">UAE</span>
+                </div>
+            </a>
+            <a href="saudi.html" class="country-card">
+                <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia">
+                <div class="country-name">
+                    <span class="arabic-name">السعودية</span>
+                    <span class="english-name">Saudi Arabia</span>
+                </div>
+            </a>
+            <a href="qatar.html" class="country-card">
+                <img src="https://flagcdn.com/w40/qa.png" alt="Qatar">
+                <div class="country-name">
+                    <span class="arabic-name">قطر</span>
+                    <span class="english-name">Qatar</span>
+                </div>
+            </a>
+            <a href="kuwait.html" class="country-card">
+                <img src="https://flagcdn.com/w40/kw.png" alt="Kuwait">
+                <div class="country-name">
+                    <span class="arabic-name">الكويت</span>
+                    <span class="english-name">Kuwait</span>
+                </div>
+            </a>
+            <a href="oman.html" class="country-card">
+                <img src="https://flagcdn.com/w40/om.png" alt="Oman">
+                <div class="country-name">
+                    <span class="arabic-name">عمان</span>
+                    <span class="english-name">Oman</span>
+                </div>
+            </a>
+            <a href="bahrain.html" class="country-card">
+                <img src="https://flagcdn.com/w40/bh.png" alt="Bahrain">
+                <div class="country-name">
+                    <span class="arabic-name">البحرين</span>
+                    <span class="english-name">Bahrain</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <div class="ratings-container">
+        <div class="rating-header">
+            <div class="rating-value">4.8<span style="font-size: 24px;">/5.0</span></div>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <div class="rating-subtitle">Based on 247 customer reviews</div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="rating-form">
+            <div class="star-rating">
+                <label><input type="radio" name="rating" value="5"><span>★</span></label>
+                <label><input type="radio" name="rating" value="4"><span>★</span></label>
+                <label><input type="radio" name="rating" value="3"><span>★</span></label>
+                <label><input type="radio" name="rating" value="2"><span>★</span></label>
+                <label><input type="radio" name="rating" value="1"><span>★</span></label>
+            </div>
             
-            // Initialize stars
-            stars.forEach(star => {
-                star.addEventListener('mouseover', handleMouseOver);
-                star.addEventListener('mouseout', handleMouseOut);
-                star.addEventListener('click', handleClick);
-            });
+            <div class="rating-labels">
+                <div class="rating-label" data-rating="5">Excellent (5)</div>
+                <div class="rating-label" data-rating="4">Good (4)</div>
+                <div class="rating-label" data-rating="3">Normal (3)</div>
+                <div class="rating-label" data-rating="2">Need improvement (2)</div>
+                <div class="rating-label" data-rating="1">Poor (1)</div>
+            </div>
             
-            function handleMouseOver(e) {
-                const hoveredStar = e.currentTarget;
-                const hoverValue = parseFloat(hoveredStar.getAttribute('data-value'));
-                
-                // Reset all stars
-                stars.forEach(s => {
-                    s.classList.remove('full', 'half');
-                });
-                
-                // Highlight stars based on hover position
-                stars.forEach(star => {
-                    const starValue = parseFloat(star.getAttribute('data-value'));
-                    
-                    if (starValue <= hoverValue) {
-                        // Check if we're hovering over the left half of a star
-                        const rect = star.getBoundingClientRect();
-                        const isLeftHalf = e.clientX - rect.left < rect.width / 2;
-                        
-                        if (starValue === hoverValue && isLeftHalf) {
-                            star.classList.add('half');
-                        } else {
-                            star.classList.add('full');
-                        }
-                    }
-                });
-            }
+            <select class="rating-select">
+                <option>Select product/service</option>
+                <option>Product Delivery</option>
+                <option>Product Quality</option>
+                <option>Customer Service</option>
+            </select>
             
-            function handleMouseOut() {
-                // Only show current rating on mouse out
-                const currentRating = parseFloat(ratingValue.textContent);
-                updateStars(currentRating);
-            }
+            <input type="text" class="code-input" placeholder="Enter product code (optional)">
             
-            function handleClick(e) {
-                const clickedStar = e.currentTarget;
-                const clickedValue = parseFloat(clickedStar.getAttribute('data-value'));
-                
-                // Check if we clicked on the left half of a star
-                const rect = clickedStar.getBoundingClientRect();
-                const isLeftHalf = e.clientX - rect.left < rect.width / 2;
-                
-                // For full stars, clicking left half gives half value
-                const finalValue = (clickedValue % 1 === 0 && isLeftHalf) 
-                    ? clickedValue - 0.5 
-                    : clickedValue;
-                
-                // Update displayed rating
-                ratingValue.textContent = finalValue;
-                
-                // Update star display
-                updateStars(finalValue);
-            }
-            
-            function updateStars(rating) {
-                // Reset all stars
-                stars.forEach(star => {
-                    star.classList.remove('full', 'half');
-                });
-                
-                // Apply correct classes based on rating
-                stars.forEach(star => {
-                    const starValue = parseFloat(star.getAttribute('data-value'));
-                    
-                    if (starValue <= rating) {
-                        star.classList.add('full');
-                    } else if (starValue - 0.5 === rating) {
-                        star.classList.add('half');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+            <button class="submit-btn" id="rating-submit">Submit Review</button>
+        </div>
+    </div>
+
+    <!-- Review Section -->
+    <section class="review-section">
+        <h2 class="review-title">Leave Your Review</h2>
+        <p class="review-subtitle">Your feedback helps us improve our services</p>
+        
+        <form class="review-form" id="review-form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="City" required>
+            <select required>
+                <option value="">Select Country</option>
+                <option>Egypt</option>
+                <option>UAE</option>
+                <option>Saudi Arabia</option>
+                <option>Qatar</option>
+                <option>Kuwait</option>
+                <option>Oman</option>
+                <option>Bah
