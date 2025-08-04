@@ -8,44 +8,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mohamed Drugs Shop | Premium Pharmacy</title>
+    <title>Premium Rating Component</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-
-        :root {
-
-            --primary: #00c3ff;
-
-            --primary-light: #00e5ff;
-
-            --secondary: #8e44ad;
-
-            --dark-bg: #0d0d0d;
-
-            --darker-bg: #121212;
-
-            --card-bg: #1a1a1a;
-
-            --text-light: #e0e0e0;
-
-            --text-muted: #aaa;
-
-            --accent-purple: #9c27b0;
-
-            --accent-blue: #2196f3;
-
-            --accent-green: #4caf50;
-
-            --accent-orange: #ff9800;
-
-            --accent-red: #f44336;
-
-            --glow: 0 0 15px rgba(0, 195, 255, 0.7);
-
-        }
-
 
         * {
 
@@ -59,443 +26,105 @@
 
         }
 
-        
 
         body {
 
-            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
-
-            color: var(--text-light);
+            background: linear-gradient(135deg, #0c0e1d, #1a1d3b);
 
             min-height: 100vh;
 
-            background-attachment: fixed;
-
-            background-size: cover;
-
-            padding-bottom: 40px;
-
-            overflow-x: hidden;
-
-        }
-
-        
-
-        /* Header Styles */
-
-        .site-header {
-
-            background: var(--dark-bg);
-
-            padding: 20px 30px;
-
-            text-align: center;
-
-            box-shadow: 0 2px 15px rgba(0,0,0,0.7);
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 100;
-
-            border-bottom: 1px solid rgba(0, 195, 255, 0.2);
-
-        }
-
-        
-
-        .store-name {
-
-            color: var(--primary);
-
-            font-size: 38px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 8px;
-
-            text-shadow: var(--glow);
-
-            position: relative;
-
-            display: inline-block;
-
-            animation: pulse 2s infinite;
-
-        }
-
-        
-
-        .store-name::after {
-
-            content: 'Premium Pharmacy';
-
-            position: absolute;
-
-            bottom: -22px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            font-size: 16px;
-
-            color: var(--primary-light);
-
-            font-weight: 300;
-
-            letter-spacing: 2px;
-
-            text-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
-
-            width: 100%;
-
-        }
-
-        
-
-        .country-list {
-
             display: flex;
-
-            flex-wrap: wrap;
 
             justify-content: center;
 
-            gap: 12px;
-
-            margin-top: 30px;
-
-        }
-
-        
-
-        .country-list span {
-
-            color: var(--text-muted);
-
-            font-size: 13px; /* Slightly smaller font size */
-
-            padding: 6px 14px; /* Slightly smaller padding */
-
-            background: rgba(255,255,255,0.05);
-
-            border-radius: 20px;
-
-            transition: all 0.3s ease;
-
-            position: relative;
-
-            overflow: hidden;
-
-            cursor: pointer;
-
-            border: 1px solid rgba(0, 195, 255, 0.1);
-
-        }
-
-        
-
-        .country-list span::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: 0;
-
-            left: -100%;
-
-            width: 100%;
-
-            height: 100%;
-
-            background: linear-gradient(90deg, transparent, rgba(0,195,255,0.3), transparent);
-
-            transition: all 0.6s;
-
-        }
-
-        
-
-        .country-list span:hover {
-
-            background: rgba(0,195,255,0.1);
-
-            color: var(--primary);
-
-            transform: translateY(-3px);
-
-            box-shadow: var(--glow);
-
-        }
-
-        
-
-        .country-list span:hover::before {
-
-            left: 100%;
-
-        }
-
-        
-
-        /* Hero Image */
-
-        .hero-container {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 1200px;
-
-            margin: 40px auto 0;
-
-            padding: 0 20px;
-
-            display: flex;
-
-            flex-direction: column;
-
             align-items: center;
 
+            padding: 20px;
+
+            color: #e0e0ff;
+
         }
 
-        
 
-        .hero-image {
+        .container {
+
+            max-width: 500px;
 
             width: 100%;
 
-            height: auto;
+            background: rgba(19, 23, 42, 0.85);
 
             border-radius: 16px;
 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            padding: 30px;
 
-            border: 1px solid rgba(0,195,255,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-            position: relative;
+            backdrop-filter: blur(10px);
 
-            z-index: 2;
-
-        }
-
-        
-
-        .hero-text {
-
-            text-align: center;
-
-            color: white;
-
-            font-size: 22px; /* Slightly smaller font size */
-
-            font-weight: bold;
-
-            background: rgba(0,0,0,0.8);
-
-            padding: 15px 30px; /* Slightly smaller padding */
-
-            border-radius: 35px;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            margin-bottom: -25px;
-
-            border: 1px solid var(--primary);
-
-            position: relative;
-
-            z-index: 3;
-
-            box-shadow: var(--glow);
-
-            animation: float 3s ease-in-out infinite;
-
-        }
-
-        
-
-        .delivery-icons {
-
-            display: flex;
-
-            gap: 12px;
-
-            margin-top: 8px;
-
-        }
-
-        
-
-        .delivery-icons i {
-
-            color: var(--primary);
-
-            font-size: 20px; /* Slightly smaller icons */
-
-            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
-
-            transition: all 0.3s ease;
-
-        }
-
-        
-
-        .delivery-icons i:hover {
-
-            transform: translateY(-5px);
-
-            color: var(--primary-light);
-
-        }
-
-        
-
-        /* Country Selection */
-
-        .country-selection {
-
-            padding: 60px 20px;
-
-            background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(10,10,10,0.9));
-
-            text-align: center;
+            border: 1px solid rgba(80, 102, 144, 0.3);
 
             position: relative;
 
             overflow: hidden;
 
-            margin-top: 20px;
-
         }
 
-        
 
-        .country-selection::before {
+        .container::before {
 
-            content: '';
+            content: "";
 
             position: absolute;
 
-            top: 0;
+            top: -50%;
 
-            left: 0;
+            left: -50%;
 
-            right: 0;
+            width: 200%;
 
-            height: 3px;
+            height: 200%;
 
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            background: radial-gradient(circle, rgba(92, 107, 192, 0.1) 0%, transparent 70%);
+
+            z-index: -1;
 
         }
 
-        
 
-        .section-title {
+        .header {
 
-            color: var(--primary);
+            text-align: center;
 
-            font-size: 36px; /* Slightly smaller */
-
-            margin-bottom: 15px;
-
-            font-weight: 800;
+            margin-bottom: 30px;
 
             position: relative;
 
-            display: inline-block;
-
-            text-shadow: var(--glow);
-
         }
 
-        
 
-        .section-subtitle {
+        .header h1 {
 
-            color: var(--primary-light);
+            font-size: 2.5rem;
 
-            font-size: 26px; /* Slightly smaller */
+            background: linear-gradient(45deg, #7b68ee, #3498db);
 
-            margin-bottom: 50px;
+            -webkit-background-clip: text;
 
-            display: block;
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 15px;
+
+            text-transform: uppercase;
 
             letter-spacing: 1px;
 
-            font-weight: 300;
+            font-weight: 700;
 
         }
 
-        
 
-        .section-title::after {
-
-            content: '';
-
-            position: absolute;
-
-            bottom: -15px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width: 130px; /* Slightly smaller */
-
-            height: 4px; /* Slightly thinner */
-
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-
-            border-radius: 5px;
-
-            box-shadow: var(--glow);
-
-        }
-
-        
-
-        .country-grid {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Slightly smaller cards */
-
-            gap: 25px; /* Slightly smaller gap */
-
-            max-width: 1250px; /* Slightly narrower */
-
-            margin: 0 auto;
-
-        }
-
-        
-
-        .country-card {
-
-            text-decoration: none;
-
-            background: var(--card-bg);
-
-            padding: 25px 15px; /* Slightly smaller padding */
-
-            color: var(--primary);
-
-            border-radius: 15px; /* Slightly smaller radius */
-
-            font-size: 22px; /* Slightly smaller */
-
-            font-weight: bold;
+        .rating-summary {
 
             display: flex;
 
@@ -503,323 +132,520 @@
 
             align-items: center;
 
-            justify-content: center;
+            gap: 10px;
 
-            transition: all 0.4s ease;
+            margin-bottom: 30px;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-
-            border: 1px solid rgba(0,195,255,0.15);
-
-            position: relative;
-
-            overflow: hidden;
-
-            z-index: 1;
+            animation: fadeIn 0.8s ease;
 
         }
 
-        
 
-        .country-card::before {
+        .average-rating {
 
-            content: '';
+            font-size: 3.5rem;
+
+            font-weight: 700;
+
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            position: relative;
+
+        }
+
+
+        .stars {
+
+            display: flex;
+
+            gap: 5px;
+
+            margin-top: 5px;
+
+        }
+
+
+        .stars i {
+
+            color: #ffd700;
+
+            font-size: 1.2rem;
+
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+
+        }
+
+
+        .based-on {
+
+            color: #a0a0c0;
+
+            font-size: 0.9rem;
+
+            margin-top: 5px;
+
+        }
+
+
+        .rating-box {
+
+            position: relative;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .rating-box-label {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-weight: 600;
+
+            color: #c0c0e0;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .rating-selector {
+
+            width: 100%;
+
+            background: rgba(30, 35, 60, 0.7);
+
+            border: 2px solid rgba(92, 107, 192, 0.5);
+
+            border-radius: 10px;
+
+            padding: 14px 20px;
+
+            font-size: 1rem;
+
+            color: #e0e0ff;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+        .rating-selector:hover {
+
+            border-color: #5c6bc0;
+
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
+
+        }
+
+
+        .rating-options {
 
             position: absolute;
 
-            top: 0;
+            top: 100%;
 
             left: 0;
 
             width: 100%;
 
-            height: 100%;
+            background: rgba(30, 35, 60, 0.95);
 
-            background: linear-gradient(135deg, rgba(0,195,255,0.1), rgba(142,68,173,0.1));
+            border: 2px solid rgba(92, 107, 192, 0.7);
 
-            z-index: -1;
+            border-radius: 10px;
+
+            margin-top: 5px;
+
+            overflow: hidden;
+
+            display: none;
+
+            z-index: 10;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+            animation: slideDown 0.4s ease forwards;
+
+        }
+
+
+        .rating-option {
+
+            padding: 14px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+
+        }
+
+
+        .rating-option:hover {
+
+            background: rgba(92, 107, 192, 0.3);
+
+        }
+
+
+        .rating-option.active {
+
+            background: rgba(92, 107, 192, 0.5);
+
+        }
+
+
+        .rating-option .option-content {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .rating-option .option-text {
+
+            font-weight: 500;
+
+        }
+
+
+        .rating-option .checkmark {
+
+            color: #7b68ee;
+
+            font-size: 1.1rem;
 
             opacity: 0;
 
-            transition: opacity 0.4s ease;
+            transition: opacity 0.2s ease;
 
         }
 
-        
 
-        .country-card:hover {
-
-            transform: translateY(-10px) scale(1.03);
-
-            box-shadow: 0 15px 35px rgba(0,195,255,0.4);
-
-            background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
-
-        }
-
-        
-
-        .country-card:hover::before {
+        .rating-option.active .checkmark {
 
             opacity: 1;
 
         }
 
-        
 
-        .country-card img {
+        .rating-stars {
 
-            width: 46px; /* Slightly smaller flags */
-
-            margin-bottom: 15px; /* Slightly smaller margin */
-
-            filter: drop-shadow(0 0 5px rgba(0,195,255,0.7));
-
-            transition: all 0.3s ease;
+            color: #ffd700;
 
         }
 
-        
 
-        .country-card:hover img {
+        .purchase-code {
 
-            transform: scale(1.2);
+            margin-bottom: 25px;
 
-            filter: drop-shadow(0 0 10px rgba(0,195,255,1));
+            animation: fadeIn 0.8s ease 0.2s forwards;
 
-        }
-
-        
-
-        .country-name {
-
-            text-align: center;
-
-            line-height: 1.4;
-
-            position: relative;
+            opacity: 0;
 
         }
 
-        
 
-        .arabic-name {
-
-            font-size: 24px; /* Slightly smaller */
+        .purchase-code-label {
 
             display: block;
 
-            font-weight: 700;
+            margin-bottom: 10px;
+
+            font-weight: 600;
+
+            color: #c0c0e0;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .purchase-code-input {
+
+            width: 100%;
+
+            background: rgba(30, 35, 60, 0.7);
+
+            border: 2px solid rgba(92, 107, 192, 0.5);
+
+            border-radius: 10px;
+
+            padding: 14px 20px;
+
+            font-size: 1rem;
+
+            color: #e0e0ff;
 
             transition: all 0.3s ease;
 
         }
 
-        
 
-        .english-name {
+        .purchase-code-input:focus {
 
-            font-size: 18px; /* Slightly smaller */
+            outline: none;
 
-            display: block;
+            border-color: #5c6bc0;
 
-            color: var(--text-muted);
-
-            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
 
         }
 
-        
 
-        .country-card:hover .arabic-name {
+        .error-message {
 
-            color: var(--primary-light);
+            color: #ff6b6b;
 
-            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
+            font-size: 0.9rem;
 
-            animation: pop 0.5s ease;
+            margin-top: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            display: none;
+
+            animation: shake 0.5s ease;
 
         }
 
-        
 
-        .country-card:hover .english-name {
+        .error-message i {
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            background: linear-gradient(45deg, #7b68ee, #3498db);
 
             color: white;
 
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 16px;
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-top: 10px;
+
         }
 
-        
 
-        /* Animations */
+        .submit-btn:hover {
 
-        @keyframes pop {
+            transform: translateY(-3px);
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+        }
+
+
+        .submit-btn:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        .loading-bar {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            height: 4px;
+
+            background: rgba(255, 255, 255, 0.3);
+
+            width: 0;
+
+            border-radius: 0 0 10px 10px;
+
+            transition: width 1.5s ease;
+
+        }
+
+
+        .thank-you {
+
+            text-align: center;
+
+            padding: 20px;
+
+            display: none;
+
+            animation: fadeIn 0.8s ease;
+
+        }
+
+
+        .thank-you i {
+
+            font-size: 3rem;
+
+            color: #7b68ee;
+
+            margin-bottom: 15px;
+
+            animation: pulse 1.5s infinite;
+
+        }
+
+
+        .thank-you h2 {
+
+            font-size: 1.8rem;
+
+            margin-bottom: 10px;
+
+            background: linear-gradient(45deg, #7b68ee, #3498db);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+        .thank-you p {
+
+            color: #a0a0c0;
+
+            line-height: 1.6;
+
+        }
+
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(20px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+        @keyframes slideDown {
+
+            from { opacity: 0; transform: translateY(-10px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+        @keyframes pulse {
 
             0% { transform: scale(1); }
 
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.1); }
 
             100% { transform: scale(1); }
 
         }
 
-        
 
-        @keyframes pulse {
+        @keyframes shake {
 
-            0% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
+            0%, 100% { transform: translateX(0); }
 
-            50% { text-shadow: 0 0 20px rgba(0, 195, 255, 1), 0 0 30px rgba(0, 195, 255, 0.8); }
+            20%, 60% { transform: translateX(-5px); }
 
-            100% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
-
-        }
-
-        
-
-        @keyframes float {
-
-            0% { transform: translateY(0px); }
-
-            50% { transform: translateY(-8px); }
-
-            100% { transform: translateY(0px); }
+            40%, 80% { transform: translateX(5px); }
 
         }
 
-        
 
-        /* Responsive adjustments */
+        @media (max-width: 600px) {
 
-        @media (max-width: 768px) {
+            .container {
 
-            .store-name {
-
-                font-size: 32px;
+                padding: 20px;
 
             }
 
             
 
-            .hero-text {
+            .header h1 {
 
-                font-size: 18px;
-
-                padding: 12px 20px;
+                font-size: 2rem;
 
             }
 
             
 
-            .section-title {
+            .average-rating {
 
-                font-size: 30px;
-
-            }
-
-            
-
-            .section-subtitle {
-
-                font-size: 22px;
-
-            }
-
-            
-
-            .country-grid {
-
-                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-
-                gap: 20px;
+                font-size: 3rem;
 
             }
 
         }
 
-        
 
         @media (max-width: 480px) {
 
-            .store-name {
+            .header h1 {
 
-                font-size: 28px;
-
-            }
-
-            
-
-            .hero-text {
-
-                font-size: 16px;
-
-                flex-direction: column;
-
-                gap: 8px;
-
-                padding: 10px 15px;
+                font-size: 1.8rem;
 
             }
 
             
 
-            .section-title {
+            .rating-option {
 
-                font-size: 26px;
+                padding: 12px 15px;
 
-            }
-
-            
-
-            .section-subtitle {
-
-                font-size: 18px;
-
-            }
-
-            
-
-            .country-grid {
-
-                grid-template-columns: 1fr;
-
-                max-width: 280px;
-
-                gap: 15px;
-
-            }
-
-            
-
-            .country-list span {
-
-                padding: 5px 10px;
-
-                font-size: 11px;
-
-            }
-
-            
-
-            .country-card {
-
-                padding: 20px 10px;
-
-            }
-
-            
-
-            .arabic-name {
-
-                font-size: 20px;
-
-            }
-
-            
-
-            .english-name {
-
-                font-size: 16px;
+                font-size: 0.95rem;
 
             }
 
@@ -831,249 +657,455 @@
 
 <body>
 
-    <!-- Header -->
+    <div class="container">
 
-    <header class="site-header">
+        <div class="header">
 
-        <div class="store-name">Mohamed Drugs Shop</div>
-
-        <div class="country-list">
-
-            <span>🚚 مصر</span>
-
-            <span>🚚 الإمارات</span>
-
-            <span>🚚 السعودية</span>
-
-            <span>🚚 قطر</span>
-
-            <span>🚚 الكويت</span>
-
-            <span>🚚 عمان</span>
-
-            <span>🚚 البحرين</span>
+            <h1>Rating</h1>
 
         </div>
 
-    </header>
+
+        <div class="rating-summary">
+
+            <div class="average-rating">4.8</div>
+
+            <div class="stars">
+
+                <i class="fas fa-star"></i>
+
+                <i class="fas fa-star"></i>
+
+                <i class="fas fa-star"></i>
+
+                <i class="fas fa-star"></i>
+
+                <i class="fas fa-star-half-alt"></i>
+
+            </div>
+
+            <div class="based-on">Based on 183 ratings</div>
+
+        </div>
 
 
-    <!-- Hero Image with Text -->
+        <div class="rating-box">
 
-    <div class="hero-container">
+            <label class="rating-box-label">Choose Rating</label>
 
-        <div class="hero-text">
+            <div class="rating-selector" id="ratingSelector">
 
-            <i class="fas fa-shipping-fast"></i> أسرع توصيل في دول الخليج مع ضمان السلامة
+                <span>Select your rating</span>
 
-            <div class="delivery-icons">
+                <i class="fas fa-chevron-down"></i>
 
-                <i class="fas fa-truck"></i>
+            </div>
 
-                <i class="fas fa-box"></i>
+            <div class="rating-options" id="ratingOptions">
 
-                <i class="fas fa-shipping-fast"></i>
+                <div class="rating-option" data-value="5">
 
-                <i class="fas fa-shield-alt"></i>
+                    <div class="option-content">
+
+                        <div class="rating-stars">
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+                        <span class="option-text">Excellent</span>
+
+                    </div>
+
+                    <i class="fas fa-check checkmark"></i>
+
+                </div>
+
+                <div class="rating-option" data-value="4">
+
+                    <div class="option-content">
+
+                        <div class="rating-stars">
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                        </div>
+
+                        <span class="option-text">Good</span>
+
+                    </div>
+
+                    <i class="fas fa-check checkmark"></i>
+
+                </div>
+
+                <div class="rating-option" data-value="3">
+
+                    <div class="option-content">
+
+                        <div class="rating-stars">
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                        </div>
+
+                        <span class="option-text">Average</span>
+
+                    </div>
+
+                    <i class="fas fa-check checkmark"></i>
+
+                </div>
+
+                <div class="rating-option" data-value="2">
+
+                    <div class="option-content">
+
+                        <div class="rating-stars">
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                        </div>
+
+                        <span class="option-text">Need Improvement</span>
+
+                    </div>
+
+                    <i class="fas fa-check checkmark"></i>
+
+                </div>
+
+                <div class="rating-option" data-value="1">
+
+                    <div class="option-content">
+
+                        <div class="rating-stars">
+
+                            <i class="fas fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                            <i class="far fa-star"></i>
+
+                        </div>
+
+                        <span class="option-text">Poor</span>
+
+                    </div>
+
+                    <i class="fas fa-check checkmark"></i>
+
+                </div>
+
+            </div>
+
+            <div class="error-message" id="ratingError">
+
+                <i class="fas fa-exclamation-circle"></i>
+
+                <span>Please select a rating</span>
 
             </div>
 
         </div>
 
-        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
 
-             alt="Pharmacy Products" class="hero-image">
+        <div class="purchase-code">
+
+            <label class="purchase-code-label">Purchasing Code</label>
+
+            <input type="text" class="purchase-code-input" id="purchaseCode" placeholder="Enter your purchasing code">
+
+            <div class="error-message" id="codeError">
+
+                <i class="fas fa-exclamation-circle"></i>
+
+                <span>Please enter a purchasing code</span>
+
+            </div>
+
+            <div class="error-message" id="invalidCodeError">
+
+                <i class="fas fa-exclamation-circle"></i>
+
+                <span>Invalid purchasing code. Please make a purchase to rate.</span>
+
+            </div>
+
+        </div>
+
+
+        <button class="submit-btn" id="submitBtn">
+
+            Submit Rating
+
+            <div class="loading-bar" id="loadingBar"></div>
+
+        </button>
+
+
+        <div class="thank-you" id="thankYou">
+
+            <i class="fas fa-check-circle"></i>
+
+            <h2>Thank You!</h2>
+
+            <p>Your rating has been submitted successfully. We appreciate your feedback!</p>
+
+        </div>
 
     </div>
 
 
-    <!-- Country Selection -->
-
-    <section class="country-selection">
-
-        <h2 class="section-title">Choose Your Country</h2>
-
-        <span class="section-subtitle">اختر بلدك</span>
-
-        <div class="country-grid">
-
-            <a href="egypt.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/eg.png" alt="Egypt">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">مصر</span>
-
-                    <span class="english-name">Egypt</span>
-
-                </div>
-
-            </a>
-
-            <a href="uae.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/ae.png" alt="UAE">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">الإمارات</span>
-
-                    <span class="english-name">UAE</span>
-
-                </div>
-
-            </a>
-
-            <a href="saudi.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">السعودية</span>
-
-                    <span class="english-name">Saudi Arabia</span>
-
-                </div>
-
-            </a>
-
-            <a href="qatar.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/qa.png" alt="Qatar">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">قطر</span>
-
-                    <span class="english-name">Qatar</span>
-
-                </div>
-
-            </a>
-
-            <a href="kuwait.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/kw.png" alt="Kuwait">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">الكويت</span>
-
-                    <span class="english-name">Kuwait</span>
-
-                </div>
-
-            </a>
-
-            <a href="oman.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/om.png" alt="Oman">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">عمان</span>
-
-                    <span class="english-name">Oman</span>
-
-                </div>
-
-            </a>
-
-            <a href="bahrain.html" class="country-card">
-
-                <img src="https://flagcdn.com/w40/bh.png" alt="Bahrain">
-
-                <div class="country-name">
-
-                    <span class="arabic-name">البحرين</span>
-
-                    <span class="english-name">Bahrain</span>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-    
-
     <script>
-
-        // Add pop animation to header country names
-
-        document.querySelectorAll('.country-list span').forEach(country => {
-
-            country.addEventListener('click', function() {
-
-                this.style.animation = 'pop 0.5s ease';
-
-                setTimeout(() => {
-
-                    this.style.animation = '';
-
-                }, 500);
-
-            });
-
-        });
-
-        
-
-        // Add animation to country cards on page load
 
         document.addEventListener('DOMContentLoaded', function() {
 
-            const cards = document.querySelectorAll('.country-card');
+            // DOM elements
 
-            cards.forEach((card, index) => {
+            const ratingSelector = document.getElementById('ratingSelector');
 
-                setTimeout(() => {
+            const ratingOptions = document.getElementById('ratingOptions');
 
-                    card.style.opacity = '0';
+            const ratingError = document.getElementById('ratingError');
 
-                    card.style.transform = 'translateY(30px)';
+            const purchaseCode = document.getElementById('purchaseCode');
 
-                    card.style.animation = `fadeInUp 0.8s ease forwards ${index * 0.1}s`;
+            const codeError = document.getElementById('codeError');
 
-                }, 100);
+            const invalidCodeError = document.getElementById('invalidCodeError');
+
+            const submitBtn = document.getElementById('submitBtn');
+
+            const loadingBar = document.getElementById('loadingBar');
+
+            const thankYou = document.getElementById('thankYou');
+
+            
+
+            let selectedRating = null;
+
+            
+
+            // Toggle rating options
+
+            ratingSelector.addEventListener('click', function(e) {
+
+                e.stopPropagation();
+
+                ratingOptions.style.display = ratingOptions.style.display === 'block' ? 'none' : 'block';
 
             });
 
             
 
-            // Create a dynamic CSS rule for fadeInUp animation
+            // Handle rating selection
 
-            const style = document.createElement('style');
+            const options = ratingOptions.querySelectorAll('.rating-option');
 
-            style.textContent = `
+            options.forEach(option => {
 
-                @keyframes fadeInUp {
+                option.addEventListener('click', function() {
 
-                    from {
+                    // Remove active class from all options
 
-                        opacity: 0;
+                    options.forEach(opt => opt.classList.remove('active'));
 
-                        transform: translateY(30px);
+                    
 
-                    }
+                    // Add active class to selected option
 
-                    to {
+                    this.classList.add('active');
 
-                        opacity: 1;
+                    
 
-                        transform: translateY(0);
+                    // Update selector text
 
-                    }
+                    const ratingText = this.querySelector('.option-text').textContent;
+
+                    ratingSelector.querySelector('span').textContent = ratingText;
+
+                    
+
+                    // Store selected value
+
+                    selectedRating = this.getAttribute('data-value');
+
+                    
+
+                    // Hide options
+
+                    ratingOptions.style.display = 'none';
+
+                    
+
+                    // Clear any previous error
+
+                    ratingError.style.display = 'none';
+
+                });
+
+            });
+
+            
+
+            // Close rating options when clicking outside
+
+            document.addEventListener('click', function(e) {
+
+                if (!ratingSelector.contains(e.target) && !ratingOptions.contains(e.target)) {
+
+                    ratingOptions.style.display = 'none';
 
                 }
 
-            `;
+            });
 
-            document.head.appendChild(style);
+            
+
+            // Form submission
+
+            submitBtn.addEventListener('click', function() {
+
+                let isValid = true;
+
+                
+
+                // Reset errors
+
+                ratingError.style.display = 'none';
+
+                codeError.style.display = 'none';
+
+                invalidCodeError.style.display = 'none';
+
+                
+
+                // Validate rating
+
+                if (!selectedRating) {
+
+                    ratingError.style.display = 'flex';
+
+                    isValid = false;
+
+                }
+
+                
+
+                // Validate purchase code
+
+                const codeValue = purchaseCode.value.trim();
+
+                if (!codeValue) {
+
+                    codeError.style.display = 'flex';
+
+                    isValid = false;
+
+                } else if (codeValue.length < 12 || !/^[a-zA-Z0-9-]+$/.test(codeValue)) {
+
+                    invalidCodeError.style.display = 'flex';
+
+                    isValid = false;
+
+                }
+
+                
+
+                if (isValid) {
+
+                    // Show loading bar
+
+                    loadingBar.style.width = '100%';
+
+                    submitBtn.disabled = true;
+
+                    
+
+                    // Simulate submission process
+
+                    setTimeout(function() {
+
+                        // Reset loading bar
+
+                        loadingBar.style.width = '0';
+
+                        
+
+                        // Hide form and show thank you message
+
+                        document.querySelector('.rating-box').style.display = 'none';
+
+                        document.querySelector('.purchase-code').style.display = 'none';
+
+                        document.querySelector('.submit-btn').style.display = 'none';
+
+                        thankYou.style.display = 'block';
+
+                        
+
+                        // Re-enable button after animation completes
+
+                        setTimeout(function() {
+
+                            submitBtn.disabled = false;
+
+                        }, 300);
+
+                    }, 1500);
+
+                }
+
+            });
+
+            
+
+            // Clear error when user starts typing
+
+            purchaseCode.addEventListener('input', function() {
+
+                codeError.style.display = 'none';
+
+                invalidCodeError.style.display = 'none';
+
+            });
 
         });
 
@@ -1082,5 +1114,4 @@
 </body>
 
 </html>
-
 
