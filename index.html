@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,14 +32,12 @@
         
         body {
             background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
-            background-color: var(--dark-bg);
             color: var(--text-light);
             min-height: 100vh;
             background-attachment: fixed;
             background-size: cover;
             padding-bottom: 40px;
             overflow-x: hidden;
-            direction: rtl;
         }
         
         /* Header Styles */
@@ -67,7 +65,7 @@
         }
         
         .store-name::after {
-            content: 'صيدلية مميزة';
+            content: 'Premium Pharmacy';
             position: absolute;
             bottom: -22px;
             left: 50%;
@@ -138,6 +136,8 @@
         .hero-image {
             width: 100%;
             height: auto;
+            max-height: 500px;
+            object-fit: cover;
             border-radius: 16px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             border: 1px solid rgba(0,195,255,0.2);
@@ -148,10 +148,10 @@
         .hero-text {
             text-align: center;
             color: white;
-            font-size: 18px;
+            font-size: 18px; /* Made smaller */
             font-weight: bold;
             background: rgba(0,0,0,0.8);
-            padding: 12px 25px;
+            padding: 12px 25px; /* Made smaller */
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
@@ -172,7 +172,7 @@
         
         .delivery-icons i {
             color: var(--primary);
-            font-size: 18px;
+            font-size: 18px; /* Made smaller */
             text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
             transition: all 0.3s ease;
         }
@@ -327,83 +327,7 @@
             color: white;
         }
         
-        /* Contact Section */
-        .contact-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 40px;
-            background: rgba(10, 10, 10, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
-            border: 1px solid rgba(0, 195, 255, 0.2);
-        }
-        
-        .contact-title {
-            color: var(--primary);
-            font-size: 32px;
-            margin-bottom: 30px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .contact-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            border-radius: 5px;
-            box-shadow: var(--glow);
-        }
-        
-        .contact-methods {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        
-        .contact-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            width: 280px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 195, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,195,255,0.3);
-            border-color: var(--primary);
-        }
-        
-        .contact-icon {
-            font-size: 36px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .contact-method-title {
-            font-size: 20px;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .contact-info {
-            font-size: 18px;
-            color: var(--text-muted);
-            direction: ltr;
-        }
-        
+        /* Footer */
         .footer {
             text-align: center;
             padding: 30px;
@@ -415,34 +339,6 @@
         
         .footer p {
             margin: 10px 0;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,195,255,0.1);
-        }
-        
-        .social-icon:hover {
-            background: rgba(0,195,255,0.1);
-            color: var(--primary-light);
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
         }
         
         /* Animations */
@@ -486,10 +382,6 @@
             .country-grid {
                 grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
                 gap: 20px;
-            }
-            
-            .contact-card {
-                width: 100%;
             }
         }
         
@@ -536,17 +428,13 @@
             .english-name {
                 font-size: 16px;
             }
-            
-            .contact-section {
-                padding: 20px;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="site-header">
-        <div class="store-name">صيدلية محمد للأدوية</div>
+        <div class="store-name">MOHAMED DRUGS SHOP</div>
         <div class="country-list">
             <span>🚚 مصر</span>
             <span>🚚 الإمارات</span>
@@ -575,8 +463,8 @@
 
     <!-- Country Selection -->
     <section class="country-selection">
-        <h2 class="section-title">اختر بلدك</h2>
-        <span class="section-subtitle">Choose Your Country</span>
+        <h2 class="section-title">Choose Your Country</h2>
+        <span class="section-subtitle">اختر بلدك</span>
         <div class="country-grid">
             <a href="egypt.html" class="country-card">
                 <img src="https://flagcdn.com/w40/eg.png" alt="Egypt">
@@ -630,43 +518,9 @@
         </div>
     </section>
     
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <h2 class="contact-title">تواصل معنا</h2>
-        <div class="contact-methods">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <h3 class="contact-method-title">اتصل بنا</h3>
-                <p class="contact-info">+966 55 123 4567</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                <h3 class="contact-method-title">واتساب</h3>
-                <p class="contact-info">+966 55 765 4321</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3 class="contact-method-title">البريد الإلكتروني</h3>
-                <p class="contact-info">info@mohamed-drugs.com</p>
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer -->
     <footer class="footer">
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-snapchat-ghost"></i></a>
-        </div>
-        <p>© 2023 صيدلية محمد للأدوية. جميع الحقوق محفوظة.</p>
+        <p>© 2023 MOHAMED DRUGS SHOP. Premium Pharmacy</p>
         <p>أسرع توصيل في دول الخليج مع ضمان السلامة</p>
     </footer>
     
