@@ -1,200 +1,289 @@
-<!-- ⭐ layout999 – Responsive Rating Section with Code Validation -->
-<section class="rating-section">
-  <h2>Rate this product</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Rating Component</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <!-- Average Rating Display -->
-  <div class="average-rating">
-    <span class="average-text">4.7 out of 5 stars</span>
-    <div class="stars">
-      <span class="star full">★</span>
-      <span class="star full">★</span>
-      <span class="star full">★</span>
-      <span class="star full">★</span>
-      <span class="star half">★</span>
-    </div>
-  </div>
+        body {
+            background: linear-gradient(135deg, #0c0e1d, #1a1d3b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e0e0ff;
+        }
 
-  <!-- Rating Box -->
-  <div class="rating-box">
-    <h3>Choose Rating</h3>
-    <form id="ratingForm">
-      <div class="rating-options">
-        <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐ Excellent</label>
-        <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐ Good</label>
-        <label><input type="radio" name="rating" value="3"> ⭐⭐⭐ Normal</label>
-        <label><input type="radio" name="rating" value="2"> ⭐⭐ Need Improvement</label>
-        <label><input type="radio" name="rating" value="1"> ⭐ Poor</label>
-      </div>
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(19, 23, 42, 0.85);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 102, 144, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
 
-      <!-- Purchasing Code Input -->
-      <div class="purchase-code-box">
-        <label for="code">Enter Purchasing Code</label>
-        <input type="text" id="code" name="code" placeholder="Enter your code here..." required>
-      </div>
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(92, 107, 192, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
 
-      <!-- Submit Button -->
-      <button type="submit">Submit Rating</button>
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-      <!-- Error Message -->
-      <p id="errorMsg" class="error-msg">❌ Invalid purchasing code</p>
-    </form>
-  </div>
-</section>
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #7b68ee, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
 
-<!-- 🌙 CSS Styling -->
-<style>
-  .rating-section {
-    background-color: #121212;
-    color: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: 40px auto;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
-    font-family: 'Segoe UI', sans-serif;
-  }
+        .rating-summary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease;
+        }
 
-  .rating-section h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+        .average-rating {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
 
-  .average-rating {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+        .stars {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
 
-  .average-text {
-    font-size: 18px;
-    margin-bottom: 6px;
-    display: block;
-  }
+        .stars i {
+            color: #ffd700;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
 
-  .stars .star {
-    font-size: 22px;
-    color: #ffc107;
-  }
+        .based-on {
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
 
-  .rating-box {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    padding: 20px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
+        .rating-box {
+            position: relative;
+            margin-bottom: 25px;
+        }
 
-  .rating-box h3 {
-    font-size: 20px;
-    margin-bottom: 16px;
-    text-align: center;
-    color: #ffb300;
-  }
+        .rating-box-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #c0c0e0;
+            font-size: 1.1rem;
+        }
 
-  .rating-options label {
-    display: block;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #333;
-    border-radius: 8px;
-    background: #2a2a2a;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+        .rating-selector {
+            width: 100%;
+            background: rgba(30, 35, 60, 0.7);
+            border: 2px solid rgba(92, 107, 192, 0.5);
+            border-radius: 10px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            color: #e0e0ff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
 
-  .rating-options input[type="radio"] {
-    margin-right: 10px;
-    accent-color: #ffc107;
-  }
+        .rating-selector:hover {
+            border-color: #5c6bc0;
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
+        }
 
-  .rating-options label:hover {
-    background-color: #333;
-  }
+        .rating-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(30, 35, 60, 0.95);
+            border: 2px solid rgba(92, 107, 192, 0.7);
+            border-radius: 10px;
+            margin-top: 5px;
+            overflow: hidden;
+            display: none;
+            z-index: 10;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s ease forwards;
+        }
 
-  .rating-options input[type="radio"]:checked + span {
-    color: #ffc107;
-    font-weight: bold;
-  }
+        .rating-option {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-  .purchase-code-box {
-    margin-top: 20px;
-  }
+        .rating-option:hover {
+            background: rgba(92, 107, 192, 0.3);
+        }
 
-  .purchase-code-box label {
-    display: block;
-    font-size: 15px;
-    margin-bottom: 8px;
-  }
+        .rating-option.active {
+            background: rgba(92, 107, 192, 0.5);
+        }
 
-  .purchase-code-box input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #555;
-    background-color: #2a2a2a;
-    color: #fff;
-    font-size: 15px;
-  }
+        .rating-stars {
+            color: #ffd700;
+        }
 
-  button[type="submit"] {
-    width: 100%;
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #ff9800;
-    color: #000;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
+        .purchase-code {
+            margin-bottom: 25px;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
 
-  button:hover {
-    background-color: #ffa726;
-  }
+        .purchase-code-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #c0c0e0;
+            font-size: 1.1rem;
+        }
 
-  .error-msg {
-    display: none;
-    color: #ff4444;
-    text-align: center;
-    margin-top: 15px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
+        .purchase-code-input {
+            width: 100%;
+            background: rgba(30, 35, 60, 0.7);
+            border: 2px solid rgba(92, 107, 192, 0.5);
+            border-radius: 10px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            color: #e0e0ff;
+            transition: all 0.3s ease;
+        }
 
-  /* Fade Animation */
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+        .purchase-code-input:focus {
+            outline: none;
+            border-color: #5c6bc0;
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
+        }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .rating-section {
-      padding: 20px;
-    }
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            display: none;
+            animation: shake 0.5s ease;
+        }
 
-    .rating-options label {
-      font-size: 14px;
-    }
+        .error-message i {
+            font-size: 1.1rem;
+        }
 
-    .purchase-code-box input {
-      font-size: 14px;
-    }
-  }
-</style>
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #7b68ee, #3498db);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
 
-<!-- ⚙️ JavaScript Logic -->
-<script>
-  document.getElementById('ratingForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const code = document.getElementById('code').value.trim();
-    const errorMsg = document.getElementById('errorMsg');
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    if (code !== '5895341') {
-      errorMsg.style.display = 'block';
-    } else {
-      errorMsg.style.display = 'none';
-      alert("✔️ Thank you for your rating! (Dummy system)");
-    }
-  });
-</script>
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .loading-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            width: 0;
+            border-radius: 0 0 10px 10px;
+            transition: width 1.5s ease;
+        }
+
+        .thank-you {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .thank-you i {
+            font-size: 3rem;
+            color: #7b68ee;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .thank-you h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #7b68ee, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thank-you p {
+            color: #a0a0c0;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to
