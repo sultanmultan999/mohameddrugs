@@ -8,6 +8,7 @@
     <style>
         :root {
             --primary: #00c3ff;
+            --primary-light: #00e5ff;
             --secondary: #8e44ad;
             --dark-bg: #0d0d0d;
             --darker-bg: #121212;
@@ -19,6 +20,7 @@
             --accent-green: #4caf50;
             --accent-orange: #ff9800;
             --accent-red: #f44336;
+            --glow: 0 0 15px rgba(0, 195, 255, 0.7);
         }
 
         * {
@@ -43,19 +45,37 @@
             background: var(--dark-bg);
             padding: 20px 30px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.7);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(0, 195, 255, 0.2);
         }
         
         .store-name {
             color: var(--primary);
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 0.8px;
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: 1px;
             margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(0,195,255,0.3);
+            text-shadow: var(--glow);
+            position: relative;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        .store-name::after {
+            content: 'Premium Pharmacy';
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: var(--primary-light);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
+            width: 100%;
         }
         
         .country-list {
@@ -63,29 +83,50 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 30px;
         }
         
         .country-list span {
             color: var(--text-muted);
             font-size: 14px;
-            padding: 6px 12px;
+            padding: 8px 16px;
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(0, 195, 255, 0.1);
+        }
+        
+        .country-list span::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,195,255,0.3), transparent);
+            transition: all 0.6s;
         }
         
         .country-list span:hover {
             background: rgba(0,195,255,0.1);
             color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+        
+        .country-list span:hover::before {
+            left: 100%;
         }
         
         /* Hero Image */
         .hero-container {
             position: relative;
             width: 100%;
-            max-width: 1000px;
-            margin: 30px auto 0;
+            max-width: 1200px;
+            margin: 40px auto 0;
             padding: 0 20px;
             display: flex;
             flex-direction: column;
@@ -95,121 +136,316 @@
         .hero-image {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(0,195,255,0.1);
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0,195,255,0.2);
+            position: relative;
+            z-index: 2;
         }
         
         .hero-text {
             text-align: center;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            background: rgba(0,0,0,0.7);
-            padding: 15px 30px;
-            border-radius: 30px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px 40px;
+            border-radius: 35px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: -25px;
             border: 1px solid var(--primary);
+            position: relative;
+            z-index: 3;
+            box-shadow: var(--glow);
+            animation: float 3s ease-in-out infinite;
         }
         
         .delivery-icons {
             display: flex;
-            gap: 8px;
-            margin-top: 5px;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .delivery-icons i {
+            color: var(--primary);
+            font-size: 22px;
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .delivery-icons i:hover {
+            transform: translateY(-5px);
+            color: var(--primary-light);
         }
         
         /* Country Selection */
         .country-selection {
-            padding: 40px 20px;
-            background: #111;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(10,10,10,0.9));
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .country-selection::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
         
         .section-title {
             color: var(--primary);
-            font-size: 36px;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
             position: relative;
             display: inline-block;
+            text-shadow: var(--glow);
         }
         
         .section-subtitle {
-            color: #00c3ff;
-            font-size: 28px;
-            margin-bottom: 30px;
+            color: var(--primary-light);
+            font-size: 30px;
+            margin-bottom: 50px;
             display: block;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), #00aaff);
-            border-radius: 4px;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 5px;
+            box-shadow: var(--glow);
         }
         
         .country-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         
         .country-card {
             text-decoration: none;
             background: var(--card-bg);
-            padding: 25px;
+            padding: 30px 20px;
             color: var(--primary);
-            border-radius: 15px;
-            font-size: 22px;
+            border-radius: 18px;
+            font-size: 24px;
             font-weight: bold;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(0,195,255,0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(0,195,255,0.15);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .country-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,195,255,0.1), rgba(142,68,173,0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         
         .country-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,195,255,0.3);
-           background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,195,255,0.4);
+            background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
+        }
+        
+        .country-card:hover::before {
+            opacity: 1;
         }
         
         .country-card img {
-            width: 36px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 3px rgba(0,195,255,0.5));
+            width: 50px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 5px rgba(0,195,255,0.7));
+            transition: all 0.3s ease;
+        }
+        
+        .country-card:hover img {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(0,195,255,1));
         }
         
         .country-name {
             text-align: center;
             line-height: 1.4;
+            position: relative;
         }
         
         .arabic-name {
-            font-size: 20px;
+            font-size: 26px;
             display: block;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
         
         .english-name {
-            font-size: 18px;
+            font-size: 20px;
             display: block;
             color: var(--text-muted);
+            transition: all 0.3s ease;
         }
         
-        </head>
+        .country-card:hover .arabic-name {
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
+            animation: pop 0.5s ease;
+        }
+        
+        .country-card:hover .english-name {
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(0, 195, 255, 1), 0 0 30px rgba(0, 195, 255, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--dark-bg);
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0, 195, 255, 0.2);
+        }
+        
+        .footer-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+        
+        .copyright {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .store-name {
+                font-size: 32px;
+            }
+            
+            .hero-text {
+                font-size: 22px;
+                padding: 15px 25px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .section-subtitle {
+                font-size: 24px;
+            }
+            
+            .country-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .store-name {
+                font-size: 28px;
+            }
+            
+            .hero-text {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .section-subtitle {
+                font-size: 20px;
+            }
+            
+            .country-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+            
+            .country-list span {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
 <body>
     <!-- Header -->
     <header class="site-header">
@@ -233,6 +469,7 @@
                 <i class="fas fa-truck"></i>
                 <i class="fas fa-box"></i>
                 <i class="fas fa-shipping-fast"></i>
+                <i class="fas fa-shield-alt"></i>
             </div>
         </div>
         <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
@@ -295,3 +532,75 @@
             </a>
         </div>
     </section>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <h3 class="footer-title">Mohamed Drugs Shop</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+20 123 456 7890</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>contact@mohameddrugs.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Cairo, Egypt</span>
+            </div>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>+20 123 456 7890</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-telegram"></i>
+                <span>@mohameddrugs</span>
+            </div>
+        </div>
+        <p class="copyright">© 2023 Mohamed Drugs Shop. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Add pop animation to header country names
+        document.querySelectorAll('.country-list span').forEach(country => {
+            country.addEventListener('click', function() {
+                this.style.animation = 'pop 0.5s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+            });
+        });
+        
+        // Add animation to country cards on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.country-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.animation = `fadeInUp 0.8s ease forwards ${index * 0.1}s`;
+                }, 100);
+            });
+            
+            // Create a dynamic CSS rule for fadeInUp animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
