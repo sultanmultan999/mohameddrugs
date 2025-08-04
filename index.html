@@ -1,8 +1,5 @@
-<!-- ⭐ Rating Section – layout999 -->
-<section class="rating-section">
-  <h2>Rate this product</h2>
-
-  <div class="average-rating">
+<!-- 🌟 layout999 – Enhanced Responsive Rating Section --><section class="rating-section">
+  <h2>Rate this product</h2>  <!-- Average Rating Display -->  <div class="average-rating">
     <span class="average-text">4.7 out of 5 stars</span>
     <div class="stars">
       <span class="star full">★</span>
@@ -11,111 +8,79 @@
       <span class="star full">★</span>
       <span class="star half">★</span>
     </div>
+    <span class="rating-count">Based on 183 ratings</span>
+  </div>  <!-- Rating & Code Box -->  <div class="rating-box">
+    <h3>Choose Rating</h3>
+    <form id="ratingForm">
+      <div class="rating-options">
+        <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐ Excellent</label>
+        <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐ Good</label>
+        <label><input type="radio" name="rating" value="3"> ⭐⭐⭐ Normal</label>
+        <label><input type="radio" name="rating" value="2"> ⭐⭐ Need Improvement</label>
+        <label><input type="radio" name="rating" value="1"> ⭐ Poor</label>
+      </div>
+      <p id="ratingError" class="error-msg">❌ Please select a rating</p><!-- Purchasing Code Input -->
+  <div class="purchase-code-box">
+    <label for="code">Enter Purchasing Code</label>
+    <input type="text" id="code" name="code" placeholder="Enter your code here...">
   </div>
+  <p id="codeError" class="error-msg">❌ Please enter a purchasing code</p>
+  <p id="invalidCode" class="error-msg">❌ Invalid purchasing code</p>
 
-  <form id="ratingForm">
-    <div class="rating-options">
-      <label><input type="radio" name="rating" value="5"> <span>⭐⭐⭐⭐⭐ Excellent</span></label>
-      <label><input type="radio" name="rating" value="4"> <span>⭐⭐⭐⭐ Good</span></label>
-      <label><input type="radio" name="rating" value="3"> <span>⭐⭐⭐ Normal</span></label>
-      <label><input type="radio" name="rating" value="2"> <span>⭐⭐ Need Improvement</span></label>
-      <label><input type="radio" name="rating" value="1"> <span>⭐ Poor</span></label>
-    </div>
-    <button type="submit">Submit Rating</button>
-  </form>
-</section>
+  <!-- Submit Button -->
+  <button type="submit">Submit Rating</button>
+</form>
 
-<!-- ⭐ Styling -->
-<style>
-  .rating-section {
-    background-color: #1c1c1c;
-    color: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: 40px auto;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .rating-section h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .average-rating {
-    text-align: center;
-    margin-bottom: 25px;
-  }
-
-  .average-text {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .stars .star {
-    font-size: 22px;
-    color: #ffc107;
-  }
-
-  .star.half::after {
-    content: "★";
-    position: absolute;
-    width: 50%;
-    overflow: hidden;
-    color: #ffc107;
-  }
-
-  .rating-options label {
-    display: block;
-    padding: 10px 15px;
-    border: 1px solid #333;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    background: #2a2a2a;
-    transition: 0.3s;
-  }
-
-  .rating-options input[type="radio"] {
-    margin-right: 10px;
-    accent-color: #ffc107;
-  }
-
-  .rating-options label:hover {
-    background-color: #333;
-  }
-
-  .rating-options input[type="radio"]:checked + span {
-    color: #ffc107;
-    font-weight: bold;
-  }
-
-  button[type="submit"] {
-    display: block;
-    width: 100%;
-    background-color: #ff9800;
-    color: #000;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #ffa726;
-  }
-</style>
-
-<!-- ⭐ Script -->
-<script>
-  document.getElementById('ratingForm').addEventListener('submit', function (e) {
+  </div>
+</section><!-- 🌙 CSS Styling --><style>
+  .rating-section { background: #121212; color: #fff; padding: 30px; border-radius: 16px; max-width: 600px; margin: 40px auto; box-shadow: 0 0 12px rgba(255,255,255,0.08); font-family: 'Segoe UI', sans-serif; }
+  .rating-section h2 { text-align: center; font-size: 24px; margin-bottom: 20px; }
+  .average-rating { text-align: center; margin-bottom: 20px; }
+  .average-text { font-size: 18px; display: block; }
+  .stars .star { font-size: 22px; color: #ffc107; }
+  .rating-count { display: block; font-size: 14px; color: #bbb; margin-top: 6px; }
+  .rating-box { background: #1e1e1e; border-radius: 12px; padding: 20px; animation: fadeIn 0.5s ease-in-out; }
+  .rating-box h3 { font-size: 20px; text-align: center; color: #ffb300; margin-bottom: 16px; }
+  .rating-options label { display: block; padding: 10px; margin-bottom: 12px; border: 1px solid #333; border-radius: 8px; background: #2a2a2a; cursor: pointer; transition: 0.3s; }
+  .rating-options input[type="radio"] { margin-right: 10px; accent-color: #ffc107; }
+  .rating-options label:hover { background: #333; }
+  .rating-options input[type="radio"]:checked + span { color: #ffc107; font-weight: bold; }
+  .purchase-code-box { margin-top: 20px; }
+  .purchase-code-box label { display: block; font-size: 15px; margin-bottom: 8px; }
+  .purchase-code-box input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #555; background: #2a2a2a; color: #fff; font-size: 15px; }
+  button[type="submit"] { width: 100%; margin-top: 20px; padding: 12px; background: #ff9800; color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 10px; cursor: pointer; transition: background 0.3s ease; }
+  button:hover { background: #ffa726; }
+  .error-msg { display: none; color: #ff4444; font-size: 14px; margin-top: 8px; text-align: left; }
+  @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+  @media (max-width:600px) { .rating-section { padding: 20px; } .rating-options label { font-size: 14px; } .purchase-code-box input { font-size: 14px; } }
+</style><!-- ⚙️ JavaScript Logic --><script>
+  document.getElementById('ratingForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('❌ Invalid purchasing code');
+    const selected = document.querySelector('input[name="rating"]:checked');
+    const codeInput = document.getElementById('code').value.trim();
+    const ratingError = document.getElementById('ratingError');
+    const codeError = document.getElementById('codeError');
+    const invalidCode = document.getElementById('invalidCode');
+    let valid = true;
+
+    // Reset errors
+    [ratingError, codeError, invalidCode].forEach(el => el.style.display = 'none');
+
+    // Validate rating
+    if (!selected) {
+      ratingError.style.display = 'block'; valid = false;
+    }
+    // Validate code presence
+    if (!codeInput) {
+      codeError.style.display = 'block'; valid = false;
+    }
+    // Validate code correctness if present
+    if (codeInput && codeInput !== '5895341') {
+      invalidCode.style.display = 'block'; valid = false;
+    }
+    // On success
+    if (valid) {
+      alert('✔️ Thank you for your rating! (Dummy system)');
+    }
   });
 </script>
