@@ -88,8 +88,8 @@
         
         .country-list span {
             color: var(--text-muted);
-            font-size: 14px;
-            padding: 8px 16px;
+            font-size: 13px; /* Slightly smaller font size */
+            padding: 6px 14px; /* Slightly smaller padding */
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
             transition: all 0.3s ease;
@@ -146,10 +146,10 @@
         .hero-text {
             text-align: center;
             color: white;
-            font-size: 28px;
+            font-size: 22px; /* Slightly smaller font size */
             font-weight: bold;
             background: rgba(0,0,0,0.8);
-            padding: 20px 40px;
+            padding: 15px 30px; /* Slightly smaller padding */
             border-radius: 35px;
             display: inline-flex;
             align-items: center;
@@ -165,12 +165,12 @@
         .delivery-icons {
             display: flex;
             gap: 12px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .delivery-icons i {
             color: var(--primary);
-            font-size: 22px;
+            font-size: 20px; /* Slightly smaller icons */
             text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
             transition: all 0.3s ease;
         }
@@ -187,6 +187,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            margin-top: 20px;
         }
         
         .country-selection::before {
@@ -201,7 +202,7 @@
         
         .section-title {
             color: var(--primary);
-            font-size: 42px;
+            font-size: 36px; /* Slightly smaller */
             margin-bottom: 15px;
             font-weight: 800;
             position: relative;
@@ -211,7 +212,7 @@
         
         .section-subtitle {
             color: var(--primary-light);
-            font-size: 30px;
+            font-size: 26px; /* Slightly smaller */
             margin-bottom: 50px;
             display: block;
             letter-spacing: 1px;
@@ -224,8 +225,8 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 5px;
+            width: 130px; /* Slightly smaller */
+            height: 4px; /* Slightly thinner */
             background: linear-gradient(90deg, var(--primary), var(--primary-light));
             border-radius: 5px;
             box-shadow: var(--glow);
@@ -233,19 +234,19 @@
         
         .country-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-            max-width: 1300px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Slightly smaller cards */
+            gap: 25px; /* Slightly smaller gap */
+            max-width: 1250px; /* Slightly narrower */
             margin: 0 auto;
         }
         
         .country-card {
             text-decoration: none;
             background: var(--card-bg);
-            padding: 30px 20px;
+            padding: 25px 15px; /* Slightly smaller padding */
             color: var(--primary);
-            border-radius: 18px;
-            font-size: 24px;
+            border-radius: 15px; /* Slightly smaller radius */
+            font-size: 22px; /* Slightly smaller */
             font-weight: bold;
             display: flex;
             flex-direction: column;
@@ -283,8 +284,8 @@
         }
         
         .country-card img {
-            width: 50px;
-            margin-bottom: 20px;
+            width: 46px; /* Slightly smaller flags */
+            margin-bottom: 15px; /* Slightly smaller margin */
             filter: drop-shadow(0 0 5px rgba(0,195,255,0.7));
             transition: all 0.3s ease;
         }
@@ -301,14 +302,14 @@
         }
         
         .arabic-name {
-            font-size: 26px;
+            font-size: 24px; /* Slightly smaller */
             display: block;
             font-weight: 700;
             transition: all 0.3s ease;
         }
         
         .english-name {
-            font-size: 20px;
+            font-size: 18px; /* Slightly smaller */
             display: block;
             color: var(--text-muted);
             transition: all 0.3s ease;
@@ -327,7 +328,7 @@
         /* Animations */
         @keyframes pop {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
         
@@ -339,57 +340,8 @@
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
-        }
-        
-        /* Footer */
-        .site-footer {
-            background: var(--dark-bg);
-            padding: 30px;
-            text-align: center;
-            margin-top: 60px;
-            border-top: 1px solid rgba(0, 195, 255, 0.2);
-        }
-        
-        .footer-title {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
-        }
-        
-        .contact-item i {
-            color: var(--primary);
-            font-size: 20px;
-        }
-        
-        .copyright {
-            color: var(--text-muted);
-            font-size: 16px;
-            margin-top: 20px;
         }
         
         /* Responsive adjustments */
@@ -399,20 +351,20 @@
             }
             
             .hero-text {
-                font-size: 22px;
-                padding: 15px 25px;
+                font-size: 18px;
+                padding: 12px 20px;
             }
             
             .section-title {
-                font-size: 36px;
+                font-size: 30px;
             }
             
             .section-subtitle {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             .country-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
                 gap: 20px;
             }
         }
@@ -423,25 +375,41 @@
             }
             
             .hero-text {
-                font-size: 18px;
+                font-size: 16px;
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px 15px;
             }
             
             .section-title {
-                font-size: 30px;
+                font-size: 26px;
             }
             
             .section-subtitle {
-                font-size: 20px;
+                font-size: 18px;
             }
             
             .country-grid {
                 grid-template-columns: 1fr;
-                max-width: 300px;
+                max-width: 280px;
+                gap: 15px;
             }
             
             .country-list span {
-                padding: 6px 12px;
-                font-size: 12px;
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            
+            .country-card {
+                padding: 20px 10px;
+            }
+            
+            .arabic-name {
+                font-size: 20px;
+            }
+            
+            .english-name {
+                font-size: 16px;
             }
         }
     </style>
@@ -464,7 +432,7 @@
     <!-- Hero Image with Text -->
     <div class="hero-container">
         <div class="hero-text">
-            <i class="fas fa-shipping-fast"></i> أسرع وأكثر أمانًا للتسليم
+            <i class="fas fa-shipping-fast"></i> أسرع توصيل في دول الخليج مع ضمان السلامة
             <div class="delivery-icons">
                 <i class="fas fa-truck"></i>
                 <i class="fas fa-box"></i>
@@ -532,36 +500,6 @@
             </a>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer class="site-footer">
-        <h3 class="footer-title">Mohamed Drugs Shop</h3>
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <span>+20 123 456 7890</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>contact@mohameddrugs.com</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Cairo, Egypt</span>
-            </div>
-        </div>
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <span>+20 123 456 7890</span>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-telegram"></i>
-                <span>@mohameddrugs</span>
-            </div>
-        </div>
-        <p class="copyright">© 2023 Mohamed Drugs Shop. All Rights Reserved.</p>
-    </footer>
     
     <script>
         // Add pop animation to header country names
