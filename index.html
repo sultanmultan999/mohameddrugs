@@ -166,6 +166,27 @@
             background: rgba(92, 107, 192, 0.5);
         }
 
+        .rating-option .option-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rating-option .option-text {
+            font-weight: 500;
+        }
+
+        .rating-option .checkmark {
+            color: #7b68ee;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .rating-option.active .checkmark {
+            opacity: 1;
+        }
+
         .rating-stars {
             color: #ffd700;
         }
@@ -353,54 +374,69 @@
             </div>
             <div class="rating-options" id="ratingOptions">
                 <div class="rating-option" data-value="5">
-                    <span>Excellent</span>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="option-content">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="option-text">Excellent</span>
                     </div>
+                    <i class="fas fa-check checkmark"></i>
                 </div>
                 <div class="rating-option" data-value="4">
-                    <span>Good</span>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
+                    <div class="option-content">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="option-text">Good</span>
                     </div>
+                    <i class="fas fa-check checkmark"></i>
                 </div>
                 <div class="rating-option" data-value="3">
-                    <span>Average</span>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
+                    <div class="option-content">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="option-text">Average</span>
                     </div>
+                    <i class="fas fa-check checkmark"></i>
                 </div>
                 <div class="rating-option" data-value="2">
-                    <span>Poor</span>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
+                    <div class="option-content">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="option-text">Need Improvement</span>
                     </div>
+                    <i class="fas fa-check checkmark"></i>
                 </div>
                 <div class="rating-option" data-value="1">
-                    <span>Terrible</span>
-                    <div class="rating-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
+                    <div class="option-content">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="option-text">Poor</span>
                     </div>
+                    <i class="fas fa-check checkmark"></i>
                 </div>
             </div>
             <div class="error-message" id="ratingError">
@@ -418,7 +454,7 @@
             </div>
             <div class="error-message" id="invalidCodeError">
                 <i class="fas fa-exclamation-circle"></i>
-                <span>Invalid purchasing code</span>
+                <span>Invalid purchasing code. Please make a purchase to rate.</span>
             </div>
         </div>
 
@@ -450,7 +486,8 @@
             let selectedRating = null;
             
             // Toggle rating options
-            ratingSelector.addEventListener('click', function() {
+            ratingSelector.addEventListener('click', function(e) {
+                e.stopPropagation();
                 ratingOptions.style.display = ratingOptions.style.display === 'block' ? 'none' : 'block';
             });
             
@@ -465,7 +502,7 @@
                     this.classList.add('active');
                     
                     // Update selector text
-                    const ratingText = this.querySelector('span').textContent;
+                    const ratingText = this.querySelector('.option-text').textContent;
                     ratingSelector.querySelector('span').textContent = ratingText;
                     
                     // Store selected value
@@ -481,7 +518,7 @@
             
             // Close rating options when clicking outside
             document.addEventListener('click', function(e) {
-                if (!ratingSelector.contains(e.target) {
+                if (!ratingSelector.contains(e.target) && !ratingOptions.contains(e.target)) {
                     ratingOptions.style.display = 'none';
                 }
             });
@@ -506,7 +543,7 @@
                 if (!codeValue) {
                     codeError.style.display = 'flex';
                     isValid = false;
-                } else if (codeValue.length < 12 || !/^[a-zA-Z0-9]+$/.test(codeValue)) {
+                } else if (codeValue.length < 12 || !/^[a-zA-Z0-9-]+$/.test(codeValue)) {
                     invalidCodeError.style.display = 'flex';
                     isValid = false;
                 }
@@ -535,7 +572,11 @@
                 }
             });
             
-            // Close options when clicking on an option (already handled in option click)
+            // Clear error when user starts typing
+            purchaseCode.addEventListener('input', function() {
+                codeError.style.display = 'none';
+                invalidCodeError.style.display = 'none';
+            });
         });
     </script>
 </body>
