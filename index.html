@@ -1,5 +1,9 @@
-<!-- 🌟 layout999 – Enhanced Responsive Rating Section --><section class="rating-section">
-  <h2>Rate this product</h2>  <!-- Average Rating Display -->  <div class="average-rating">
+<!-- ⭐ layout999 – Responsive Rating Section with Code Validation -->
+<section class="rating-section">
+  <h2>Rate this product</h2>
+
+  <!-- Average Rating Display -->
+  <div class="average-rating">
     <span class="average-text">4.7 out of 5 stars</span>
     <div class="stars">
       <span class="star full">★</span>
@@ -8,8 +12,10 @@
       <span class="star full">★</span>
       <span class="star half">★</span>
     </div>
-    <span class="rating-count">Based on 183 ratings</span>
-  </div>  <!-- Rating & Code Box -->  <div class="rating-box">
+  </div>
+
+  <!-- Rating Box -->
+  <div class="rating-box">
     <h3>Choose Rating</h3>
     <form id="ratingForm">
       <div class="rating-options">
@@ -19,68 +25,176 @@
         <label><input type="radio" name="rating" value="2"> ⭐⭐ Need Improvement</label>
         <label><input type="radio" name="rating" value="1"> ⭐ Poor</label>
       </div>
-      <p id="ratingError" class="error-msg">❌ Please select a rating</p><!-- Purchasing Code Input -->
-  <div class="purchase-code-box">
-    <label for="code">Enter Purchasing Code</label>
-    <input type="text" id="code" name="code" placeholder="Enter your code here...">
-  </div>
-  <p id="codeError" class="error-msg">❌ Please enter a purchasing code</p>
-  <p id="invalidCode" class="error-msg">❌ Invalid purchasing code</p>
 
-  <!-- Submit Button -->
-  <button type="submit">Submit Rating</button>
-</form>
+      <!-- Purchasing Code Input -->
+      <div class="purchase-code-box">
+        <label for="code">Enter Purchasing Code</label>
+        <input type="text" id="code" name="code" placeholder="Enter your code here..." required>
+      </div>
 
+      <!-- Submit Button -->
+      <button type="submit">Submit Rating</button>
+
+      <!-- Error Message -->
+      <p id="errorMsg" class="error-msg">❌ Invalid purchasing code</p>
+    </form>
   </div>
-</section><!-- 🌙 CSS Styling --><style>
-  .rating-section { background: #121212; color: #fff; padding: 30px; border-radius: 16px; max-width: 600px; margin: 40px auto; box-shadow: 0 0 12px rgba(255,255,255,0.08); font-family: 'Segoe UI', sans-serif; }
-  .rating-section h2 { text-align: center; font-size: 24px; margin-bottom: 20px; }
-  .average-rating { text-align: center; margin-bottom: 20px; }
-  .average-text { font-size: 18px; display: block; }
-  .stars .star { font-size: 22px; color: #ffc107; }
-  .rating-count { display: block; font-size: 14px; color: #bbb; margin-top: 6px; }
-  .rating-box { background: #1e1e1e; border-radius: 12px; padding: 20px; animation: fadeIn 0.5s ease-in-out; }
-  .rating-box h3 { font-size: 20px; text-align: center; color: #ffb300; margin-bottom: 16px; }
-  .rating-options label { display: block; padding: 10px; margin-bottom: 12px; border: 1px solid #333; border-radius: 8px; background: #2a2a2a; cursor: pointer; transition: 0.3s; }
-  .rating-options input[type="radio"] { margin-right: 10px; accent-color: #ffc107; }
-  .rating-options label:hover { background: #333; }
-  .rating-options input[type="radio"]:checked + span { color: #ffc107; font-weight: bold; }
-  .purchase-code-box { margin-top: 20px; }
-  .purchase-code-box label { display: block; font-size: 15px; margin-bottom: 8px; }
-  .purchase-code-box input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #555; background: #2a2a2a; color: #fff; font-size: 15px; }
-  button[type="submit"] { width: 100%; margin-top: 20px; padding: 12px; background: #ff9800; color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 10px; cursor: pointer; transition: background 0.3s ease; }
-  button:hover { background: #ffa726; }
-  .error-msg { display: none; color: #ff4444; font-size: 14px; margin-top: 8px; text-align: left; }
-  @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
-  @media (max-width:600px) { .rating-section { padding: 20px; } .rating-options label { font-size: 14px; } .purchase-code-box input { font-size: 14px; } }
-</style><!-- ⚙️ JavaScript Logic --><script>
-  document.getElementById('ratingForm').addEventListener('submit', function(e) {
+</section>
+
+<!-- 🌙 CSS Styling -->
+<style>
+  .rating-section {
+    background-color: #121212;
+    color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .rating-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .average-rating {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .average-text {
+    font-size: 18px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .stars .star {
+    font-size: 22px;
+    color: #ffc107;
+  }
+
+  .rating-box {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .rating-box h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #ffb300;
+  }
+
+  .rating-options label {
+    display: block;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #2a2a2a;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .rating-options input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #ffc107;
+  }
+
+  .rating-options label:hover {
+    background-color: #333;
+  }
+
+  .rating-options input[type="radio"]:checked + span {
+    color: #ffc107;
+    font-weight: bold;
+  }
+
+  .purchase-code-box {
+    margin-top: 20px;
+  }
+
+  .purchase-code-box label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .purchase-code-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #ff9800;
+    color: #000;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #ffa726;
+  }
+
+  .error-msg {
+    display: none;
+    color: #ff4444;
+    text-align: center;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  /* Fade Animation */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .rating-section {
+      padding: 20px;
+    }
+
+    .rating-options label {
+      font-size: 14px;
+    }
+
+    .purchase-code-box input {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<!-- ⚙️ JavaScript Logic -->
+<script>
+  document.getElementById('ratingForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    const selected = document.querySelector('input[name="rating"]:checked');
-    const codeInput = document.getElementById('code').value.trim();
-    const ratingError = document.getElementById('ratingError');
-    const codeError = document.getElementById('codeError');
-    const invalidCode = document.getElementById('invalidCode');
-    let valid = true;
+    const code = document.getElementById('code').value.trim();
+    const errorMsg = document.getElementById('errorMsg');
 
-    // Reset errors
-    [ratingError, codeError, invalidCode].forEach(el => el.style.display = 'none');
-
-    // Validate rating
-    if (!selected) {
-      ratingError.style.display = 'block'; valid = false;
-    }
-    // Validate code presence
-    if (!codeInput) {
-      codeError.style.display = 'block'; valid = false;
-    }
-    // Validate code correctness if present
-    if (codeInput && codeInput !== '5895341') {
-      invalidCode.style.display = 'block'; valid = false;
-    }
-    // On success
-    if (valid) {
-      alert('✔️ Thank you for your rating! (Dummy system)');
+    if (code !== '5895341') {
+      errorMsg.style.display = 'block';
+    } else {
+      errorMsg.style.display = 'none';
+      alert("✔️ Thank you for your rating! (Dummy system)");
     }
   });
 </script>
