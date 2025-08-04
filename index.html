@@ -1,1117 +1,327 @@
+
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Premium Rating Component</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-        }
-
-
-        body {
-
-            background: linear-gradient(135deg, #0c0e1d, #1a1d3b);
-
-            min-height: 100vh;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 20px;
-
-            color: #e0e0ff;
-
-        }
-
-
-        .container {
-
-            max-width: 500px;
-
-            width: 100%;
-
-            background: rgba(19, 23, 42, 0.85);
-
-            border-radius: 16px;
-
-            padding: 30px;
-
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
-            backdrop-filter: blur(10px);
-
-            border: 1px solid rgba(80, 102, 144, 0.3);
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-        .container::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: -50%;
-
-            left: -50%;
-
-            width: 200%;
-
-            height: 200%;
-
-            background: radial-gradient(circle, rgba(92, 107, 192, 0.1) 0%, transparent 70%);
-
-            z-index: -1;
-
-        }
-
-
-        .header {
-
-            text-align: center;
-
-            margin-bottom: 30px;
-
-            position: relative;
-
-        }
-
-
-        .header h1 {
-
-            font-size: 2.5rem;
-
-            background: linear-gradient(45deg, #7b68ee, #3498db);
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-
-            margin-bottom: 15px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            font-weight: 700;
-
-        }
-
-
-        .rating-summary {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 10px;
-
-            margin-bottom: 30px;
-
-            animation: fadeIn 0.8s ease;
-
-        }
-
-
-        .average-rating {
-
-            font-size: 3.5rem;
-
-            font-weight: 700;
-
-            background: linear-gradient(45deg, #ffd700, #ffa500);
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-
-            position: relative;
-
-        }
-
-
-        .stars {
-
-            display: flex;
-
-            gap: 5px;
-
-            margin-top: 5px;
-
-        }
-
-
-        .stars i {
-
-            color: #ffd700;
-
-            font-size: 1.2rem;
-
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-
-        }
-
-
-        .based-on {
-
-            color: #a0a0c0;
-
-            font-size: 0.9rem;
-
-            margin-top: 5px;
-
-        }
-
-
-        .rating-box {
-
-            position: relative;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .rating-box-label {
-
-            display: block;
-
-            margin-bottom: 10px;
-
-            font-weight: 600;
-
-            color: #c0c0e0;
-
-            font-size: 1.1rem;
-
-        }
-
-
-        .rating-selector {
-
-            width: 100%;
-
-            background: rgba(30, 35, 60, 0.7);
-
-            border: 2px solid rgba(92, 107, 192, 0.5);
-
-            border-radius: 10px;
-
-            padding: 14px 20px;
-
-            font-size: 1rem;
-
-            color: #e0e0ff;
-
-            cursor: pointer;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            transition: all 0.3s ease;
-
-        }
-
-
-        .rating-selector:hover {
-
-            border-color: #5c6bc0;
-
-            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
-
-        }
-
-
-        .rating-options {
-
-            position: absolute;
-
-            top: 100%;
-
-            left: 0;
-
-            width: 100%;
-
-            background: rgba(30, 35, 60, 0.95);
-
-            border: 2px solid rgba(92, 107, 192, 0.7);
-
-            border-radius: 10px;
-
-            margin-top: 5px;
-
-            overflow: hidden;
-
-            display: none;
-
-            z-index: 10;
-
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-
-            animation: slideDown 0.4s ease forwards;
-
-        }
-
-
-        .rating-option {
-
-            padding: 14px 20px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            cursor: pointer;
-
-            transition: all 0.2s ease;
-
-        }
-
-
-        .rating-option:hover {
-
-            background: rgba(92, 107, 192, 0.3);
-
-        }
-
-
-        .rating-option.active {
-
-            background: rgba(92, 107, 192, 0.5);
-
-        }
-
-
-        .rating-option .option-content {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-        }
-
-
-        .rating-option .option-text {
-
-            font-weight: 500;
-
-        }
-
-
-        .rating-option .checkmark {
-
-            color: #7b68ee;
-
-            font-size: 1.1rem;
-
-            opacity: 0;
-
-            transition: opacity 0.2s ease;
-
-        }
-
-
-        .rating-option.active .checkmark {
-
-            opacity: 1;
-
-        }
-
-
-        .rating-stars {
-
-            color: #ffd700;
-
-        }
-
-
-        .purchase-code {
-
-            margin-bottom: 25px;
-
-            animation: fadeIn 0.8s ease 0.2s forwards;
-
-            opacity: 0;
-
-        }
-
-
-        .purchase-code-label {
-
-            display: block;
-
-            margin-bottom: 10px;
-
-            font-weight: 600;
-
-            color: #c0c0e0;
-
-            font-size: 1.1rem;
-
-        }
-
-
-        .purchase-code-input {
-
-            width: 100%;
-
-            background: rgba(30, 35, 60, 0.7);
-
-            border: 2px solid rgba(92, 107, 192, 0.5);
-
-            border-radius: 10px;
-
-            padding: 14px 20px;
-
-            font-size: 1rem;
-
-            color: #e0e0ff;
-
-            transition: all 0.3s ease;
-
-        }
-
-
-        .purchase-code-input:focus {
-
-            outline: none;
-
-            border-color: #5c6bc0;
-
-            box-shadow: 0 0 15px rgba(92, 107, 192, 0.3);
-
-        }
-
-
-        .error-message {
-
-            color: #ff6b6b;
-
-            font-size: 0.9rem;
-
-            margin-top: 8px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            display: none;
-
-            animation: shake 0.5s ease;
-
-        }
-
-
-        .error-message i {
-
-            font-size: 1.1rem;
-
-        }
-
-
-        .submit-btn {
-
-            width: 100%;
-
-            background: linear-gradient(45deg, #7b68ee, #3498db);
-
-            color: white;
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 16px;
-
-            font-size: 1.1rem;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition: all 0.3s ease;
-
-            position: relative;
-
-            overflow: hidden;
-
-            margin-top: 10px;
-
-        }
-
-
-        .submit-btn:hover {
-
-            transform: translateY(-3px);
-
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-
-        }
-
-
-        .submit-btn:active {
-
-            transform: translateY(0);
-
-        }
-
-
-        .loading-bar {
-
-            position: absolute;
-
-            bottom: 0;
-
-            left: 0;
-
-            height: 4px;
-
-            background: rgba(255, 255, 255, 0.3);
-
-            width: 0;
-
-            border-radius: 0 0 10px 10px;
-
-            transition: width 1.5s ease;
-
-        }
-
-
-        .thank-you {
-
-            text-align: center;
-
-            padding: 20px;
-
-            display: none;
-
-            animation: fadeIn 0.8s ease;
-
-        }
-
-
-        .thank-you i {
-
-            font-size: 3rem;
-
-            color: #7b68ee;
-
-            margin-bottom: 15px;
-
-            animation: pulse 1.5s infinite;
-
-        }
-
-
-        .thank-you h2 {
-
-            font-size: 1.8rem;
-
-            margin-bottom: 10px;
-
-            background: linear-gradient(45deg, #7b68ee, #3498db);
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-
-        }
-
-
-        .thank-you p {
-
-            color: #a0a0c0;
-
-            line-height: 1.6;
-
-        }
-
-
-        @keyframes fadeIn {
-
-            from { opacity: 0; transform: translateY(20px); }
-
-            to { opacity: 1; transform: translateY(0); }
-
-        }
-
-
-        @keyframes slideDown {
-
-            from { opacity: 0; transform: translateY(-10px); }
-
-            to { opacity: 1; transform: translateY(0); }
-
-        }
-
-
-        @keyframes pulse {
-
-            0% { transform: scale(1); }
-
-            50% { transform: scale(1.1); }
-
-            100% { transform: scale(1); }
-
-        }
-
-
-        @keyframes shake {
-
-            0%, 100% { transform: translateX(0); }
-
-            20%, 60% { transform: translateX(-5px); }
-
-            40%, 80% { transform: translateX(5px); }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .container {
-
-                padding: 20px;
-
-            }
-
-            
-
-            .header h1 {
-
-                font-size: 2rem;
-
-            }
-
-            
-
-            .average-rating {
-
-                font-size: 3rem;
-
-            }
-
-        }
-
-
-        @media (max-width: 480px) {
-
-            .header h1 {
-
-                font-size: 1.8rem;
-
-            }
-
-            
-
-            .rating-option {
-
-                padding: 12px 15px;
-
-                font-size: 0.95rem;
-
-            }
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2 {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+        
+        .rating-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .rating-box {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .select-rating-box {
+            position: relative;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .select-rating-box:hover {
+            border-color: #3498db;
+        }
+        
+        .select-rating-box.active {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .rating-options {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 100;
+            display: none;
+            transform-origin: top;
+            animation: fadeIn 0.3s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .rating-options.active {
+            display: block;
+        }
+        
+        .rating-option {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            color: #333;
+            transition: all 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .rating-option:last-child {
+            border-bottom: none;
+        }
+        
+        .rating-option:hover {
+            background: #f0f7ff;
+            color: #2980b9;
+        }
+        
+        .rating-option .arabic {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            color: #777;
+            font-weight: 500;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .rating-value {
+            font-weight: 600;
+            color: #3498db;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 500px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .rating-section {
+                padding: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-    <div class="container">
-
-        <div class="header">
-
-            <h1>Rating</h1>
-
-        </div>
-
-
-        <div class="rating-summary">
-
-            <div class="average-rating">4.8</div>
-
-            <div class="stars">
-
-                <i class="fas fa-star"></i>
-
-                <i class="fas fa-star"></i>
-
-                <i class="fas fa-star"></i>
-
-                <i class="fas fa-star"></i>
-
-                <i class="fas fa-star-half-alt"></i>
-
-            </div>
-
-            <div class="based-on">Based on 183 ratings</div>
-
-        </div>
-
-
-        <div class="rating-box">
-
-            <label class="rating-box-label">Choose Rating</label>
-
-            <div class="rating-selector" id="ratingSelector">
-
-                <span>Select your rating</span>
-
-                <i class="fas fa-chevron-down"></i>
-
-            </div>
-
-            <div class="rating-options" id="ratingOptions">
-
-                <div class="rating-option" data-value="5">
-
-                    <div class="option-content">
-
-                        <div class="rating-stars">
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                        </div>
-
-                        <span class="option-text">Excellent</span>
-
-                    </div>
-
-                    <i class="fas fa-check checkmark"></i>
-
-                </div>
-
-                <div class="rating-option" data-value="4">
-
-                    <div class="option-content">
-
-                        <div class="rating-stars">
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                        </div>
-
-                        <span class="option-text">Good</span>
-
-                    </div>
-
-                    <i class="fas fa-check checkmark"></i>
-
-                </div>
-
-                <div class="rating-option" data-value="3">
-
-                    <div class="option-content">
-
-                        <div class="rating-stars">
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                        </div>
-
-                        <span class="option-text">Average</span>
-
-                    </div>
-
-                    <i class="fas fa-check checkmark"></i>
-
-                </div>
-
-                <div class="rating-option" data-value="2">
-
-                    <div class="option-content">
-
-                        <div class="rating-stars">
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                        </div>
-
-                        <span class="option-text">Need Improvement</span>
-
-                    </div>
-
-                    <i class="fas fa-check checkmark"></i>
-
-                </div>
-
-                <div class="rating-option" data-value="1">
-
-                    <div class="option-content">
-
-                        <div class="rating-stars">
-
-                            <i class="fas fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                            <i class="far fa-star"></i>
-
-                        </div>
-
-                        <span class="option-text">Poor</span>
-
-                    </div>
-
-                    <i class="fas fa-check checkmark"></i>
-
-                </div>
-
-            </div>
-
-            <div class="error-message" id="ratingError">
-
-                <i class="fas fa-exclamation-circle"></i>
-
-                <span>Please select a rating</span>
-
-            </div>
-
-        </div>
-
-
-        <div class="purchase-code">
-
-            <label class="purchase-code-label">Purchasing Code</label>
-
-            <input type="text" class="purchase-code-input" id="purchaseCode" placeholder="Enter your purchasing code">
-
-            <div class="error-message" id="codeError">
-
-                <i class="fas fa-exclamation-circle"></i>
-
-                <span>Please enter a purchasing code</span>
-
-            </div>
-
-            <div class="error-message" id="invalidCodeError">
-
-                <i class="fas fa-exclamation-circle"></i>
-
-                <span>Invalid purchasing code. Please make a purchase to rate.</span>
-
-            </div>
-
-        </div>
-
-
-        <button class="submit-btn" id="submitBtn">
-
-            Submit Rating
-
-            <div class="loading-bar" id="loadingBar"></div>
-
-        </button>
-
-
-        <div class="thank-you" id="thankYou">
-
-            <i class="fas fa-check-circle"></i>
-
-            <h2>Thank You!</h2>
-
-            <p>Your rating has been submitted successfully. We appreciate your feedback!</p>
-
-        </div>
-
-    </div>
-
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // DOM elements
-
-            const ratingSelector = document.getElementById('ratingSelector');
-
-            const ratingOptions = document.getElementById('ratingOptions');
-
-            const ratingError = document.getElementById('ratingError');
-
-            const purchaseCode = document.getElementById('purchaseCode');
-
-            const codeError = document.getElementById('codeError');
-
-            const invalidCodeError = document.getElementById('invalidCodeError');
-
-            const submitBtn = document.getElementById('submitBtn');
-
-            const loadingBar = document.getElementById('loadingBar');
-
-            const thankYou = document.getElementById('thankYou');
-
-            
-
-            let selectedRating = null;
-
-            
-
-            // Toggle rating options
-
-            ratingSelector.addEventListener('click', function(e) {
-
-                e.stopPropagation();
-
-                ratingOptions.style.display = ratingOptions.style.display === 'block' ? 'none' : 'block';
-
-            });
-
-            
-
-            // Handle rating selection
-
-            const options = ratingOptions.querySelectorAll('.rating-option');
-
-            options.forEach(option => {
-
-                option.addEventListener('click', function() {
-
-                    // Remove active class from all options
-
-                    options.forEach(opt => opt.classList.remove('active'));
-
-                    
-
-                    // Add active class to selected option
-
-                    this.classList.add('active');
-
-                    
-
-                    // Update selector text
-
-                    const ratingText = this.querySelector('.option-text').textContent;
-
-                    ratingSelector.querySelector('span').textContent = ratingText;
-
-                    
-
-                    // Store selected value
-
-                    selectedRating = this.getAttribute('data-value');
-
-                    
-
-                    // Hide options
-
-                    ratingOptions.style.display = 'none';
-
-                    
-
-                    // Clear any previous error
-
-                    ratingError.style.display = 'none';
-
-                });
-
-            });
-
-            
-
-            // Close rating options when clicking outside
-
-            document.addEventListener('click', function(e) {
-
-                if (!ratingSelector.contains(e.target) && !ratingOptions.contains(e.target)) {
-
-                    ratingOptions.style.display = 'none';
-
-                }
-
-            });
-
-            
-
-            // Form submission
-
-            submitBtn.addEventListener('click', function() {
-
-                let isValid = true;
-
-                
-
-                // Reset errors
-
-                ratingError.style.display = 'none';
-
-                codeError.style.display = 'none';
-
-                invalidCodeError.style.display = 'none';
-
-                
-
-                // Validate rating
-
-                if (!selectedRating) {
-
-                    ratingError.style.display = 'flex';
-
-                    isValid = false;
-
-                }
-
-                
-
-                // Validate purchase code
-
-                const codeValue = purchaseCode.value.trim();
-
-                if (!codeValue) {
-
-                    codeError.style.display = 'flex';
-
-                    isValid = false;
-
-                } else if (codeValue.length < 12 || !/^[a-zA-Z0-9-]+$/.test(codeValue)) {
-
-                    invalidCodeError.style.display = 'flex';
-
-                    isValid = false;
-
-                }
-
-                
-
-                if (isValid) {
-
-                    // Show loading bar
-
-                    loadingBar.style.width = '100%';
-
-                    submitBtn.disabled = true;
-
-                    
-
-                    // Simulate submission process
-
-                    setTimeout(function() {
-
-                        // Reset loading bar
-
-                        loadingBar.style.width = '0';
-
-                        
-
-                        // Hide form and show thank you message
-
-                        document.querySelector('.rating-box').style.display = 'none';
-
-                        document.querySelector('.purchase-code').style.display = 'none';
-
-                        document.querySelector('.submit-btn').style.display = 'none';
-
-                        thankYou.style.display = 'block';
-
-                        
-
-                        // Re-enable button after animation completes
-
-                        setTimeout(function() {
-
-                            submitBtn.disabled = false;
-
-                        }, 300);
-
-                    }, 1500);
-
-                }
-
-            });
-
-            
-
-            // Clear error when user starts typing
-
-            purchaseCode.addEventListener('input', function() {
-
-                codeError.style.display = 'none';
-
-                invalidCodeError.style.display = 'none';
-
-            });
-
-        });
-
-    </script>
-
+    <div class="container">
+        <div class="header">
+            <h1>Customer Feedback</h1>
+            <p>We value your opinion about our services</p>
+        </div>
+        
+        <div class="content">
+            <div class="section-title">
+                <h2>Ratings</h2>
+            </div>
+            
+            <div class="rating-section">
+                <div class="rating-box">
+                    <div class="select-rating-box" id="ratingTrigger">
+                        <span>Select your rating</span>
+                        <span>▼</span>
+                    </div>
+                    
+                    <div class="rating-options" id="ratingOptions">
+                        <div class="rating-option" data-value="excellent">
+                            <span>Excellent</span>
+                            <span class="arabic">(ممتاز)</span>
+                        </div>
+                        <div class="rating-option" data-value="very-good">
+                            <span>Very Good</span>
+                            <span class="arabic">(جيد جداً)</span>
+                        </div>
+                        <div class="rating-option" data-value="good">
+                            <span>Good</span>
+                            <span class="arabic">(جيد)</span>
+                        </div>
+                        <div class="rating-option" data-value="average">
+                            <span>Average</span>
+                            <span class="arabic">(متوسط)</span>
+                        </div>
+                        <div class="rating-option" data-value="poor">
+                            <span>Poor</span>
+                            <span class="arabic">(ضعيف)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="submit-btn" id="submitBtn">Submit Feedback</button>
+            </div>
+            
+            <div class="footer-note">
+                <p>Your feedback is anonymous and will help us improve our services</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ratingTrigger = document.getElementById('ratingTrigger');
+            const ratingOptions = document.getElementById('ratingOptions');
+            const submitBtn = document.getElementById('submitBtn');
+            const ratingOptionsList = document.querySelectorAll('.rating-option');
+            
+            let selectedRating = null;
+            
+            // Toggle rating options
+            ratingTrigger.addEventListener('click', function() {
+                ratingOptions.classList.toggle('active');
+                ratingTrigger.classList.toggle('active');
+            });
+            
+            // Select a rating option
+            ratingOptionsList.forEach(option => {
+                option.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectedRating = value;
+                    
+                    // Update the trigger text
+                    const englishText = this.querySelector('span:first-child').textContent;
+                    ratingTrigger.querySelector('span:first-child').textContent = englishText;
+                    
+                    // Add visual feedback
+                    ratingOptionsList.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Close the options
+                    ratingOptions.classList.remove('active');
+                    ratingTrigger.classList.remove('active');
+                });
+            });
+            
+            // Submit button functionality
+            submitBtn.addEventListener('click', function() {
+                if (selectedRating) {
+                    const ratingText = ratingTrigger.querySelector('span:first-child').textContent;
+                    alert(`Thank you for your feedback! You rated us as: ${ratingText}`);
+                } else {
+                    alert('Please select a rating before submitting');
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!ratingTrigger.contains(event.target) && !ratingOptions.contains(event.target)) {
+                    ratingOptions.classList.remove('active');
+                    ratingTrigger.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
-
