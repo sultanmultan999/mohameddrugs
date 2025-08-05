@@ -1,136 +1,460 @@
-<!-- ⭐ Leave a Review Section ⭐ -->
-<div class="review-section">
-  <h2 class="review-title">Leave a Review / <span class="arabic">اترك مراجعة</span></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Review Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <form id="reviewForm" onsubmit="return validateReviewForm()">
-    <!-- Row 1: First Name & Last Name -->
-    <div class="form-row">
-      <input type="text" id="firstName" placeholder="First Name / الاسم الأول" />
-      <input type="text" id="lastName" placeholder="Last Name / اسم العائلة" />
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(106, 27, 154, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .review-section {
+            background: rgba(15, 15, 35, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(86, 61, 124, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .review-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(106, 27, 154, 0.4);
+        }
+
+        .review-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #7e57c2, #5e35b1, #4527a0);
+            animation: borderAnimation 3s infinite;
+        }
+
+        .review-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 600;
+            background: linear-gradient(45deg, #d1c4e9, #b39ddb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .review-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #7e57c2, #5e35b1);
+            border-radius: 10px;
+        }
+
+        .arabic {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: normal;
+            letter-spacing: normal;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-row input,
+        .form-row select,
+        textarea {
+            flex: 1;
+            min-width: 200px;
+            padding: 18px 22px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(25, 25, 50, 0.7);
+            color: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(106, 27, 154, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-row input:focus,
+        .form-row select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #7e57c2;
+            box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.3);
+            background: rgba(30, 30, 60, 0.85);
+            transform: translateY(-3px);
+        }
+
+        .form-row input:hover,
+        .form-row select:hover,
+        textarea:hover {
+            border-color: #9575cd;
+        }
+
+        .form-row input::placeholder,
+        .form-row select,
+        textarea::placeholder {
+            color: #b0bec5;
+        }
+
+        textarea {
+            height: 160px;
+            resize: vertical;
+        }
+
+        .form-row.center {
+            justify-content: center;
+        }
+
+        .form-row.full textarea {
+            width: 100%;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #7e57c2, #5e35b1);
+            color: white;
+            padding: 18px 45px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(94, 53, 177, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(94, 53, 177, 0.5);
+        }
+
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(2px);
+        }
+
+        .submit-btn i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .review-section {
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            
+            .review-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .form-row {
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .form-row input,
+            .form-row select,
+            textarea {
+                padding: 16px;
+            }
+            
+            .submit-btn {
+                padding: 16px 35px;
+                font-size: 16px;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-section {
+                padding: 25px 15px;
+            }
+            
+            .review-title {
+                font-size: 1.5rem;
+                padding-bottom: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-row input,
+            .form-row select,
+            textarea {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        .floating:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .floating:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .floating:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .dec-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 8rem;
+            color: #7e57c2;
+        }
+
+        .dec-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 6rem;
+            color: #5e35b1;
+        }
+
+        .dec-3 {
+            top: 40%;
+            right: 15%;
+            font-size: 4rem;
+            color: #4527a0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #b39ddb;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="decoration dec-1 floating">
+        <i class="fas fa-star"></i>
+    </div>
+    <div class="decoration dec-2 floating">
+        <i class="fas fa-heart"></i>
+    </div>
+    <div class="decoration dec-3 floating">
+        <i class="fas fa-comment-alt"></i>
     </div>
 
-    <!-- Row 2: Country Select & City -->
-    <div class="form-row">
-      <select id="country">
-        <option value="">Select Country / اختر الدولة</option>
-        <option value="Egypt">Egypt / مصر</option>
-        <option value="Saudi Arabia">Saudi Arabia / السعودية</option>
-        <option value="UAE">UAE / الإمارات</option>
-        <option value="Qatar">Qatar / قطر</option>
-        <option value="Kuwait">Kuwait / الكويت</option>
-        <option value="Oman">Oman / عمان</option>
-        <option value="Bahrain">Bahrain / البحرين</option>
-      </select>
-      <input type="text" id="city" placeholder="City / المدينة" />
+    <!-- ⭐ Leave a Review Section ⭐ -->
+    <div class="review-section">
+        <h2 class="review-title">Leave a Review / <span class="arabic">اترك مراجعة</span></h2>
+
+        <form id="reviewForm" onsubmit="return validateReviewForm()">
+            <!-- Row 1: First Name & Last Name -->
+            <div class="form-row">
+                <input type="text" id="firstName" placeholder="First Name / الاسم الأول" />
+                <input type="text" id="lastName" placeholder="Last Name / اسم العائلة" />
+            </div>
+
+            <!-- Row 2: Country Select & City -->
+            <div class="form-row">
+                <select id="country">
+                    <option value="">Select Country / اختر الدولة</option>
+                    <option value="Egypt">Egypt / مصر</option>
+                    <option value="Saudi Arabia">Saudi Arabia / السعودية</option>
+                    <option value="UAE">UAE / الإمارات</option>
+                    <option value="Qatar">Qatar / قطر</option>
+                    <option value="Kuwait">Kuwait / الكويت</option>
+                    <option value="Oman">Oman / عمان</option>
+                    <option value="Bahrain">Bahrain / البحرين</option>
+                </select>
+                <input type="text" id="city" placeholder="City / المدينة" />
+            </div>
+
+            <!-- Row 3: Purchasing Code -->
+            <div class="form-row center">
+                <input type="text" id="purchaseCode" placeholder="Purchasing Code / رمز الشراء" />
+            </div>
+
+            <!-- Row 4: Review Text -->
+            <div class="form-row full">
+                <textarea id="reviewText" placeholder="Type your review / اكتب مراجعتك هنا"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-row center">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Review / إرسال المراجعة
+                </button>
+            </div>
+        </form>
+        
+        <div class="footer">
+            Premium Review Form • Secure Submission • © 2023
+        </div>
     </div>
 
-    <!-- Row 3: Purchasing Code -->
-    <div class="form-row center">
-      <input type="text" id="purchaseCode" placeholder="Purchasing Code / رمز الشراء" />
-    </div>
+    <!-- 🧠 JavaScript -->
+    <script>
+        function validateReviewForm() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const country = document.getElementById('country').value;
+            const city = document.getElementById('city').value.trim();
+            const code = document.getElementById('purchaseCode').value.trim();
+            const review = document.getElementById('reviewText').value.trim();
 
-    <!-- Row 4: Review Text -->
-    <div class="form-row full">
-      <textarea id="reviewText" placeholder="Type your review / اكتب مراجعتك هنا"></textarea>
-    </div>
+            if (!firstName || !lastName || !country || !city || !code || !review) {
+                alert("❗ Please fill all fields / الرجاء تعبئة جميع الحقول");
+                return false;
+            }
 
-    <!-- Submit Button -->
-    <div class="form-row center">
-      <button type="submit" class="submit-btn">Submit Review / إرسال المراجعة</button>
-    </div>
-  </form>
-</div>
+            // Fake code check
+            if (code !== "5895341") {
+                alert("❌ Invalid purchasing code / رمز الشراء غير صالح");
+                return false;
+            }
 
-<!-- ✨ Styling -->
-<style>
-.review-section {
-  background-color: #111;
-  color: #fff;
-  padding: 40px 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 60px auto;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-.review-title {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 25px;
-}
-.arabic {
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: normal;
-}
-.form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.form-row input,
-.form-row select,
-textarea {
-  flex: 1;
-  padding: 12px;
-  font-size: 15px;
-  border: none;
-  border-radius: 6px;
-  background: #222;
-  color: white;
-}
-textarea {
-  height: 120px;
-  resize: vertical;
-}
-.form-row.center {
-  justify-content: center;
-}
-.form-row.full textarea {
-  width: 100%;
-}
-.submit-btn {
-  background-color: #007BFF;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.submit-btn:hover {
-  background-color: #0056cc;
-}
-@media (max-width: 600px) {
-  .form-row {
-    flex-direction: column;
-  }
-}
-</style>
-
-<!-- 🧠 JavaScript -->
-<script>
-function validateReviewForm() {
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const country = document.getElementById('country').value;
-  const city = document.getElementById('city').value.trim();
-  const code = document.getElementById('purchaseCode').value.trim();
-  const review = document.getElementById('reviewText').value.trim();
-
-  if (!firstName || !lastName || !country || !city || !code || !review) {
-    alert("❗ Please fill all fields / الرجاء تعبئة جميع الحقول");
-    return false;
-  }
-
-  // Fake code check
-  if (code !== "5895341") {
-    alert("❌ Invalid purchasing code / رمز الشراء غير صالح");
-    return false;
-  }
-
-  alert("✅ Review submitted successfully! / تم إرسال المراجعة بنجاح!");
-  return false; // prevent real submission (dummy)
-}
-</script>
+            alert("✅ Review submitted successfully! / تم إرسال المراجعة بنجاح!");
+            
+            // Reset form
+            document.getElementById('reviewForm').reset();
+            
+            return false; // prevent real submission (dummy)
+        }
+        
+        // Add focus effects programmatically
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.01)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
