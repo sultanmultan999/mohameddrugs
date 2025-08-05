@@ -14,297 +14,153 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0c1120 0%, #0a0a1a 100%);
-      min-height: 100vh;
+      background: #0b0f1a;
+      color: #ffffff;
+      font-family: 'El Messiri', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'El Messiri', sans-serif;
-      color: #eef2f8;
+      min-height: 100vh;
       padding: 20px;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    .gold-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .card-box {
       width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 25%);
-      pointer-events: none;
+      max-width: 800px;
+      background: #111827;
+      border: 1px solid #2c2f3f;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+      padding: 40px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-box::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
       z-index: 0;
     }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
+    .card-content {
       position: relative;
       z-index: 2;
-      padding: 20px;
     }
 
-    .header {
+    .card-title {
       text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .header h1 {
-      font-size: 2.6rem;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #f9d783;
       font-weight: 600;
-      color: #d4c9a5;
-      position: relative;
-      display: inline-block;
-      padding: 0 20px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    .header h1 span {
-      display: inline-block;
-    }
-
-    .header h1 .en {
+    .card-title span.en {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.8rem;
-      margin-left: 10px;
-      color: #e4e4e4;
+      font-size: 1.3rem;
+      color: #d1d5db;
+      display: inline-block;
+      margin-right: 8px;
     }
 
-    .about-section {
-      background: linear-gradient(145deg, rgba(18, 22, 40, 0.9), rgba(12, 15, 28, 0.95));
-      border: 1px solid rgba(100, 90, 60, 0.4);
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
-      padding: 60px 50px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(6px);
-      transition: transform 0.3s ease;
-    }
-
-    .about-section:hover {
-      transform: translateY(-5px);
-    }
-
-    .about-section::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent, rgba(180, 150, 50, 0.2));
-      z-index: -1;
-      border-radius: 14px;
-      animation: borderAnimation 8s linear infinite;
-      background-size: 300% 300%;
-    }
-
-    @keyframes borderAnimation {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 300% 50%; }
-    }
-
-    .about-content {
+    .card-body {
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #f3f4f6;
       text-align: center;
-      position: relative;
-      z-index: 1;
     }
 
     .year-badge {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #d4af37 0%, #b89e3a 100%);
-      color: #0c1120;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      background-color: #d4af37;
+      color: #111827;
+      font-size: 1rem;
       font-weight: 500;
-      padding: 8px 25px;
-      border-radius: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      z-index: 3;
-      letter-spacing: 1px;
-    }
-
-    .about-text {
-      font-size: 1.4rem;
-      line-height: 1.9;
-      color: #e8edf5;
-      margin: 0 auto;
-      padding: 20px 0;
-      max-width: 800px;
-      font-weight: 400;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .about-text strong {
-      color: #d4c9a5;
-      font-weight: 600;
+      padding: 6px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 0 auto 20px;
+      text-align: center;
     }
 
     .signature {
-      text-align: center;
-      margin-top: 40px;
-      color: #d4af37;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      position: relative;
-      display: inline-block;
-      padding: 10px 40px;
+      margin-top: 30px;
       font-weight: 600;
+      font-size: 1.1rem;
+      color: #fcd34d;
+      text-align: center;
+      position: relative;
     }
 
-    .signature-line {
+    .signature::before,
+    .signature::after {
+      content: "";
       position: absolute;
       top: 50%;
+      width: 60px;
       height: 1px;
-      width: 80px;
-      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      background: linear-gradient(to right, transparent, #fcd34d, transparent);
     }
 
-    .signature-line.left {
+    .signature::before {
       right: 100%;
+      margin-right: 10px;
     }
 
-    .signature-line.right {
+    .signature::after {
       left: 100%;
+      margin-left: 10px;
     }
 
-    .pharma-icons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 50px;
-      opacity: 0.6;
-    }
-
-    .pharma-icon {
-      font-size: 2.5rem;
-      color: #d4af37;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 1rem;
-      color: #8a94a8;
-      letter-spacing: 0.5px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 2.2rem;
+    @media (max-width: 600px) {
+      .card-box {
+        padding: 30px 20px;
       }
 
-      .header h1 .en {
-        font-size: 1.3rem;
-        margin-top: 10px;
-        display: block;
+      .card-title {
+        font-size: 1.6rem;
       }
 
-      .about-section {
-        padding: 50px 30px;
-      }
-
-      .about-text {
-        font-size: 1.25rem;
-      }
-
-      .year-badge {
+      .card-title span.en {
         font-size: 1rem;
-        padding: 6px 20px;
-        top: -20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header h1 {
-        font-size: 1.9rem;
       }
 
-      .header h1 .en {
-        font-size: 1.1rem;
-      }
-
-      .about-section {
-        padding: 40px 20px;
-      }
-
-      .about-text {
-        font-size: 1.15rem;
+      .card-body {
+        font-size: 1.05rem;
       }
 
       .signature {
-        font-size: 1.2rem;
-        padding: 10px 30px;
+        font-size: 1rem;
       }
 
-      .pharma-icons {
-        gap: 25px;
-      }
-
-      .pharma-icon {
-        font-size: 2rem;
+      .signature::before,
+      .signature::after {
+        width: 40px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="gold-overlay"></div>
 
-  <div class="container">
-    <div class="header">
-      <h1><span>نبذة عنّا</span> <span class="en">| About Us</span></h1>
-    </div>
+  <div class="card-box">
+    <div class="card-content">
+      <div class="card-title">
+        <span class="en">About Us</span> | نبذة عنّا
+      </div>
 
-    <div class="about-section">
       <div class="year-badge">منذ عام 2023</div>
 
-      <div class="about-content">
-        <div class="about-text">
-          مرحبًا بكم في <strong>Mohamed Drugs Shop</strong> منذ عام 2023 – وجهتكم الموثوقة للحصول على الأدوية والمستحضرات الصيدلانية عالية الجودة في مصر وجميع دول الخليج. نحن نوفر خدمة توصيل سريعة وآمنة وخدمة احترافية. لا يوجد دفع نقدي، ولا تأخير – فقط نتائج موثوقة يمكنك الاعتماد عليها.
-        </div>
-
-        <div class="signature">
-          <div class="signature-line left"></div>
-          شكرًا لاختياركم لنا
-          <div class="signature-line right"></div>
-        </div>
+      <div class="card-body">
+        مرحبًا بكم في <strong>Mohamed Drugs Shop</strong> منذ عام 2023 – وجهتكم الموثوقة للحصول على الأدوية والمستحضرات الصيدلانية عالية الجودة في مصر وجميع دول الخليج. نحن نوفر خدمة توصيل سريعة وآمنة وخدمة احترافية. لا يوجد دفع نقدي، ولا تأخير – فقط نتائج موثوقة يمكنك الاعتماد عليها.
       </div>
 
-      <div class="pharma-icons">
-        <i class="pharma-icon fas fa-pills"></i>
-        <i class="pharma-icon fas fa-heartbeat"></i>
-        <i class="pharma-icon fas fa-truck"></i>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>Mohamed Drugs Shop © 2023. جميع الحقوق محفوظة</p>
+      <div class="signature">شكرًا لاختياركم لنا</div>
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const aboutSection = document.querySelector('.about-section');
-      aboutSection.style.opacity = '0';
-      aboutSection.style.transform = 'translateY(30px)';
-
-      setTimeout(() => {
-        aboutSection.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        aboutSection.style.opacity = '1';
-        aboutSection.style.transform = 'translateY(0)';
-      }, 300);
-    });
-  </script>
 </body>
 </html>
