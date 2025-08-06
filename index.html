@@ -3,102 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Drugs Shop - Premium Pharmacy</title>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Mohamed Drugs Shop | Premium Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* === Global Styles === */
         :root {
-            --dark-bg: #0c1120;
-            --darker-bg: #0a0a1a;
-            --card-bg: rgba(18, 22, 40, 0.9);
-            --text-light: #eef2f8;
-            --gold: #d4af37;
-            --gold-light: #d4c9a5;
-            --accent-blue: #3498db;
+            --primary: #00c3ff;
+            --primary-light: #00e5ff;
+            --secondary: #8e44ad;
+            --dark-bg: #0d0d0d;
+            --darker-bg: #121212;
+            --card-bg: #1a1a1a;
+            --text-light: #e0e0e0;
+            --text-muted: #aaa;
+            --accent-purple: #9c27b0;
+            --accent-blue: #2196f3;
             --accent-green: #4caf50;
+            --accent-orange: #ff9800;
             --accent-red: #f44336;
-            --glow: 0 0 15px rgba(212, 175, 55, 0.4);
+            --glow: 0 0 15px rgba(0, 195, 255, 0.7);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
             color: var(--text-light);
-            min-height: 100vh;
-            font-family: 'Montserrat', sans-serif;
+            background-attachment: fixed;
+            background-size: cover;
             overflow-x: hidden;
+            padding-bottom: 40px;
         }
-        
-        .gold-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 25%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .section {
+
+        section {
+            padding: 60px 20px;
             max-width: 1200px;
-            width: 100%;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto;
         }
-        
+
         .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 20px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
             position: relative;
             display: inline-block;
-            padding: 0 30px;
-            font-family: 'El Messiri', sans-serif;
+            text-shadow: var(--glow);
+            text-align: center;
+            width: 100%;
         }
-        
-        .section-title h2::before,
-        .section-title h2::after {
-            content: "✧";
+
+        .section-title::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold);
-            font-size: 1.8rem;
-            opacity: 0.7;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 5px;
+            box-shadow: var(--glow);
         }
-        
-        .section-title h2::before {
-            right: 0;
-        }
-        
-        .section-title h2::after {
-            left: 0;
-        }
-        
-        .section-divider {
-            width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 20px auto;
-        }
-        
-        /* Header Section */
+
+        /* === Header Styles === */
         .site-header {
             background: var(--dark-bg);
             padding: 20px 30px;
@@ -107,11 +80,11 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.2);
         }
-        
+
         .store-name {
-            color: var(--gold);
+            color: var(--primary);
             font-size: 38px;
             font-weight: 800;
             letter-spacing: 1px;
@@ -119,8 +92,9 @@
             text-shadow: var(--glow);
             position: relative;
             display: inline-block;
+            animation: pulse 2s infinite;
         }
-        
+
         .store-name::after {
             content: 'Premium Pharmacy';
             position: absolute;
@@ -128,13 +102,13 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 16px;
-            color: var(--gold-light);
+            color: var(--primary-light);
             font-weight: 300;
             letter-spacing: 2px;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 8px rgba(0, 195, 255, 0.5);
             width: 100%;
         }
-        
+
         .country-list {
             display: flex;
             flex-wrap: wrap;
@@ -142,7 +116,7 @@
             gap: 12px;
             margin-top: 30px;
         }
-        
+
         .country-list span {
             color: var(--text-light);
             font-size: 13px;
@@ -153,9 +127,9 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.1);
         }
-        
+
         .country-list span::before {
             content: '';
             position: absolute;
@@ -163,21 +137,22 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0,195,255,0.3), transparent);
             transition: all 0.6s;
         }
-        
+
         .country-list span:hover {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold);
+            background: rgba(0,195,255,0.1);
+            color: var(--primary);
             transform: translateY(-3px);
             box-shadow: var(--glow);
         }
-        
+
         .country-list span:hover::before {
             left: 100%;
         }
-        
+
+        /* Hero Image */
         .hero-container {
             position: relative;
             width: 100%;
@@ -188,7 +163,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         .hero-image {
             width: 100%;
             height: auto;
@@ -196,11 +171,11 @@
             object-fit: cover;
             border-radius: 16px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(0,195,255,0.2);
             position: relative;
             z-index: 2;
         }
-        
+
         .hero-text {
             text-align: center;
             color: white;
@@ -213,31 +188,32 @@
             align-items: center;
             gap: 15px;
             margin-bottom: -20px;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--primary);
             position: relative;
             z-index: 3;
             box-shadow: var(--glow);
             animation: float 3s ease-in-out infinite;
         }
-        
+
         .delivery-icons {
             display: flex;
             gap: 12px;
             margin-top: 8px;
         }
-        
+
         .delivery-icons i {
-            color: var(--gold);
+            color: var(--primary);
             font-size: 18px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
             transition: all 0.3s ease;
         }
-        
+
         .delivery-icons i:hover {
             transform: translateY(-5px);
-            color: var(--gold-light);
+            color: var(--primary-light);
         }
-        
+
+        /* Country Selection */
         .country-selection {
             padding: 60px 20px;
             background: linear-gradient(to bottom, rgba(17,17,17,0.8), rgba(10,10,10,0.9));
@@ -245,9 +221,8 @@
             position: relative;
             overflow: hidden;
             margin-top: 20px;
-            border-radius: 16px;
         }
-        
+
         .country-selection::before {
             content: '';
             position: absolute;
@@ -255,9 +230,9 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
-        
+
         .country-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -265,12 +240,12 @@
             max-width: 1250px;
             margin: 0 auto;
         }
-        
+
         .country-card {
             text-decoration: none;
             background: var(--card-bg);
             padding: 25px 15px;
-            color: var(--gold);
+            color: var(--primary);
             border-radius: 15px;
             font-size: 22px;
             font-weight: bold;
@@ -280,12 +255,12 @@
             justify-content: center;
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(0,195,255,0.15);
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .country-card::before {
             content: '';
             position: absolute;
@@ -293,168 +268,202 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(142,68,173,0.1));
+            background: linear-gradient(135deg, rgba(0,195,255,0.1), rgba(142,68,173,0.1));
             z-index: -1;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        
+
         .country-card:hover {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
-            background: linear-gradient(135deg, var(--card-bg), #2a1e0a);
+            box-shadow: 0 15px 35px rgba(0,195,255,0.4);
+            background: linear-gradient(135deg, var(--card-bg), #0d2b3a);
         }
-        
+
         .country-card:hover::before {
             opacity: 1;
         }
-        
+
         .country-card img {
             width: 46px;
             margin-bottom: 15px;
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7));
+            filter: drop-shadow(0 0 5px rgba(0,195,255,0.7));
             transition: all 0.3s ease;
         }
-        
+
         .country-card:hover img {
             transform: scale(1.2);
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 1));
+            filter: drop-shadow(0 0 10px rgba(0,195,255,1));
         }
-        
+
         .country-name {
             text-align: center;
             line-height: 1.4;
             position: relative;
         }
-        
+
         .arabic-name {
             font-size: 24px;
             display: block;
             font-weight: 700;
             transition: all 0.3s ease;
         }
-        
+
         .english-name {
             font-size: 18px;
             display: block;
-            color: var(--gold-light);
+            color: var(--text-muted);
             transition: all 0.3s ease;
         }
-        
+
         .country-card:hover .arabic-name {
-            color: var(--gold-light);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
             animation: pop 0.5s ease;
         }
-        
+
         .country-card:hover .english-name {
             color: white;
         }
-        
-        /* Ratings Section */
-        .rating-container {
-            background: var(--card-bg);
+
+        /* === Rating Section === */
+        .rating-section {
+            background: rgba(19, 23, 42, 0.95);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(80, 102, 144, 0.4);
             position: relative;
             overflow: hidden;
-            margin: 60px 0;
+            transition: all 0.4s ease;
+            margin: 40px 0;
         }
-        
-        .rating-container::before {
+
+        .rating-section::before {
             content: "";
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                transparent, 
-                rgba(212, 175, 55, 0.3), 
-                transparent, 
-                rgba(180, 150, 50, 0.2));
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(92, 107, 192, 0.15) 0%, transparent 70%);
             z-index: -1;
-            border-radius: 14px;
-            animation: borderAnimation 8s linear infinite;
-            background-size: 300% 300%;
+            animation: rotate 20s linear infinite;
         }
-        
+
+        .rating-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(123, 104, 238, 0.05), rgba(52, 152, 219, 0.05));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .rating-header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rating-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent-blue), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .rating-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
         .rating-summary {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
             margin-bottom: 25px;
+            animation: fadeIn 0.8s ease;
             background: rgba(30, 35, 60, 0.6);
             border-radius: 14px;
             padding: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(92, 107, 192, 0.3);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         .average-rating {
             font-size: 3.2rem;
             font-weight: 700;
-            background: linear-gradient(45deg, var(--gold), #b89e3a, #ff8c00);
+            background: linear-gradient(45deg, #ffd700, #ffa500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
         }
-        
+
         .stars {
             display: flex;
             gap: 4px;
             margin-top: 3px;
         }
-        
+
         .stars i {
-            color: var(--gold);
+            color: #ffd700;
             font-size: 1.5rem;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             transition: transform 0.3s ease;
         }
-        
+
         .stars:hover i {
             transform: scale(1.1);
         }
-        
+
         .based-on {
-            color: var(--gold-light);
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 3px;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
-        
+
         .rating-box {
             position: relative;
             margin-bottom: 20px;
             z-index: 2;
         }
-        
+
         .rating-box-label {
             display: block;
             margin-bottom: 12px;
             font-weight: 600;
-            color: var(--gold-light);
+            color: var(--text-light);
             font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .rating-box-label i {
-            color: var(--gold);
+            color: var(--accent-purple);
         }
-        
+
         .rating-selector {
             width: 100%;
             background: rgba(30, 35, 60, 0.8);
-            border: 2px solid rgba(212, 175, 55, 0.6);
+            border: 2px solid rgba(92, 107, 192, 0.6);
             border-radius: 10px;
             padding: 14px 16px;
             font-size: 0.95rem;
@@ -466,13 +475,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        
+
         .rating-selector:hover {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.4);
             transform: translateY(-2px);
         }
-        
+
         .rating-options {
             position: absolute;
             top: auto;
@@ -480,7 +489,7 @@
             left: 0;
             width: 100%;
             background: rgba(30, 35, 60, 0.98);
-            border: 2px solid rgba(212, 175, 55, 0.8);
+            border: 2px solid rgba(92, 107, 192, 0.8);
             border-radius: 10px;
             margin-top: 0;
             margin-bottom: 8px;
@@ -488,8 +497,9 @@
             display: none;
             z-index: 10;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.3s ease forwards;
         }
-        
+
         .rating-option {
             padding: 12px 16px;
             display: flex;
@@ -497,86 +507,88 @@
             align-items: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(92, 107, 192, 0.2);
         }
-        
+
         .rating-option:last-child {
             border-bottom: none;
         }
-        
+
         .rating-option:hover {
-            background: rgba(212, 175, 55, 0.3);
+            background: rgba(92, 107, 192, 0.3);
         }
-        
+
         .rating-option.active {
-            background: rgba(212, 175, 55, 0.5);
+            background: rgba(92, 107, 192, 0.5);
         }
-        
+
         .rating-option .option-content {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
+
         .rating-option .option-text {
             font-weight: 500;
             font-size: 0.92rem;
             display: flex;
             flex-direction: column;
         }
-        
+
         .rating-option .english {
             font-weight: 500;
         }
-        
+
         .rating-option .arabic {
             font-size: 0.8rem;
-            color: var(--gold-light);
+            color: var(--text-muted);
             margin-top: 4px;
             font-weight: 400;
         }
-        
+
         .rating-option .checkmark {
-            color: var(--gold);
+            color: var(--accent-purple);
             font-size: 1rem;
             opacity: 0;
             transition: opacity 0.2s ease;
         }
-        
+
         .rating-option.active .checkmark {
             opacity: 1;
         }
-        
+
         .rating-stars {
-            color: var(--gold);
+            color: #ffd700;
             font-size: 0.9rem;
             min-width: 80px;
         }
-        
+
         .purchase-code {
             margin-bottom: 20px;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+            opacity: 0;
             z-index: 2;
         }
-        
+
         .purchase-code-label {
             display: block;
             margin-bottom: 12px;
             font-weight: 600;
-            color: var(--gold-light);
+            color: var(--text-light);
             font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .purchase-code-label i {
-            color: var(--gold);
+            color: var(--accent-purple);
         }
-        
+
         .purchase-code-input {
             width: 100%;
             background: rgba(30, 35, 60, 0.8);
-            border: 2px solid rgba(212, 175, 55, 0.6);
+            border: 2px solid rgba(92, 107, 192, 0.6);
             border-radius: 10px;
             padding: 14px 16px;
             font-size: 0.95rem;
@@ -584,20 +596,20 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        
+
         .purchase-code-input:focus {
             outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(92, 107, 192, 0.4);
             transform: translateY(-2px);
         }
-        
+
         .purchase-code-input::placeholder {
             color: #7a7a9a;
         }
-        
+
         .error-message {
-            color: var(--accent-red);
+            color: #ff6b6b;
             font-size: 0.9rem;
             margin-top: 10px;
             display: flex;
@@ -608,13 +620,17 @@
             background: rgba(255, 107, 107, 0.1);
             padding: 8px 12px;
             border-radius: 8px;
-            border-left: 3px solid var(--accent-red);
+            border-left: 3px solid #ff6b6b;
         }
-        
+
+        .error-message i {
+            font-size: 1rem;
+        }
+
         .submit-btn {
             width: 100%;
-            background: linear-gradient(45deg, #b89e3a, var(--gold), #d4c9a5);
-            color: #1a1a1a;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue), var(--primary-light));
+            color: white;
             border: none;
             border-radius: 10px;
             padding: 16px;
@@ -629,16 +645,16 @@
             letter-spacing: 0.5px;
             z-index: 2;
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
-        
+
         .submit-btn:active {
             transform: translateY(0);
         }
-        
+
         .submit-btn::before {
             content: '';
             position: absolute;
@@ -649,11 +665,11 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
         }
-        
+
         .submit-btn:hover::before {
             left: 100%;
         }
-        
+
         .loading-bar {
             position: absolute;
             bottom: 0;
@@ -664,55 +680,57 @@
             border-radius: 0 0 10px 10px;
             transition: width 1.5s ease;
         }
-        
+
         .thank-you {
             text-align: center;
             padding: 25px 20px;
             display: none;
+            animation: fadeIn 0.8s ease;
             background: rgba(30, 35, 60, 0.7);
             border-radius: 14px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(92, 107, 192, 0.4);
             z-index: 2;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         .thank-you i {
             font-size: 3.5rem;
-            color: var(--gold);
+            color: var(--accent-purple);
             margin-bottom: 15px;
             animation: pulse 1.5s infinite;
         }
-        
+
         .thank-you h2 {
             font-size: 2rem;
             margin-bottom: 12px;
-            background: linear-gradient(45deg, var(--gold), #b89e3a, #d4c9a5);
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
-        
+
         .thank-you p {
-            color: var(--gold-light);
+            color: var(--text-muted);
             line-height: 1.6;
             font-size: 1rem;
             max-width: 400px;
             margin: 0 auto;
         }
-        
-        /* Reviews Section */
+
+        /* === Review Section === */
         .review-section {
-            background: var(--card-bg);
+            background: rgba(15, 22, 40, 0.9);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(86, 104, 158, 0.3);
             position: relative;
             overflow: hidden;
+            animation: fadeIn 0.8s ease-out forwards;
             backdrop-filter: blur(10px);
-            margin: 60px 0;
+            margin: 40px 0;
         }
-        
+
         .review-section::before {
             content: '';
             position: absolute;
@@ -720,31 +738,72 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--gold), #d4c9a5);
+            background: linear-gradient(90deg, var(--accent-blue), var(--primary-light));
             animation: borderAnimation 3s infinite;
         }
-        
+
+        .review-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .review-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .review-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--primary-light));
+            border-radius: 10px;
+        }
+
+        .arabic {
+            font-weight: normal;
+            letter-spacing: normal;
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: var(--primary);
+        }
+
         .form-row {
             display: flex;
             flex-wrap: wrap;
             gap: 25px;
             margin-bottom: 30px;
         }
-        
+
         .input-group {
             flex: 1;
             min-width: 200px;
             position: relative;
         }
-        
+
         .input-group label {
             display: block;
             margin-bottom: 10px;
             font-size: 0.9rem;
-            color: var(--gold-light);
+            color: var(--primary);
         }
-        
-        .input-group input, .input-group select, .input-group textarea {
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
             width: 100%;
             padding: 16px 20px;
             font-size: 16px;
@@ -753,41 +812,47 @@
             background: rgba(25, 35, 60, 0.7);
             color: #fff;
             transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(58, 123, 213, 0.3);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
             outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.3);
             background: rgba(30, 45, 80, 0.85);
         }
-        
-        .input-group input:hover, .input-group select:hover, .input-group textarea:hover {
-            border-color: var(--gold-light);
+
+        .input-group input:hover,
+        .input-group select:hover,
+        .input-group textarea:hover {
+            border-color: var(--primary-light);
         }
-        
-        .input-group input::placeholder, .input-group select, .input-group textarea::placeholder {
-            color: #b0bec5;
+
+        .input-group input::placeholder,
+        .input-group select,
+        .input-group textarea::placeholder {
+            color: var(--text-muted);
         }
-        
+
         .input-group textarea {
             height: 160px;
             resize: vertical;
         }
-        
+
         .form-row.center .input-group {
             max-width: 500px;
         }
-        
+
         .form-row.full .input-group {
             flex: 100%;
         }
-        
-        .review-submit-btn {
-            background: linear-gradient(135deg, var(--gold), #b89e3a);
-            color: #1a1a1a;
+
+        .review-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-light));
+            color: white;
             padding: 18px 45px;
             font-size: 18px;
             border: none;
@@ -798,15 +863,15 @@
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 20px rgba(58, 123, 213, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             margin: 20px auto 0;
         }
-        
-        .review-submit-btn::after {
+
+        .review-btn::after {
             content: '';
             position: absolute;
             top: 0;
@@ -816,94 +881,249 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
         }
-        
-        .review-submit-btn:hover {
+
+        .review-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 25px rgba(58, 123, 213, 0.5);
         }
-        
-        .review-submit-btn:hover::after {
+
+        .review-btn:hover::after {
             left: 100%;
         }
-        
-        .review-submit-btn:active {
+
+        .review-btn:active {
             transform: translateY(2px);
         }
-        
-        .review-submit-btn i {
+
+        .review-btn i {
             font-size: 20px;
             transition: transform 0.3s ease;
         }
-        
-        .review-submit-btn:hover i {
+
+        .review-btn:hover i {
             transform: translateX(5px);
         }
-        
+
+        .bilingual {
+            display: block;
+            font-size: 0.85em;
+            margin-top: 3px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(5,5,5,0.7);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
         /* Animations */
         @keyframes pop {
             0% { transform: scale(1); }
             50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
-        
+
         @keyframes pulse {
-            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.7); }
-            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 1), 0 0 30px rgba(212, 175, 55, 0.8); }
-            100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.7); }
+            0% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(0, 195, 255, 1), 0 0 30px rgba(0, 195, 255, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(0, 195, 255, 0.7); }
         }
-        
+
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
             100% { transform: translateY(0px); }
         }
-        
-        @keyframes borderAnimation {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 300% 50%; }
-        }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20%, 60% { transform: translateX(-4px); }
             40%, 80% { transform: translateX(4px); }
         }
-        
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes borderAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .store-name { font-size: 32px; }
-            .hero-text { font-size: 16px; padding: 10px 20px; }
-            .country-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; }
-            .section-title h2 { font-size: 2.2rem; }
-            .rating-container, .review-section { padding: 30px; }
-            .average-rating { font-size: 2.8rem; }
-            .thank-you h2 { font-size: 1.7rem; }
+            .store-name {
+                font-size: 32px;
+            }
+            
+            .hero-text {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .country-grid {
+                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+                gap: 20px;
+            }
+            
+            .rating-header h1 {
+                font-size: 2rem;
+            }
+            
+            .average-rating {
+                font-size: 2.8rem;
+            }
+            
+            .thank-you h2 {
+                font-size: 1.7rem;
+            }
+            
+            .review-section {
+                padding: 30px 20px;
+            }
+            
+            .review-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .arabic {
+                font-size: 1.3rem;
+            }
+            
+            .form-row {
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .input-group input,
+            .input-group select,
+            .input-group textarea {
+                padding: 14px;
+            }
+            
+            .review-btn {
+                padding: 16px 35px;
+                font-size: 16px;
+            }
         }
-        
+
         @media (max-width: 480px) {
-            .store-name { font-size: 28px; }
-            .hero-text { font-size: 14px; flex-direction: column; gap: 8px; padding: 8px 15px; margin-bottom: -15px; }
-            .country-grid { grid-template-columns: 1fr; max-width: 280px; gap: 15px; }
-            .country-list span { padding: 5px 10px; font-size: 11px; }
-            .country-card { padding: 20px 10px; }
-            .arabic-name { font-size: 20px; }
-            .english-name { font-size: 16px; }
-            .section-title h2 { font-size: 1.8rem; }
-            .rating-container, .review-section { padding: 20px; }
-            .rating-option { padding: 10px 14px; font-size: 0.85rem; }
-            .rating-summary { padding: 12px; }
-            .thank-you i { font-size: 2.8rem; }
+            .store-name {
+                font-size: 28px;
+            }
+            
+            .hero-text {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px 15px;
+                margin-bottom: -15px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .country-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                gap: 15px;
+            }
+            
+            .country-list span {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
+            
+            .country-card {
+                padding: 20px 10px;
+            }
+            
+            .arabic-name {
+                font-size: 20px;
+            }
+            
+            .english-name {
+                font-size: 16px;
+            }
+            
+            .rating-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .rating-option {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+            
+            .rating-summary {
+                padding: 12px;
+            }
+            
+            .thank-you i {
+                font-size: 2.8rem;
+            }
+            
+            .review-section {
+                padding: 25px 15px;
+            }
+            
+            .review-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .arabic {
+                font-size: 1.1rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="gold-overlay"></div>
-    
     <!-- Header Section -->
     <header class="site-header">
         <div class="store-name">MOHAMED DRUGS SHOP</div>
@@ -918,6 +1138,7 @@
         </div>
     </header>
     
+    <!-- Hero Section -->
     <div class="hero-container">
         <div class="hero-text">
             <i class="fas fa-shipping-fast"></i> أسرع توصيل في دول الخليج مع ضمان السلامة
@@ -931,11 +1152,10 @@
         <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Pharmacy Products" class="hero-image">
     </div>
     
+    <!-- Country Selection Section -->
     <section class="country-selection">
-        <div class="section-title">
-            <h2>Choose Your Country</h2>
-            <div class="section-divider"></div>
-        </div>
+        <h2 class="section-title">Choose Your Country</h2>
+        <span class="arabic" style="display:block; text-align:center; margin-bottom:40px;">اختر بلدك</span>
         <div class="country-grid">
             <a href="egypt.html" class="country-card">
                 <img src="https://flagcdn.com/w40/eg.png" alt="Egypt">
@@ -990,12 +1210,14 @@
     </section>
     
     <!-- Ratings Section -->
-    <section class="section">
-        <div class="section-title">
-            <h2>Ratings (التقييم)</h2>
-            <div class="section-divider"></div>
-        </div>
-        <div class="rating-container">
+    <section id="ratings">
+        <h2 class="section-title">Customer Ratings</h2>
+        <div class="rating-section">
+            <div class="rating-header">
+                <h1>Ratings (التقييم)</h1>
+                <p>شارك تجربتك وساعدنا على التحسين</p>
+            </div>
+            
             <div class="rating-summary">
                 <div class="average-rating">4.8</div>
                 <div class="stars">
@@ -1005,7 +1227,9 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
                 </div>
-                <div class="based-on">بناءً على ١٨٣ تقييمًا من العملاء</div>
+                <div class="based-on">
+                    بناءً على ١٨٣ تقييمًا من العملاء
+                </div>
             </div>
             
             <div class="rating-box">
@@ -1133,27 +1357,29 @@
     </section>
     
     <!-- Reviews Section -->
-    <section class="section">
-        <div class="section-title">
-            <h2>Leave a Review</h2>
-            <div class="section-divider"></div>
-        </div>
+    <section id="reviews">
+        <h2 class="section-title">Customer Reviews</h2>
         <div class="review-section">
+            <div class="review-title">
+                <h2>Leave a Review</h2>
+                <span class="arabic">اترك مراجعة</span>
+            </div>
+            
             <form id="reviewForm">
                 <div class="form-row">
                     <div class="input-group">
-                        <label for="firstName">First Name <span class="arabic">الاسم الأول</span></label>
+                        <label for="firstName">First Name <span class="bilingual">الاسم الأول</span></label>
                         <input type="text" id="firstName" placeholder="John / جون" />
                     </div>
                     <div class="input-group">
-                        <label for="lastName">Last Name <span class="arabic">اسم العائلة</span></label>
+                        <label for="lastName">Last Name <span class="bilingual">اسم العائلة</span></label>
                         <input type="text" id="lastName" placeholder="Doe / دو" />
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="input-group">
-                        <label for="country">Country <span class="arabic">الدولة</span></label>
+                        <label for="country">Country <span class="bilingual">الدولة</span></label>
                         <select id="country">
                             <option value="">Select Country / اختر الدولة</option>
                             <option value="Egypt">Egypt / مصر</option>
@@ -1166,36 +1392,43 @@
                         </select>
                     </div>
                     <div class="input-group">
-                        <label for="city">City <span class="arabic">المدينة</span></label>
+                        <label for="city">City <span class="bilingual">المدينة</span></label>
                         <input type="text" id="city" placeholder="Cairo / القاهرة" />
                     </div>
                 </div>
                 
                 <div class="form-row center">
                     <div class="input-group">
-                        <label for="purchaseCode">Purchasing Code <span class="arabic">رمز الشراء</span></label>
+                        <label for="purchaseCode">Purchasing Code <span class="bilingual">رمز الشراء</span></label>
                         <input type="text" id="purchaseCode" placeholder="5895341" />
                     </div>
                 </div>
                 
                 <div class="form-row full">
                     <div class="input-group">
-                        <label for="reviewText">Your Review <span class="arabic">مراجعتك</span></label>
+                        <label for="reviewText">Your Review <span class="bilingual">مراجعتك</span></label>
                         <textarea id="reviewText" placeholder="Share your experience... / شاركنا تجربتك..."></textarea>
                     </div>
                 </div>
                 
                 <div class="form-row center">
-                    <button type="submit" class="review-submit-btn">
+                    <button type="submit" class="review-btn">
                         <i class="fas fa-paper-plane"></i> Submit Review / إرسال المراجعة
                     </button>
                 </div>
             </form>
         </div>
     </section>
-
+    
+    <!-- Footer -->
+    <div class="footer">
+        <p>Mohamed Drugs Shop | Premium Pharmacy</p>
+        <p>© 2023 All Rights Reserved</p>
+        <p>Fast Delivery Across Gulf Countries</p>
+    </div>
+    
     <script>
-        // Header country names animation
+        // Country Selection Animation
         document.querySelectorAll('.country-list span').forEach(country => {
             country.addEventListener('click', function() {
                 this.style.animation = 'pop 0.5s ease';
@@ -1205,132 +1438,223 @@
             });
         });
 
-        // Country cards animation on page load
+        // Country Card Animation
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.country-card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(30px)';
-                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 100);
-                }, 200 * index);
+                    card.style.animation = `fadeInUp 0.8s ease forwards ${index * 0.1}s`;
+                }, 100);
             });
+
+            // Create fadeInUp animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
         });
 
-        // Ratings section functionality
-        const ratingSelector = document.getElementById('ratingSelector');
-        const ratingOptions = document.getElementById('ratingOptions');
-        const ratingError = document.getElementById('ratingError');
-        const purchaseCode = document.getElementById('purchaseCode');
-        const codeError = document.getElementById('codeError');
-        const invalidCodeError = document.getElementById('invalidCodeError');
-        const submitBtn = document.getElementById('submitBtn');
-        const loadingBar = document.getElementById('loadingBar');
-        const thankYou = document.getElementById('thankYou');
-        let selectedRating = null;
+        // Ratings Section Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const ratingSelector = document.getElementById('ratingSelector');
+            const ratingOptions = document.getElementById('ratingOptions');
+            const ratingError = document.getElementById('ratingError');
+            const purchaseCode = document.getElementById('purchaseCode');
+            const codeError = document.getElementById('codeError');
+            const invalidCodeError = document.getElementById('invalidCodeError');
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingBar = document.getElementById('loadingBar');
+            const thankYou = document.getElementById('thankYou');
+            let selectedRating = null;
 
-        // Toggle rating options
-        ratingSelector.addEventListener('click', function(e) {
-            e.stopPropagation();
-            ratingOptions.style.display = ratingOptions.style.display === 'block' ? 'none' : 'block';
-        });
+            // Toggle rating options
+            ratingSelector.addEventListener('click', function(e) {
+                e.stopPropagation();
+                ratingOptions.style.display = ratingOptions.style.display === 'block' ? 'none' : 'block';
+            });
 
-        // Handle rating selection
-        const options = ratingOptions.querySelectorAll('.rating-option');
-        options.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove active class from all options
-                options.forEach(opt => opt.classList.remove('active'));
+            // Handle rating selection
+            const options = ratingOptions.querySelectorAll('.rating-option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    options.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to selected option
+                    this.classList.add('active');
+                    
+                    // Update selector text
+                    const ratingText = this.querySelector('.english').textContent;
+                    ratingSelector.querySelector('span').textContent = ratingText;
+                    
+                    // Store selected value
+                    selectedRating = this.getAttribute('data-value');
+                    
+                    // Hide options
+                    ratingOptions.style.display = 'none';
+                    
+                    // Clear any previous error
+                    ratingError.style.display = 'none';
+                });
+            });
+
+            // Close rating options when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!ratingSelector.contains(e.target) && !ratingOptions.contains(e.target)) {
+                    ratingOptions.style.display = 'none';
+                }
+            });
+
+            // Form submission
+            submitBtn.addEventListener('click', function() {
+                let isValid = true;
                 
-                // Add active class to selected option
-                this.classList.add('active');
-                
-                // Update selector text
-                const ratingText = this.querySelector('.english').textContent;
-                ratingSelector.querySelector('span').textContent = ratingText;
-                
-                // Store selected value
-                selectedRating = this.getAttribute('data-value');
-                
-                // Hide options
-                ratingOptions.style.display = 'none';
-                
-                // Clear any previous error
+                // Reset errors
                 ratingError.style.display = 'none';
+                codeError.style.display = 'none';
+                invalidCodeError.style.display = 'none';
+                
+                // Validate rating
+                if (!selectedRating) {
+                    ratingError.style.display = 'flex';
+                    isValid = false;
+                }
+                
+                // Validate purchase code
+                const codeValue = purchaseCode.value.trim();
+                if (!codeValue) {
+                    codeError.style.display = 'flex';
+                    isValid = false;
+                } else if (codeValue.length < 12 || !/^[a-zA-Z0-9-]+$/.test(codeValue)) {
+                    invalidCodeError.style.display = 'flex';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Show loading bar
+                    loadingBar.style.width = '100%';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate submission process
+                    setTimeout(function() {
+                        // Reset loading bar
+                        loadingBar.style.width = '0';
+                        
+                        // Hide form and show thank you message
+                        document.querySelector('.rating-box').style.display = 'none';
+                        document.querySelector('.purchase-code').style.display = 'none';
+                        document.querySelector('.submit-btn').style.display = 'none';
+                        thankYou.style.display = 'block';
+                        
+                        // Re-enable button after animation completes
+                        setTimeout(function() {
+                            submitBtn.disabled = false;
+                        }, 300);
+                    }, 1500);
+                }
+            });
+            
+            // Clear error when user starts typing
+            purchaseCode.addEventListener('input', function() {
+                codeError.style.display = 'none';
+                invalidCodeError.style.display = 'none';
+            });
+            
+            // Add subtle animation to stars in rating summary
+            const stars = document.querySelectorAll('.stars i');
+            stars.forEach((star, index) => {
+                star.style.animationDelay = `${index * 0.1}s`;
             });
         });
 
-        // Close rating options when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!ratingSelector.contains(e.target) && !ratingOptions.contains(e.target)) {
-                ratingOptions.style.display = 'none';
-            }
-        });
-
-        // Form submission
-        submitBtn.addEventListener('click', function() {
-            let isValid = true;
+        // Reviews Form Functionality
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const country = document.getElementById('country').value;
+            const city = document.getElementById('city').value.trim();
+            const code = document.getElementById('purchaseCode').value.trim();
+            const review = document.getElementById('reviewText').value.trim();
             
-            // Reset errors
-            ratingError.style.display = 'none';
-            codeError.style.display = 'none';
-            invalidCodeError.style.display = 'none';
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.padding = '20px';
+            notification.style.borderRadius = '12px';
+            notification.style.color = 'white';
+            notification.style.fontWeight = '500';
+            notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+            notification.style.zIndex = '1000';
+            notification.style.transform = 'translateX(150%)';
+            notification.style.transition = 'transform 0.4s ease';
+            notification.style.display = 'flex';
+            notification.style.alignItems = 'center';
+            notification.style.gap = '12px';
+            notification.style.maxWidth = '350px';
             
-            // Validate rating
-            if (!selectedRating) {
-                ratingError.style.display = 'flex';
-                isValid = false;
+            const icon = document.createElement('i');
+            notification.appendChild(icon);
+            
+            const message = document.createElement('div');
+            message.className = 'message';
+            notification.appendChild(message);
+            
+            document.body.appendChild(notification);
+            
+            // Reset notification
+            notification.className = 'notification';
+            
+            // Validate fields
+            if (!firstName || !lastName || !country || !city || !code || !review) {
+                notification.classList.add('error', 'show');
+                icon.className = 'fas fa-exclamation-circle';
+                message.innerHTML = 'Please fill all fields<br><span class="bilingual">الرجاء تعبئة جميع الحقول</span>';
+                notification.style.transform = 'translateX(0)';
+                return;
             }
             
             // Validate purchase code
-            const codeValue = purchaseCode.value.trim();
-            if (!codeValue) {
-                codeError.style.display = 'flex';
-                isValid = false;
-            } else if (codeValue.length < 12 || !/^[a-zA-Z0-9-]+$/.test(codeValue)) {
-                invalidCodeError.style.display = 'flex';
-                isValid = false;
+            if (code !== "5895341") {
+                notification.classList.add('error', 'show');
+                icon.className = 'fas fa-times-circle';
+                message.innerHTML = 'Invalid purchasing code<br><span class="bilingual">رمز الشراء غير صالح</span>';
+                notification.style.transform = 'translateX(0)';
+                return;
             }
             
-            if (isValid) {
-                // Show loading bar
-                loadingBar.style.width = '100%';
-                submitBtn.disabled = true;
-                
-                // Simulate submission process
-                setTimeout(function() {
-                    // Reset loading bar
-                    loadingBar.style.width = '0';
-                    
-                    // Hide form and show thank you message
-                    document.querySelector('.rating-box').style.display = 'none';
-                    document.querySelector('.purchase-code').style.display = 'none';
-                    document.querySelector('.submit-btn').style.display = 'none';
-                    thankYou.style.display = 'block';
-                    
-                    // Re-enable button after animation completes
-                    setTimeout(function() {
-                        submitBtn.disabled = false;
-                    }, 300);
-                }, 1500);
-            }
-        });
-        
-        // Clear error when user starts typing
-        purchaseCode.addEventListener('input', function() {
-            codeError.style.display = 'none';
-            invalidCodeError.style.display = 'none';
-        });
-        
-        // Reviews form submission
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Review submitted successfully!');
+            // Success
+            notification.classList.add('success', 'show');
+            icon.className = 'fas fa-check-circle';
+            message.innerHTML = 'Review submitted successfully!<br><span class="bilingual">تم إرسال المراجعة بنجاح!</span>';
+            notification.style.transform = 'translateX(0)';
+            
+            // Reset form
             this.reset();
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(150%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 400);
+            }, 5000);
+        });
+
+        // Add animation to form elements on load
+        document.querySelectorAll('.input-group').forEach((el, index) => {
+            el.style.animation = `fadeIn 0.5s ease-out ${index * 0.1 + 0.5}s forwards`;
+            el.style.opacity = 0;
         });
     </script>
 </body>
