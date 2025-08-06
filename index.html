@@ -913,7 +913,10 @@
 
         /* Review Messages */
         .review-message-container {
-            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+            margin: 15px 0;
+            min-height: 50px;
         }
         
         .review-error-message {
@@ -921,6 +924,7 @@
             font-size: 0.9rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             animation: shake 0.5s ease;
             background: rgba(255, 107, 107, 0.1);
@@ -928,6 +932,8 @@
             border-radius: 8px;
             border-left: 3px solid #ff6b6b;
             display: none;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .review-success-message {
@@ -935,12 +941,15 @@
             font-size: 0.9rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: rgba(76, 175, 80, 0.1);
             padding: 8px 12px;
             border-radius: 8px;
             border-left: 3px solid #4CAF50;
             display: none;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Footer */
@@ -1151,6 +1160,12 @@
             .form-row {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .review-error-message,
+            .review-success-message {
+                font-size: 0.8rem;
+                padding: 6px 10px;
             }
         }
     </style>
@@ -1398,9 +1413,6 @@
             </div>
             
             <form id="reviewForm">
-                <!-- Message container for review errors/success -->
-                <div class="review-message-container" id="reviewMessageContainer"></div>
-                
                 <div class="form-row">
                     <div class="input-group">
                         <label for="firstName">First Name <span class="bilingual">الاسم الأول</span></label>
@@ -1445,6 +1457,9 @@
                         <textarea id="reviewText" placeholder="Share your experience... / شاركنا تجربتك..."></textarea>
                     </div>
                 </div>
+                
+                <!-- Message container placed just above the submit button -->
+                <div class="review-message-container" id="reviewMessageContainer"></div>
                 
                 <div class="form-row center">
                     <button type="submit" class="review-btn">
