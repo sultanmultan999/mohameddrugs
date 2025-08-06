@@ -1215,3 +1215,9 @@
     </script>
 </body>
 </html>
+
+// Hide loading overlay when page is fully loaded
+window.addEventListener('load', function() {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    loadingOverlay.classList.add('hidden');
+});
