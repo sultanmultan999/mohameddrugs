@@ -326,7 +326,7 @@
             color: white;
         }
 
-        /* === Rating Section === */
+        /* === Rating Section - New Compact Size === */
         .rating-section {
             background: rgba(19, 23, 42, 0.95);
             border-radius: 20px;
@@ -338,6 +338,7 @@
             overflow: hidden;
             transition: all 0.4s ease;
             margin: 40px 0;
+            width: 100%; /* Full width on desktop */
         }
 
         .rating-section::before {
@@ -717,7 +718,7 @@
             margin: 0 auto;
         }
 
-        /* === Review Section === */
+        /* === Review Section - New Compact Size === */
         .review-section {
             background: rgba(15, 22, 40, 0.9);
             border-radius: 20px;
@@ -729,6 +730,7 @@
             animation: fadeIn 0.8s ease-out forwards;
             backdrop-filter: blur(10px);
             margin: 40px 0;
+            width: 100%; /* Full width on desktop */
         }
 
         .review-section::before {
@@ -969,6 +971,22 @@
             margin: 10px 0;
         }
 
+        /* NEW: Container for side-by-side sections */
+        .sections-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .sections-container section {
+            flex: 1;
+            min-width: 300px; /* Minimum width for each section */
+            padding: 30px 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         /* Animations */
         @keyframes pop {
             0% { transform: scale(1); }
@@ -1167,6 +1185,107 @@
                 font-size: 0.8rem;
                 padding: 6px 10px;
             }
+            
+            /* NEW: Mobile layout for rating and review sections */
+            .sections-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .sections-container section {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+        
+        /* NEW: Mobile half-screen layout */
+        @media (max-width: 480px) {
+            .sections-container {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 15px;
+                padding: 0 10px 20px;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .sections-container section {
+                flex: 0 0 calc(50% - 10px);
+                scroll-snap-align: start;
+                min-height: auto;
+                padding: 20px 15px;
+                margin: 0;
+            }
+            
+            #ratings .section-title,
+            #reviews .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+            
+            .rating-header h1 {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+            
+            .rating-summary {
+                padding: 10px;
+            }
+            
+            .average-rating {
+                font-size: 2.2rem;
+            }
+            
+            .stars i {
+                font-size: 1.1rem;
+            }
+            
+            .rating-selector,
+            .purchase-code-input {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+            
+            .submit-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            .review-title h2 {
+                font-size: 1.4rem;
+            }
+            
+            .arabic {
+                font-size: 1rem;
+            }
+            
+            .input-group label {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            
+            .input-group input,
+            .input-group select,
+            .input-group textarea {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .input-group textarea {
+                height: 120px;
+            }
+            
+            .review-btn {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
+            
+            .review-error-message,
+            .review-success-message {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
         }
     </style>
 </head>
@@ -1221,7 +1340,7 @@
             <a href="saudi.html" class="country-card">
                 <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia">
                 <div class="country-name">
-                    <span class="arabic-name">السعودية</span>
+                    <span class="arab极-name">السعودية</span>
                     <span class="english-name">Saudi Arabia</span>
                 </div>
             </a>
@@ -1229,7 +1348,7 @@
                 <img src="https://flagcdn.com/w40/qa.png" alt="Qatar">
                 <div class="country-name">
                     <span class="arabic-name">قطر</span>
-                    <span class="english-name">Qatar</span>
+                    <span class="english-name">Qatar</极>
                 </div>
             </a>
             <a href="kuwait.html" class="country-card">
@@ -1256,219 +1375,222 @@
         </div>
     </section>
     
-    <!-- Ratings Section -->
-    <section id="ratings">
-        <h2 class="section-title">Customer Ratings</h2>
-        <div class="rating-section">
-            <div class="rating-header">
-                <h1>Ratings (التقييم)</h1>
-                <p>شارك تجربتك وساعدنا على التحسين</p>
-            </div>
-            
-            <div class="rating-summary">
-                <div class="average-rating">4.8</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+    <!-- NEW: Container for side-by-side sections -->
+    <div class="sections-container">
+        <!-- Ratings Section -->
+        <section id="ratings">
+            <h2 class="section-title">Customer Ratings</h2>
+            <div class="rating-section">
+                <div class="rating-header">
+                    <h1>Ratings (التقييم)</h1>
+                    <p>شارك تجربتك وساعدنا على التحسين</p>
                 </div>
-                <div class="based-on">
-                    بناءً على ١٨٣ تقييمًا من العملاء
-                </div>
-            </div>
-            
-            <div class="rating-box">
-                <label class="rating-box-label">
-                    <i class="fas fa-star"></i> Choose Rating (اختر تقييمك)
-                </label>
-                <div class="rating-selector" id="ratingSelector">
-                    <span>Select Rating (حدد تقييمك)</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="rating-options" id="ratingOptions">
-                    <div class="rating-option" data-value="5">
-                        <div class="option-content">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="option-text">
-                                <span class="english">Excellent</span>
-                                <span class="arabic">ممتاز (Mumtaz)</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-check checkmark"></i>
+                
+                <div class="rating-summary">
+                    <div class="average-rating">4.8</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="rating-option" data-value="4">
-                        <div class="option-content">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="option-text">
-                                <span class="english">Good</span>
-                                <span class="arabic">جيد (Jayyid)</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-check checkmark"></i>
-                    </div>
-                    <div class="rating-option" data-value="3">
-                        <div class="option-content">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="option-text">
-                                <span class="english">Average</span>
-                                <span class="arabic">متوسط (Mutawasit)</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-check checkmark"></i>
-                    </div>
-                    <div class="rating-option" data-value="2">
-                        <div class="option-content">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="option-text">
-                                <span class="english">Need Improvement</span>
-                                <span class="arabic">بحاجة إلى تحسين (Bihajat 'iilaa tahsin)</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-check checkmark"></i>
-                    </div>
-                    <div class="rating-option" data-value="1">
-                        <div class="option-content">
-                            <div class="rating-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="option-text">
-                                <span class="english">Poor</span>
-                                <span class="arabic">ضعيف (Da'eef)</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-check checkmark"></i>
-                    </div>
-                </div>
-                <div class="error-message" id="ratingError">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Please select ratings (يرجى اختيار التقييم)</span>
-                </div>
-            </div>
-            
-            <div class="purchase-code">
-                <label class="purchase-code-label">
-                    <i class="fas fa-key"></i> Purchasing Code (رمز الشراء)
-                </label>
-                <input type="text" class="purchase-code-input" id="purchaseCode" placeholder="Enter your purchasing code">
-                <div class="error-message" id="codeError">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Please enter a purchasing code.(يرجى إدخال رمز الشراء)</span>
-                </div>
-                <div class="error-message" id="invalidCodeError">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Invalid purchasing code.(رمز الشراء غير صالح)</span>
-                </div>
-            </div>
-            
-            <button class="submit-btn" id="submitBtn">
-                Submit (إرسال التقييم)
-                <div class="loading-bar" id="loadingBar"></div>
-            </button>
-            
-            <div class="thank-you" id="thankYou">
-                <i class="fas fa-check-circle"></i>
-                <h2>Thank You!</h2>
-                <p>Your rating has been submitted successfully. We appreciate your valuable feedback!</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Reviews Section -->
-    <section id="reviews">
-        <h2 class="section-title">Customer Reviews</h2>
-        <div class="review-section">
-            <div class="review-title">
-                <h2>Leave a Review</h2>
-                <span class="arabic">اترك مراجعة</span>
-            </div>
-            
-            <form id="reviewForm">
-                <div class="form-row">
-                    <div class="input-group">
-                        <label for="firstName">First Name <span class="bilingual">الاسم الأول</span></label>
-                        <input type="text" id="firstName" placeholder="John / جون" />
-                    </div>
-                    <div class="input-group">
-                        <label for="lastName">Last Name <span class="bilingual">اسم العائلة</span></label>
-                        <input type="text" id="lastName" placeholder="Doe / دو" />
+                    <div class="based-on">
+                        بناءً على ١٨٣ تقييمًا من العملاء
                     </div>
                 </div>
                 
-                <div class="form-row">
-                    <div class="input-group">
-                        <label for="country">Country <span class="bilingual">الدولة</span></label>
-                        <select id="country">
-                            <option value="">Select Country / اختر الدولة</option>
-                            <option value="Egypt">Egypt / مصر</option>
-                            <option value="Saudi Arabia">Saudi Arabia / السعودية</option>
-                            <option value="UAE">UAE / الإمارات</option>
-                            <option value="Qatar">Qatar / قطر</option>
-                            <option value="Kuwait">Kuwait / الكويت</option>
-                            <option value="Oman">Oman / عمان</option>
-                            <option value="Bahrain">Bahrain / البحرين</option>
-                        </select>
+                <div class="rating-box">
+                    <label class="rating-box-label">
+                        <i class="fas fa-star"></i> Choose Rating (اختر تقييمك)
+                    </label>
+                    <div class="rating-selector" id="ratingSelector">
+                        <span>Select Rating (حدد تقييمك)</span>
+                        <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="input-group">
-                        <label for="city">City <span class="bilingual">المدينة</span></label>
-                        <input type="text" id="city" placeholder="Cairo / القاهرة" />
+                    <div class="rating-options" id="ratingOptions">
+                        <div class="rating-option" data-value="5">
+                            <div class="option-content">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></极>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="option-text">
+                                    <span class="english">Excellent</span>
+                                    <span class="arabic">ممتاز (Mumtaz)</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check checkmark"></i>
+                        </div>
+                        <div class="rating-option" data-value="4">
+                            <div class="option-content">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="option-text">
+                                    <span class="english">Good</span>
+                                    <span class="arabic">جيد (Jayyid)</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check checkmark"></i>
+                        </div>
+                        <div class="rating-option" data-value="3">
+                            <div class="option-content">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="option-text">
+                                    <span class="english">Average</span>
+                                    <span class="arabic">متوسط (Mutawasit)</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check checkmark"></i>
+                        </div>
+                        <div class="rating-option" data-value="2">
+                            <div class="option-content">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="option-text">
+                                    <span class="english">Need Improvement</span>
+                                    <span class="arabic">بحاجة إلى تحسين (Bihajat 'iilaa tahsin)</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check checkmark"></i>
+                        </div>
+                        <div class="rating-option" data-value="1">
+                            <div class="option-content">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="option-text">
+                                    <span class="english">Poor</span>
+                                    <span class="arabic">ضعيف (Da'eef)</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-check checkmark"></i>
+                        </div>
+                    </div>
+                    <div class="error-message" id="ratingError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Please select ratings (يرجى اختيار التقييم)</span>
                     </div>
                 </div>
                 
-                <div class="form-row center">
-                    <div class="input-group">
-                        <label for="reviewPurchaseCode">Purchasing Code <span class="bilingual">رمز الشراء</span></label>
-                        <input type="text" id="reviewPurchaseCode" placeholder="5895341" />
+                <div class="purchase-code">
+                    <label class="purchase-code-label">
+                        <i class="fas fa-key"></i> Purchasing Code (رمز الشراء)
+                    </label>
+                    <input type="text" class="purchase-code-input" id="purchaseCode" placeholder="Enter your purchasing code">
+                    <div class="error-message" id="codeError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Please enter a purchasing code.(يرجى إدخال رمز الشراء)</span>
+                    </div>
+                    <div class="error-message" id="invalidCodeError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Invalid purchasing code.(رمز الشراء غير صالح)</span>
                     </div>
                 </div>
                 
-                <div class="form-row full">
-                    <div class="input-group">
-                        <label for="reviewText">Your Review <span class="bilingual">مراجعتك</span></label>
-                        <textarea id="reviewText" placeholder="Share your experience... / شاركنا تجربتك..."></textarea>
+                <button class="submit-btn" id="submitBtn">
+                    Submit (إرسال التقييم)
+                    <div class="loading-bar" id="loadingBar"></div>
+                </button>
+                
+                <div class="thank-you" id="thankYou">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Thank You!</h2>
+                    <p>Your rating has been submitted successfully. We appreciate your valuable feedback!</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reviews Section -->
+        <section id="reviews">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="review-section">
+                <div class="review-title">
+                    <h2>Leave a Review</h2>
+                    <span class="arabic">اترك مراجعة</span>
+                </div>
+                
+                <form id="reviewForm">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="firstName">First Name <span class="bilingual">الاسم الأول</span></label>
+                            <input type="text" id="firstName" placeholder="John / جون" />
+                        </div>
+                        <div class="input-group">
+                            <label for="lastName">Last Name <span class="bilingual">اسم العائلة</span></label>
+                            <input type="text" id="lastName" placeholder="Doe / دو" />
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Message container placed just above the submit button -->
-                <div class="review-message-container" id="reviewMessageContainer"></div>
-                
-                <div class="form-row center">
-                    <button type="submit" class="review-btn">
-                        <i class="fas fa-paper-plane"></i> Submit Review / إرسال المراجعة
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="country">Country <span class="bilingual">الدولة</span></label>
+                            <select id="country">
+                                <option value="">Select Country / اختر الدولة</option>
+                                <option value="Egypt">Egypt / مصر</option>
+                                <option value="Saudi Arabia">Saudi Arabia / السعودية</option>
+                                <option value="UAE">UAE / الإمارات</option>
+                                <option value="Qatar">Qatar / قطر</option>
+                                <option value="Kuwait">Kuwait / الكويت</option>
+                                <option value="Oman">Oman / عمان</option>
+                                <option value="Bahrain">Bahrain / البحرين</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="city">City <span class="bilingual">المدينة</span></label>
+                            <input type="text" id="city" placeholder="Cairo / القاهرة" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-row center">
+                        <div class="input-group">
+                            <label for="reviewPurchaseCode">Purchasing Code <span class="bilingual">رمز الشراء</span></label>
+                            <input type="text" id="reviewPurchaseCode" placeholder="5895341" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-row full">
+                        <div class="input-group">
+                            <label for="reviewText">Your Review <span class="bilingual">مراجعتك</span></label>
+                            <textarea id="reviewText" placeholder="Share your experience... / شاركنا تجربتك..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Message container placed just above the submit button -->
+                    <div class="review-message-container" id="reviewMessageContainer"></div>
+                    
+                    <div class="form-row center">
+                        <button type="submit" class="review-btn">
+                            <i class="fas fa-paper-plane"></i> Submit Review / إرسال المراجعة
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
     
     <!-- Footer -->
     <div class="footer">
@@ -1620,7 +1742,7 @@
             
             // Clear error when user starts typing
             purchaseCode.addEventListener('input', function() {
-                codeError.style.display = 'none';
+                code极.style.display = 'none';
                 invalidCodeError.style.display = 'none';
             });
             
