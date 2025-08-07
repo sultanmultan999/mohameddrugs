@@ -94,14 +94,8 @@
                 padding: 60px 20px;
                 max-width: 1200px;
                 margin: 0 auto;
-                opacity: 0;
-                transform: translateY(50px);
-                transition: all 0.8s ease;
-            }
-
-            section.visible {
-                opacity: 1;
-                transform: translateY(0);
+                opacity: 1; /* CHANGED FROM 0 TO 1 */
+                transform: translateY(0); /* CHANGED FROM 50px TO 0 */
             }
 
             .section-title {
@@ -1343,6 +1337,12 @@
         <script src="script.js"></script>
 
         <script>
+            // Hide loading overlay when page is fully loaded
+            window.addEventListener('load', function() {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay.classList.add('hidden');
+            });
+
             // Country Selection Animation
             document
                 .querySelectorAll(".country-list span")
@@ -1375,12 +1375,6 @@
                 }
             `;
                 document.head.appendChild(style);
-            });
-
-            // Hide loading overlay when page is fully loaded
-            window.addEventListener('load', function() {
-                const loadingOverlay = document.getElementById('loadingOverlay');
-                loadingOverlay.classList.add('hidden');
             });
         </script>
     </body>
