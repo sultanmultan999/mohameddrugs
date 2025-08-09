@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Drugs Shop - Egypt</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+    }
+    /* Sticky Top Bar */
+    .top-bar {
+        position: sticky;
+        top: 0;
+        background-color: #1e1e1e;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #333;
+        z-index: 1000;
+    }
+    .top-bar a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .top-bar .search-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        margin: 0 10px;
+    }
+    .top-bar input {
+        padding: 5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+    .top-bar button {
+        padding: 6px 10px;
+        border: none;
+        background-color: #ff4444;
+        color: #fff;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    .cart-icon {
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+    }
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background-color: red;
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 5px;
+        border-radius: 50%;
+    }
+    /* Page Heading */
+    .page-heading {
+        text-align: center;
+        padding: 20px;
+    }
+    .page-heading h2 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .page-heading p {
+        font-size: 16px;
+        color: #ccc;
+    }
+    /* Product Grid */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 15px 20px;
+    }
+    .product {
+        background-color: #1c1c1c;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.2s;
+    }
+    .product:hover {
+        transform: scale(1.02);
+    }
+    .product img {
+        width: 100%;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .product h3, .product p {
+        cursor: pointer;
+    }
+    .price {
+        font-size: 16px;
+        color: #ffcc00;
+        margin: 5px 0;
+    }
+    .add-to-cart {
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .check-reviews {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #ffcc00;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #1e1e1e;
+        color: #ccc;
+    }
+</style>
+</head>
+<body>
+
+<!-- Sticky Top Bar -->
+<div class="top-bar">
+    <a href="homepage.html">Mohamed Drugs Shop</a>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search product...">
+        <button onclick="searchProduct()">Search</button>
+    </div>
+    <a href="payment.html" class="cart-icon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </a>
+</div>
+
+<!-- Page Heading -->
+<div class="page-heading">
+    <h2>Products in Egypt</h2>
+    <p>المنتجات في مصر</p>
+</div>
+
+<!-- Product Grid -->
+<div class="product-grid" id="productGrid">
+    <!-- Dummy Products -->
+    <div class="product" data-title="Product 1">
+        <img src="images/product1.jpg" alt="Product 1" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 1</h3>
+        <p class="price" onclick="addToCart()">250 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 2">
+        <img src="images/product2.jpg" alt="Product 2" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 2</h3>
+        <p class="price" onclick="addToCart()">400 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 3">
+        <img src="images/product3.jpg" alt="Product 3" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 3</h3>
+        <p class="price" onclick="addToCart()">150 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 4">
+        <img src="images/product4.jpg" alt="Product 4" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 4</h3>
+        <p class="price" onclick="addToCart()">500 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 5">
+        <img src="images/product5.jpg" alt="Product 5" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 5</h3>
+        <p class="price" onclick="addToCart()">350 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 6">
+        <img src="images/product6.jpg" alt="Product 6" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 6</h3>
+        <p class="price" onclick="addToCart()">200 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 7">
+        <img src="images/product7.jpg" alt="Product 7" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 7</h3>
+        <p class="price" onclick="addToCart()">175 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 8">
+        <img src="images/product8.jpg" alt="Product 8" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 8</h3>
+        <p class="price" onclick="addToCart()">450 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 9">
+        <img src="images/product9.jpg" alt="Product 9" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 9</h3>
+        <p class="price" onclick="addToCart()">300 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 10">
+        <img src="images/product10.jpg" alt="Product 10" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 10</h3>
+        <p class="price" onclick="addToCart()">600 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 11">
+        <img src="images/product11.jpg" alt="Product 11" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 11</h3>
+        <p class="price" onclick="addToCart()">280 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 12">
+        <img src="images/product12.jpg" alt="Product 12" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 12</h3>
+        <p class="price" onclick="addToCart()">320 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 13">
+        <img src="images/product13.jpg" alt="Product 13" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 13</h3>
+        <p class="price" onclick="addToCart()">700 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 14">
+        <img src="images/product14.jpg" alt="Product 14" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 14</h3>
+        <p class="price" onclick="addToCart()">390 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="product" data-title="Product 15">
+        <img src="images/product15.jpg" alt="Product 15" onclick="addToCart()">
+        <h3 onclick="addToCart()">Product 15</h3>
+        <p class="price" onclick="addToCart()">260 EGP</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+</div>
+
+<!-- Check Reviews Button -->
+<button class="check-reviews">Check Reviews</button>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 Mohamed Drugs Shop. All rights reserved.
+</footer>
+
+<script>
+    let cartCount = 0;
+
+    function addToCart() {
+        cartCount++;
+        document.getElementById("cartCount").innerText = cartCount;
+        window.location.href = "payment.html"; // Dummy payment page
+    }
+
+    function searchProduct() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let grid = document.getElementById("productGrid");
+        let products = Array.from(grid.getElementsByClassName("product"));
+
+        // Sort so matches appear first
+        products.sort((a, b) => {
+            let aMatch = a.getAttribute("data-title").toLowerCase().includes(input);
+            let bMatch = b.getAttribute("data-title").toLowerCase().includes(input);
+            return bMatch - aMatch;
+        });
+
+        // Append back to grid
+        products.forEach(p => grid.appendChild(p));
+    }
+</script>
+
+</body>
+</html>
