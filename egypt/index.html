@@ -1,48 +1,843 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Drugs Shop - Egypt</title>
-<style>
-body { background-color: #121212; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-header { text-align: center; padding: 20px; font-size: 28px; font-weight: bold; color: #ff3333; animation: glow 1s infinite alternate; }
-@keyframes glow { from { text-shadow: 0 0 10px red; } to { text-shadow: 0 0 20px yellow; } }
-.products { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-.product { background-color: #1e1e1e; border-radius: 10px; padding: 15px; text-align: center; width: 200px; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-.product img { max-width: 100%; border-radius: 8px; }
-button { background-color: red; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
-button:hover { background-color: darkred; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Drugs Shop - Premium Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        /* Sticky Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        /* Back to Home Button */
+        .back-home {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+            backdrop-filter: blur(10px);
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-home:hover {
+            background: linear-gradient(135deg, #1976D2 0%, #0d47a1 100%);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
+            border-color: rgba(33, 150, 243, 0.5);
+        }
+        /* Store Name - Centered */
+        .store-name {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #2196F3 0%, #42A5F5 50%, #2196F3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+            filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
+            animation: blueGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes blueGlow {
+            0% {
+                text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+                filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
+            }
+            100% {
+                text-shadow: 0 0 30px rgba(33, 150, 243, 0.8);
+                filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.6));
+            }
+        }
+        .store-name:hover {
+            letter-spacing: 3px;
+            text-shadow: 0 0 25px rgba(33, 150, 243, 0.7);
+            filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
+        }
+        /* Cart Icon - Right Side */
+        .cart-container {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .cart-icon {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        .cart-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.6);
+            background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(45deg, #ffd93d, #ffb74d);
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 7px;
+            border-radius: 50%;
+            min-width: 20px;
+            text-align: center;
+            animation: bounce 0.6s ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 40px 20px;
+        }
+        .page-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-heading h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-heading p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .product {
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .product::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+        .product:hover::before {
+            left: 100%;
+        }
+        .product:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        .product img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        .product h3 {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        .product h3:hover {
+            color: #ff6b6b;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffd93d;
+            margin: 10px 0 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .price:hover {
+            color: #ffed4e;
+            transform: scale(1.05);
+        }
+        .add-to-cart {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .add-to-cart:active {
+            transform: translateY(0);
+        }
+        /* Check Reviews Button */
+        .check-reviews {
+            display: block;
+            max-width: 320px;
+            margin: 60px auto 40px auto;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+        .check-reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        .check-reviews:hover::before {
+            left: 100%;
+        }
+        .check-reviews:hover {
+            background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        /* Search Container */
+        .search-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            width: 300px;
+            z-index: 1001;
+        }
+        .search-box {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(30, 30, 30, 0.9);
+            color: white;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.5),
+                        0 4px 20px rgba(33, 150, 243, 0.4);
+            border-color: rgba(33, 150, 243, 0.3);
+        }
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .search-btn {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-btn:hover {
+            background: linear-gradient(135deg, #1976D2 0%, #0d47a1 100%);
+        }
+        .clear-search {
+            position: absolute;
+            right: 45px;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            display: none;
+        }
+        .clear-search:hover {
+            color: #ff6b6b;
+        }
+        /* Search Suggestions */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 0 0 15px 15px;
+            margin-top: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none;
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .search-suggestions.active {
+            display: block;
+        }
+        .suggestion-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        .suggestion-item:hover {
+            background: rgba(33, 150, 243, 0.1);
+        }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        .suggestion-highlight {
+            color: #ffd93d;
+            font-weight: 600;
+        }
+        /* Search Results Header */
+        .search-results-header {
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .search-results-header h3 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .search-results-header p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 15px;
+            display: none;
+        }
+        .no-results p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .try-again {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .try-again:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+        }
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 15px;
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            border-color: rgba(33, 150, 243, 0.3);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .store-name {
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+            .back-home {
+                font-size: 14px;
+                width: 35px;
+                height: 35px;
+                left: 15px;
+            }
+            .cart-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            .cart-container {
+                right: 15px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+            .product {
+                padding: 15px;
+            }
+            .page-heading h2 {
+                font-size: 28px;
+            }
+            .header {
+                padding: 15px 20px;
+            }
+            .main-content {
+                margin-top: 85px;
+            }
+            .search-container {
+                position: relative;
+                left: 0;
+                transform: none;
+                width: 100%;
+                margin: 15px 0;
+                order: 3;
+            }
+            .header {
+                flex-wrap: wrap;
+            }
+            .search-results-header h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Sticky Header -->
+    <div class="header">
+        <a href="#home" class="back-home">←</a>
+        <a href="#home" class="store-name">Mohamed Drugs Shop</a>
+        
+        <!-- Search Container -->
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="Search for medicines...">
+            <span class="clear-search" id="clearSearch">×</span>
+            <button class="search-btn" id="searchButton">🔍</button>
+            <div class="search-suggestions" id="searchSuggestions">
+                <!-- Suggestions will be populated here -->
+            </div>
+        </div>
+        
+        <div class="cart-container">
+            <a href="#cart" class="cart-icon"> 🛒 <span class="cart-count" id="cartCount">0</span> </a>
+        </div>
+    </div>
 
-<header>Mohamed Drugs Shop</header>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Heading -->
+        <div class="page-heading">
+            <h2>All Products in Egypt</h2>
+            <p>جميع المنتجات في مصر</p>
+        </div>
+        
+        <!-- Search Results Header -->
+        <div class="search-results-header" id="searchResultsHeader">
+            <h3>Search Results</h3>
+            <p id="resultsCount">Found 0 products</p>
+        </div>
+        
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <div class="filter-btn active" data-filter="all">All Products</div>
+            <div class="filter-btn" data-filter="premium">Premium</div>
+            <div class="filter-btn" data-filter="vitamin">Vitamins</div>
+            <div class="filter-btn" data-filter="pain">Pain Relief</div>
+            <div class="filter-btn" data-filter="herbal">Herbal</div>
+        </div>
+        
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be populated here -->
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults">
+            <p>No products found matching your search</p>
+            <div class="try-again" id="tryAgain">Clear Search</div>
+        </div>
+        
+        <!-- Check Customer Reviews Button -->
+        <a href="#reviews" class="check-reviews">Check Customer Reviews</a>
+    </div>
 
-<section class="products">
-<div class="product">
-<img src="https://via.placeholder.com/200" alt="Product 1">
-<h3>Product 1</h3>
-<p>Price: 250 EGP</p>
-<button onclick="window.location.href='https://example.com'">Buy Now</button>
-</div>
-<div class="product">
-<img src="https://via.placeholder.com/200" alt="Product 2">
-<h3>Product 2</h3>
-<p>Price: 400 EGP</p>
-<button onclick="window.location.href='https://example.com'">Buy Now</button>
-</div>
-<div class="product">
-<img src="https://via.placeholder.com/200" alt="Product 3">
-<h3>Product 3</h3>
-<p>Price: 150 EGP</p>
-<button onclick="window.location.href='https://example.com'">Buy Now</button>
-</div>
-</section>
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products
+    </footer>
 
-<div style="text-align:center; margin: 30px;">
-<button onclick="window.location.href='https://example.com'">Check Customer Reviews</button>
-</div>
-
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, title: "Premium Medicine A", price: 250, category: "premium", img: "https://via.placeholder.com/300x150/ff6b6b/ffffff?text=Medicine+A" },
+            { id: 2, title: "Health Supplement B", price: 400, category: "supplement", img: "https://via.placeholder.com/300x150/4ecdc4/ffffff?text=Supplement+B" },
+            { id: 3, title: "Vitamin Complex C", price: 150, category: "vitamin", img: "https://via.placeholder.com/300x150/ffd93d/ffffff?text=Vitamin+C" },
+            { id: 4, title: "Pain Relief D", price: 180, category: "pain", img: "https://via.placeholder.com/300x150/6bcf7f/ffffff?text=Pain+Relief+D" },
+            { id: 5, title: "Antibiotic E", price: 320, category: "antibiotic", img: "https://via.placeholder.com/300x150/45b7d1/ffffff?text=Antibiotic+E" },
+            { id: 6, title: "Herbal Extract F", price: 275, category: "herbal", img: "https://via.placeholder.com/300x150/9b59b6/ffffff?text=Herbal+F" },
+            { id: 7, title: "Digestive Aid G", price: 195, category: "digestive", img: "https://via.placeholder.com/300x150/e67e22/ffffff?text=Digestive+G" },
+            { id: 8, title: "Immunity Booster H", price: 350, category: "immunity", img: "https://via.placeholder.com/300x150/e74c3c/ffffff?text=Immunity+H" },
+            { id: 9, title: "Sleep Aid I", price: 220, category: "sleep", img: "https://via.placeholder.com/300x150/34495e/ffffff?text=Sleep+Aid+I" },
+            { id: 10, title: "Energy Boost J", price: 290, category: "energy", img: "https://via.placeholder.com/300x150/f39c12/ffffff?text=Energy+J" },
+            { id: 11, title: "Heart Health K", price: 380, category: "heart", img: "https://via.placeholder.com/300x150/d63031/ffffff?text=Heart+K" },
+            { id: 12, title: "Joint Care L", price: 260, category: "joint", img: "https://via.placeholder.com/300x150/00b894/ffffff?text=Joint+L" },
+            { id: 13, title: "Skin Care M", price: 310, category: "skin", img: "https://via.placeholder.com/300x150/fd79a8/ffffff?text=Skin+M" },
+            { id: 14, title: "Eye Health N", price: 240, category: "eye", img: "https://via.placeholder.com/300x150/00cec9/ffffff?text=Eye+N" },
+            { id: 15, title: "Brain Support O", price: 420, category: "brain", img: "https://via.placeholder.com/300x150/a29bfe/ffffff?text=Brain+O" }
+        ];
+        
+        // Cart functionality
+        let cartCount = 0;
+        const cartCountEl = document.getElementById('cartCount');
+        const productGrid = document.getElementById('productGrid');
+        
+        function addToCart(el) {
+            // Prevent link from navigating
+            event.preventDefault();
+            event.stopPropagation();
+            
+            let product = el.closest(".product");
+            let name = product.getAttribute("data-title");
+            let price = product.getAttribute("data-price");
+            
+            // Animate cart count
+            cartCount++;
+            cartCountEl.innerText = cartCount;
+            cartCountEl.style.animation = 'none';
+            cartCountEl.offsetHeight; // Trigger reflow
+            cartCountEl.style.animation = 'bounce 0.6s ease-in-out';
+            
+            // Save to memory (localStorage alternative)
+            window.cartItems = window.cartItems || [];
+            window.cartItems.push({ name, price });
+            
+            // Visual feedback
+            el.innerText = 'Added!';
+            el.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+            
+            setTimeout(() => {
+                el.innerText = 'Add to Cart';
+                el.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)';
+            }, 1000);
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const clearSearch = document.getElementById('clearSearch');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+        const searchResultsHeader = document.getElementById('searchResultsHeader');
+        const resultsCount = document.getElementById('resultsCount');
+        const noResults = document.getElementById('noResults');
+        const tryAgain = document.getElementById('tryAgain');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        let activeFilter = 'all';
+        let searchTerm = '';
+        
+        // Generate product HTML
+        function generateProductHTML(product) {
+            return `
+                <div class="product" data-title="${product.title}" data-price="${product.price}" data-category="${product.category}">
+                    <img src="${product.img}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p class="price">${product.price} EGP</p>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            `;
+        }
+        
+        // Render products
+        function renderProducts(productsToRender) {
+            productGrid.innerHTML = '';
+            
+            if (productsToRender.length === 0) {
+                noResults.style.display = 'block';
+                searchResultsHeader.style.display = 'block';
+                resultsCount.textContent = 'Found 0 products';
+            } else {
+                noResults.style.display = 'none';
+                productsToRender.forEach(product => {
+                    productGrid.innerHTML += generateProductHTML(product);
+                });
+            }
+        }
+        
+        // Initial render
+        renderProducts(products);
+        
+        // Filter products
+        function filterProducts() {
+            let filtered = products;
+            
+            // Apply search filter
+            if (searchTerm) {
+                filtered = filtered.filter(product => 
+                    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+            }
+            
+            // Apply category filter
+            if (activeFilter !== 'all') {
+                filtered = filtered.filter(product => 
+                    product.category === activeFilter)
+            }
+            
+            // Update UI
+            renderProducts(filtered);
+            searchResultsHeader.style.display = filtered.length > 0 || searchTerm || activeFilter !== 'all' ? 'block' : 'none';
+            resultsCount.textContent = `Found ${filtered.length} product${filtered.length !== 1 ? 's' : ''}`;
+        }
+        
+        // Search function
+        function searchProducts(term) {
+            searchTerm = term;
+            filterProducts();
+            
+            // Show/hide clear button
+            clearSearch.style.display = term ? 'block' : 'none';
+        }
+        
+        // Show suggestions
+        function showSuggestions(term) {
+            if (!term) {
+                searchSuggestions.classList.remove('active');
+                return;
+            }
+            
+            const filtered = products.filter(product => 
+                product.title.toLowerCase().includes(term.toLowerCase()));
+            
+            if (filtered.length === 0) {
+                searchSuggestions.innerHTML = '<div class="suggestion-item">No matches found</div>';
+                searchSuggestions.classList.add('active');
+                return;
+            }
+            
+            searchSuggestions.innerHTML = '';
+            filtered.slice(0, 5).forEach(product => {
+                const regex = new RegExp(term, 'gi');
+                const highlightedTitle = product.title.replace(regex, match => 
+                    `<span class="suggestion-highlight">${match}</span>`);
+                
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.innerHTML = highlightedTitle;
+                item.addEventListener('click', () => {
+                    searchInput.value = product.title;
+                    searchProducts(product.title);
+                    searchSuggestions.classList.remove('active');
+                });
+                
+                searchSuggestions.appendChild(item);
+            });
+            
+            searchSuggestions.classList.add('active');
+        }
+        
+        // Event listeners
+        searchInput.addEventListener('input', function() {
+            showSuggestions(this.value);
+        });
+        
+        searchInput.addEventListener('focus', function() {
+            if (this.value) {
+                showSuggestions(this.value);
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) {
+                searchSuggestions.classList.remove('active');
+            }
+        });
+        
+        searchButton.addEventListener('click', function() {
+            searchProducts(searchInput.value);
+            searchSuggestions.classList.remove('active');
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchProducts(this.value);
+                searchSuggestions.classList.remove('active');
+            }
+        });
+        
+        clearSearch.addEventListener('click', function() {
+            searchInput.value = '';
+            searchProducts('');
+            searchSuggestions.classList.remove('active');
+            this.style.display = 'none';
+        });
+        
+        tryAgain.addEventListener('click', function() {
+            searchInput.value = '';
+            searchProducts('');
+            searchSuggestions.classList.remove('active');
+            clearSearch.style.display = 'none';
+        });
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeFilter = this.getAttribute('data-filter');
+                filterProducts();
+            });
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Premium E-commerce Store with Search loaded successfully');
+        });
+    </script>
 </body>
 </html>
