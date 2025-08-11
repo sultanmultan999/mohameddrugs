@@ -138,7 +138,7 @@
             text-shadow: 0 0 25px rgba(33, 150, 243, 0.7);
             filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
         }
-        /* Cart Icon - Right Side - More large and attractive */
+        /* Cart Icon - Right Side - Blue with black cart symbol */
         .cart-container {
             position: absolute;
             right: 25px;
@@ -146,14 +146,14 @@
             transform: translateY(-50%);
         }
         .cart-icon {
-            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFB347 100%);
-            color: white;
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 50%, #42A5F5 100%);
+            color: #000;
             text-decoration: none;
             padding: 16px;
             border-radius: 50%;
             font-size: 28px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -161,7 +161,7 @@
             height: 60px;
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255, 179, 71, 0.3);
+            border: 2px solid rgba(33, 150, 243, 0.3);
         }
         .cart-icon::before {
             content: '';
@@ -178,9 +178,9 @@
         }
         .cart-icon:hover {
             transform: translateY(-5px) scale(1.15);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
-            background: linear-gradient(135deg, #F7931E 0%, #FF6B35 50%, #FFB347 100%);
-            border-color: rgba(255, 179, 71, 0.5);
+            box-shadow: 0 12px 35px rgba(33, 150, 243, 0.6);
+            background: linear-gradient(135deg, #1976D2 0%, #2196F3 50%, #42A5F5 100%);
+            border-color: rgba(33, 150, 243, 0.5);
         }
         .cart-count {
             position: absolute;
@@ -293,7 +293,7 @@
             filter: brightness(1.1);
         }
         .product-title {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             margin: 15px 0 10px 0;
             color: #fff;
@@ -305,7 +305,7 @@
             color: #ff6b6b;
         }
         .price {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #ffd93d;
             margin: 10px 0 15px 0;
@@ -357,6 +357,11 @@
         .add-to-cart:active {
             transform: translateY(0);
         }
+        .add-to-cart .arabic {
+            font-size: 10px;
+            display: block;
+            margin-top: 2px;
+        }
         /* Check Reviews Button */
         .check-reviews {
             display: block;
@@ -404,6 +409,12 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.25);
+        }
+        .check-reviews .arabic {
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+            letter-spacing: 1px;
         }
         /* Footer */
         footer {
@@ -460,10 +471,10 @@
         <a href="home.html" class="back-home"><i class="fas fa-arrow-left"></i></a>
         <a href="home.html" class="store-name">Mohamed Drugs Shop</a>
         <div class="cart-container">
-            <a href="cart.html" class="cart-icon">
-  <img src="egypt/shopping-cart.png" alt="Cart Icon">
-  <span class="cart-count" id="cartCount">0</span>
-</a>
+            <a href="cart.html" class="cart-icon"> 
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
         </div>
     </div>
 
@@ -484,7 +495,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Premium Medicine A</a>
                 <p class="price">250 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 2 -->
@@ -494,7 +505,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Health Supplement B</a>
                 <p class="price">400 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 3 -->
@@ -504,7 +515,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Vitamin Complex C</a>
                 <p class="price">150 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 4 -->
@@ -514,7 +525,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Pain Relief D</a>
                 <p class="price">180 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 5 -->
@@ -524,7 +535,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Antibiotic E</a>
                 <p class="price">320 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 6 -->
@@ -534,7 +545,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Herbal Extract F</a>
                 <p class="price">275 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 7 -->
@@ -544,7 +555,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Digestive Aid G</a>
                 <p class="price">195 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 8 -->
@@ -554,7 +565,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Immunity Booster H</a>
                 <p class="price">350 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 9 -->
@@ -564,7 +575,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Sleep Aid I</a>
                 <p class="price">220 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 10 -->
@@ -574,7 +585,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Energy Boost J</a>
                 <p class="price">290 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 11 -->
@@ -584,7 +595,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Heart Health K</a>
                 <p class="price">380 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 12 -->
@@ -594,7 +605,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Joint Care L</a>
                 <p class="price">260 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 13 -->
@@ -604,7 +615,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Skin Care M</a>
                 <p class="price">310 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 14 -->
@@ -614,7 +625,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Eye Health N</a>
                 <p class="price">240 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 15 -->
@@ -624,7 +635,7 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Brain Support O</a>
                 <p class="price">420 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
             </div>
             
             <!-- Product 16 -->
@@ -634,65 +645,4 @@
                 </a>
                 <a href="product-detail.html" class="product-title">Vitamin P Complex</a>
                 <p class="price">280 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart</a>
-            </div>
-        </div>
-        
-        <!-- Check Customer Reviews Button -->
-        <a href="reviews.html" class="check-reviews">Check Customer Reviews</a>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products</p>
-    </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Cart functionality
-        let cartCount = 0;
-        const cartCountEl = document.getElementById('cartCount');
-        
-        // Add to cart functionality with dummy redirect
-        function addToCart(event) {
-            event.preventDefault();
-            
-            // Animate cart count
-            cartCount++;
-            cartCountEl.innerText = cartCount;
-            cartCountEl.style.animation = 'none';
-            cartCountEl.offsetHeight; // Trigger reflow
-            cartCountEl.style.animation = 'bounce 0.6s ease-in-out';
-            
-            // Visual feedback
-            const button = event.target;
-            const originalText = button.innerText;
-            button.innerText = 'Added!';
-            button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
-            
-            setTimeout(() => {
-                button.innerText = originalText;
-                button.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)';
-                
-                // Dummy redirect - you can change this later
-                console.log('Product added to cart - redirect to cart page');
-                // window.location.href = 'cart.html'; // Uncomment when ready
-            }, 1000);
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Premium Pharmacy Store loaded successfully');
-        });
-    </script>
-</body>
-</html>
+                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">
