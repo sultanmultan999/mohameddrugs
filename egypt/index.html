@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Drugs Shop - Premium Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -157,7 +158,7 @@
         }
         .page-heading {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .page-heading h2 {
             font-size: 36px;
@@ -211,7 +212,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             border-color: rgba(255, 255, 255, 0.2);
         }
-        .product img {
+        .product-thumbnail {
             width: 100%;
             height: 150px;
             object-fit: cover;
@@ -220,11 +221,7 @@
             transition: all 0.3s ease;
             margin-bottom: 15px;
         }
-        .product img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-        .product h3 {
+        .product-title {
             cursor: pointer;
             font-size: 18px;
             font-weight: 600;
@@ -232,7 +229,7 @@
             color: #fff;
             transition: color 0.3s ease;
         }
-        .product h3:hover {
+        .product-title:hover {
             color: #ff6b6b;
         }
         .price {
@@ -323,178 +320,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
         }
-        /* Search Container */
-        .search-container {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            width: 300px;
-            z-index: 1001;
-        }
-        .search-box {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 30px;
-            background: rgba(30, 30, 30, 0.9);
-            color: white;
-            font-size: 14px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .search-box:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.5),
-                        0 4px 20px rgba(33, 150, 243, 0.4);
-            border-color: rgba(33, 150, 243, 0.3);
-        }
-        .search-box::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .search-btn {
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            position: absolute;
-            right: 0;
-            height: 100%;
-            width: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .search-btn:hover {
-            background: linear-gradient(135deg, #1976D2 0%, #0d47a1 100%);
-        }
-        .clear-search {
-            position: absolute;
-            right: 45px;
-            color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            display: none;
-        }
-        .clear-search:hover {
-            color: #ff6b6b;
-        }
-        /* Search Suggestions */
-        .search-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 0 0 15px 15px;
-            margin-top: 5px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: none;
-            z-index: 1000;
-            display: none;
-            overflow: hidden;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        .search-suggestions.active {
-            display: block;
-        }
-        .suggestion-item {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-        }
-        .suggestion-item:hover {
-            background: rgba(33, 150, 243, 0.1);
-        }
-        .suggestion-item:last-child {
-            border-bottom: none;
-        }
-        .suggestion-highlight {
-            color: #ffd93d;
-            font-weight: 600;
-        }
-        /* Search Results Header */
-        .search-results-header {
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-        }
-        .search-results-header h3 {
-            font-size: 24px;
-            font-weight: 300;
-            margin-bottom: 5px;
-            background: linear-gradient(45deg, #fff, #ccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .search-results-header p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            background: rgba(30, 30, 30, 0.5);
-            border-radius: 15px;
-            display: none;
-        }
-        .no-results p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .try-again {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-            color: white;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .try-again:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
-        }
-        /* Filter Controls */
-        .filter-controls {
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
         }
-        .filter-btn {
-            padding: 8px 15px;
-            background: rgba(30, 30, 30, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+        .footer-links a {
             color: rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-            color: white;
-            border-color: rgba(33, 150, 243, 0.3);
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        .footer-links a:hover {
+            color: #42A5F5;
         }
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -533,20 +371,6 @@
             .main-content {
                 margin-top: 85px;
             }
-            .search-container {
-                position: relative;
-                left: 0;
-                transform: none;
-                width: 100%;
-                margin: 15px 0;
-                order: 3;
-            }
-            .header {
-                flex-wrap: wrap;
-            }
-            .search-results-header h3 {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
@@ -555,17 +379,6 @@
     <div class="header">
         <a href="#home" class="back-home">←</a>
         <a href="#home" class="store-name">Mohamed Drugs Shop</a>
-        
-        <!-- Search Container -->
-        <div class="search-container">
-            <input type="text" class="search-box" id="searchInput" placeholder="Search for medicines...">
-            <span class="clear-search" id="clearSearch">×</span>
-            <button class="search-btn" id="searchButton">🔍</button>
-            <div class="search-suggestions" id="searchSuggestions">
-                <!-- Suggestions will be populated here -->
-            </div>
-        </div>
-        
         <div class="cart-container">
             <a href="#cart" class="cart-icon"> 🛒 <span class="cart-count" id="cartCount">0</span> </a>
         </div>
@@ -575,34 +388,139 @@
     <div class="main-content">
         <!-- Page Heading -->
         <div class="page-heading">
-            <h2>All Products in Egypt</h2>
+            <h2>Premium Healthcare Products</h2>
             <p>جميع المنتجات في مصر</p>
         </div>
-        
-        <!-- Search Results Header -->
-        <div class="search-results-header" id="searchResultsHeader">
-            <h3>Search Results</h3>
-            <p id="resultsCount">Found 0 products</p>
-        </div>
-        
-        <!-- Filter Controls -->
-        <div class="filter-controls">
-            <div class="filter-btn active" data-filter="all">All Products</div>
-            <div class="filter-btn" data-filter="premium">Premium</div>
-            <div class="filter-btn" data-filter="vitamin">Vitamins</div>
-            <div class="filter-btn" data-filter="pain">Pain Relief</div>
-            <div class="filter-btn" data-filter="herbal">Herbal</div>
-        </div>
-        
+
         <!-- Product Grid -->
-        <div class="product-grid" id="productGrid">
-            <!-- Products will be populated here -->
-        </div>
-        
-        <!-- No Results Message -->
-        <div class="no-results" id="noResults">
-            <p>No products found matching your search</p>
-            <div class="try-again" id="tryAgain">Clear Search</div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/ff6b6b/ffffff?text=Medicine+A" alt="Premium Medicine A" class="product-thumbnail">
+                <h3 class="product-title">Premium Medicine A</h3>
+                <p class="price">250 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/4ecdc4/ffffff?text=Supplement+B" alt="Health Supplement B" class="product-thumbnail">
+                <h3 class="product-title">Health Supplement B</h3>
+                <p class="price">400 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/ffd93d/ffffff?text=Vitamin+C" alt="Vitamin Complex C" class="product-thumbnail">
+                <h3 class="product-title">Vitamin Complex C</h3>
+                <p class="price">150 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/6bcf7f/ffffff?text=Pain+Relief+D" alt="Pain Relief D" class="product-thumbnail">
+                <h3 class="product-title">Pain Relief D</h3>
+                <p class="price">180 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/45b7d1/ffffff?text=Antibiotic+E" alt="Antibiotic E" class="product-thumbnail">
+                <h3 class="product-title">Antibiotic E</h3>
+                <p class="price">320 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/9b59b6/ffffff?text=Herbal+F" alt="Herbal Extract F" class="product-thumbnail">
+                <h3 class="product-title">Herbal Extract F</h3>
+                <p class="price">275 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/e67e22/ffffff?text=Digestive+G" alt="Digestive Aid G" class="product-thumbnail">
+                <h3 class="product-title">Digestive Aid G</h3>
+                <p class="price">195 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/e74c3c/ffffff?text=Immunity+H" alt="Immunity Booster H" class="product-thumbnail">
+                <h3 class="product-title">Immunity Booster H</h3>
+                <p class="price">350 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 9 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/34495e/ffffff?text=Sleep+Aid+I" alt="Sleep Aid I" class="product-thumbnail">
+                <h3 class="product-title">Sleep Aid I</h3>
+                <p class="price">220 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 10 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/f39c12/ffffff?text=Energy+J" alt="Energy Boost J" class="product-thumbnail">
+                <h3 class="product-title">Energy Boost J</h3>
+                <p class="price">290 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 11 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/d63031/ffffff?text=Heart+K" alt="Heart Health K" class="product-thumbnail">
+                <h3 class="product-title">Heart Health K</h3>
+                <p class="price">380 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 12 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/00b894/ffffff?text=Joint+L" alt="Joint Care L" class="product-thumbnail">
+                <h3 class="product-title">Joint Care L</h3>
+                <p class="price">260 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 13 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/fd79a8/ffffff?text=Skin+M" alt="Skin Care M" class="product-thumbnail">
+                <h3 class="product-title">Skin Care M</h3>
+                <p class="price">310 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 14 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/00cec9/ffffff?text=Eye+N" alt="Eye Health N" class="product-thumbnail">
+                <h3 class="product-title">Eye Health N</h3>
+                <p class="price">240 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 15 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/a29bfe/ffffff?text=Brain+O" alt="Brain Support O" class="product-thumbnail">
+                <h3 class="product-title">Brain Support O</h3>
+                <p class="price">420 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            
+            <!-- Product 16 -->
+            <div class="product">
+                <img src="https://via.placeholder.com/300x150/55efc4/ffffff?text=Vitamin+P" alt="Vitamin P" class="product-thumbnail">
+                <h3 class="product-title">Vitamin P Complex</h3>
+                <p class="price">280 EGP</p>
+                <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+            </div>
         </div>
         
         <!-- Check Customer Reviews Button -->
@@ -611,33 +529,18 @@
 
     <!-- Footer -->
     <footer>
-        &copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products
+        <p>&copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products</p>
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+        </div>
     </footer>
 
     <script>
-        // Sample product data
-        const products = [
-            { id: 1, title: "Premium Medicine A", price: 250, category: "premium", img: "https://via.placeholder.com/300x150/ff6b6b/ffffff?text=Medicine+A" },
-            { id: 2, title: "Health Supplement B", price: 400, category: "supplement", img: "https://via.placeholder.com/300x150/4ecdc4/ffffff?text=Supplement+B" },
-            { id: 3, title: "Vitamin Complex C", price: 150, category: "vitamin", img: "https://via.placeholder.com/300x150/ffd93d/ffffff?text=Vitamin+C" },
-            { id: 4, title: "Pain Relief D", price: 180, category: "pain", img: "https://via.placeholder.com/300x150/6bcf7f/ffffff?text=Pain+Relief+D" },
-            { id: 5, title: "Antibiotic E", price: 320, category: "antibiotic", img: "https://via.placeholder.com/300x150/45b7d1/ffffff?text=Antibiotic+E" },
-            { id: 6, title: "Herbal Extract F", price: 275, category: "herbal", img: "https://via.placeholder.com/300x150/9b59b6/ffffff?text=Herbal+F" },
-            { id: 7, title: "Digestive Aid G", price: 195, category: "digestive", img: "https://via.placeholder.com/300x150/e67e22/ffffff?text=Digestive+G" },
-            { id: 8, title: "Immunity Booster H", price: 350, category: "immunity", img: "https://via.placeholder.com/300x150/e74c3c/ffffff?text=Immunity+H" },
-            { id: 9, title: "Sleep Aid I", price: 220, category: "sleep", img: "https://via.placeholder.com/300x150/34495e/ffffff?text=Sleep+Aid+I" },
-            { id: 10, title: "Energy Boost J", price: 290, category: "energy", img: "https://via.placeholder.com/300x150/f39c12/ffffff?text=Energy+J" },
-            { id: 11, title: "Heart Health K", price: 380, category: "heart", img: "https://via.placeholder.com/300x150/d63031/ffffff?text=Heart+K" },
-            { id: 12, title: "Joint Care L", price: 260, category: "joint", img: "https://via.placeholder.com/300x150/00b894/ffffff?text=Joint+L" },
-            { id: 13, title: "Skin Care M", price: 310, category: "skin", img: "https://via.placeholder.com/300x150/fd79a8/ffffff?text=Skin+M" },
-            { id: 14, title: "Eye Health N", price: 240, category: "eye", img: "https://via.placeholder.com/300x150/00cec9/ffffff?text=Eye+N" },
-            { id: 15, title: "Brain Support O", price: 420, category: "brain", img: "https://via.placeholder.com/300x150/a29bfe/ffffff?text=Brain+O" }
-        ];
-        
-        // Cart functionality
         let cartCount = 0;
         const cartCountEl = document.getElementById('cartCount');
-        const productGrid = document.getElementById('productGrid');
         
         function addToCart(el) {
             // Prevent link from navigating
@@ -645,8 +548,8 @@
             event.stopPropagation();
             
             let product = el.closest(".product");
-            let name = product.getAttribute("data-title");
-            let price = product.getAttribute("data-price");
+            let name = product.querySelector('.product-title').textContent;
+            let price = product.querySelector('.price').textContent;
             
             // Animate cart count
             cartCount++;
@@ -669,174 +572,9 @@
             }, 1000);
         }
         
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const clearSearch = document.getElementById('clearSearch');
-        const searchSuggestions = document.getElementById('searchSuggestions');
-        const searchResultsHeader = document.getElementById('searchResultsHeader');
-        const resultsCount = document.getElementById('resultsCount');
-        const noResults = document.getElementById('noResults');
-        const tryAgain = document.getElementById('tryAgain');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        
-        let activeFilter = 'all';
-        let searchTerm = '';
-        
-        // Generate product HTML
-        function generateProductHTML(product) {
-            return `
-                <div class="product" data-title="${product.title}" data-price="${product.price}" data-category="${product.category}">
-                    <img src="${product.img}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p class="price">${product.price} EGP</p>
-                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
-                </div>
-            `;
-        }
-        
-        // Render products
-        function renderProducts(productsToRender) {
-            productGrid.innerHTML = '';
-            
-            if (productsToRender.length === 0) {
-                noResults.style.display = 'block';
-                searchResultsHeader.style.display = 'block';
-                resultsCount.textContent = 'Found 0 products';
-            } else {
-                noResults.style.display = 'none';
-                productsToRender.forEach(product => {
-                    productGrid.innerHTML += generateProductHTML(product);
-                });
-            }
-        }
-        
-        // Initial render
-        renderProducts(products);
-        
-        // Filter products
-        function filterProducts() {
-            let filtered = products;
-            
-            // Apply search filter
-            if (searchTerm) {
-                filtered = filtered.filter(product => 
-                    product.title.toLowerCase().includes(searchTerm.toLowerCase())
-            }
-            
-            // Apply category filter
-            if (activeFilter !== 'all') {
-                filtered = filtered.filter(product => 
-                    product.category === activeFilter)
-            }
-            
-            // Update UI
-            renderProducts(filtered);
-            searchResultsHeader.style.display = filtered.length > 0 || searchTerm || activeFilter !== 'all' ? 'block' : 'none';
-            resultsCount.textContent = `Found ${filtered.length} product${filtered.length !== 1 ? 's' : ''}`;
-        }
-        
-        // Search function
-        function searchProducts(term) {
-            searchTerm = term;
-            filterProducts();
-            
-            // Show/hide clear button
-            clearSearch.style.display = term ? 'block' : 'none';
-        }
-        
-        // Show suggestions
-        function showSuggestions(term) {
-            if (!term) {
-                searchSuggestions.classList.remove('active');
-                return;
-            }
-            
-            const filtered = products.filter(product => 
-                product.title.toLowerCase().includes(term.toLowerCase()));
-            
-            if (filtered.length === 0) {
-                searchSuggestions.innerHTML = '<div class="suggestion-item">No matches found</div>';
-                searchSuggestions.classList.add('active');
-                return;
-            }
-            
-            searchSuggestions.innerHTML = '';
-            filtered.slice(0, 5).forEach(product => {
-                const regex = new RegExp(term, 'gi');
-                const highlightedTitle = product.title.replace(regex, match => 
-                    `<span class="suggestion-highlight">${match}</span>`);
-                
-                const item = document.createElement('div');
-                item.className = 'suggestion-item';
-                item.innerHTML = highlightedTitle;
-                item.addEventListener('click', () => {
-                    searchInput.value = product.title;
-                    searchProducts(product.title);
-                    searchSuggestions.classList.remove('active');
-                });
-                
-                searchSuggestions.appendChild(item);
-            });
-            
-            searchSuggestions.classList.add('active');
-        }
-        
-        // Event listeners
-        searchInput.addEventListener('input', function() {
-            showSuggestions(this.value);
-        });
-        
-        searchInput.addEventListener('focus', function() {
-            if (this.value) {
-                showSuggestions(this.value);
-            }
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) {
-                searchSuggestions.classList.remove('active');
-            }
-        });
-        
-        searchButton.addEventListener('click', function() {
-            searchProducts(searchInput.value);
-            searchSuggestions.classList.remove('active');
-        });
-        
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchProducts(this.value);
-                searchSuggestions.classList.remove('active');
-            }
-        });
-        
-        clearSearch.addEventListener('click', function() {
-            searchInput.value = '';
-            searchProducts('');
-            searchSuggestions.classList.remove('active');
-            this.style.display = 'none';
-        });
-        
-        tryAgain.addEventListener('click', function() {
-            searchInput.value = '';
-            searchProducts('');
-            searchSuggestions.classList.remove('active');
-            clearSearch.style.display = 'none';
-        });
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                activeFilter = this.getAttribute('data-filter');
-                filterProducts();
-            });
-        });
-        
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Premium E-commerce Store with Search loaded successfully');
+            console.log('Premium E-commerce Store loaded successfully');
         });
     </script>
 </body>
