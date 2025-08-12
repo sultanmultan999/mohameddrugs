@@ -1,658 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Drugs Shop - Premium Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding-top: 100px;
-        }
-        /* Sticky Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        .header.scrolled {
-            padding: 10px 25px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-        }
-        /* Enhanced Back Button */
-        .back-home {
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 50%;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
-            position: absolute;
-            left: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 1px solid rgba(33, 150, 243, 0.3);
-        }
-        .back-home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-        .back-home:hover::before {
-            left: 100%;
-        }
-        .back-home:hover {
-            background: linear-gradient(135deg, #1976D2 0%, #0d47a1 100%);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
-            border-color: rgba(33, 150, 243, 0.5);
-        }
-        .back-home i {
-            transition: transform 0.3s ease;
-        }
-        .back-home:hover i {
-            transform: translateX(-3px);
-        }
-        /* Store Name - Centered with smaller text */
-        .store-name {
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #2196F3 0%, #42A5F5 50%, #2196F3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            font-family: 'Segoe UI', sans-serif;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
-            filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
-            animation: blueGlow 2s ease-in-out infinite alternate;
-            padding: 5px 15px;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        .store-name::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-        .store-name:hover::before {
-            transform: translateX(100%);
-        }
-        @keyframes blueGlow {
-            0% {
-                text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
-                filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
-            }
-            100% {
-                text-shadow: 0 0 30px rgba(33, 150, 243, 0.8);
-                filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.6));
-            }
-        }
-        .store-name:hover {
-            letter-spacing: 3px;
-            text-shadow: 0 0 25px rgba(33, 150, 243, 0.7);
-            filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
-        }
-        /* Cart Icon - Right Side - Completely Blue Design */
-        .cart-container {
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .cart-icon {
-            background: linear-gradient(135deg, #1E88E5 0%, #1565C0 50%, #0D47A1 100%);
-            color: #000000;
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 20px;
-            font-size: 26px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(30, 136, 229, 0.5);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 65px;
-            height: 65px;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(13, 71, 161, 0.4);
-            font-weight: 900;
-        }
-        .cart-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.6s;
-        }
-        .cart-icon:hover::before {
-            left: 100%;
-        }
-        .cart-icon::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(30, 136, 229, 0.2), rgba(13, 71, 161, 0.3));
-            border-radius: 17px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .cart-icon:hover::after {
-            opacity: 1;
-        }
-        .cart-icon:hover {
-            transform: translateY(-8px) scale(1.2) rotate(5deg);
-            box-shadow: 0 20px 50px rgba(30, 136, 229, 0.7);
-            background: linear-gradient(135deg, #2196F3 0%, #1E88E5 50%, #1565C0 100%);
-            border-color: rgba(33, 150, 243, 0.7);
-            border-radius: 25px;
-        }
-        .cart-count {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            background: linear-gradient(45deg, #FF3D71, #FF6B9D);
-            color: #FFFFFF;
-            font-size: 14px;
-            font-weight: 900;
-            padding: 8px 10px;
-            border-radius: 50%;
-            min-width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            animation: bounce 0.6s ease-in-out;
-            z-index: 10;
-            border: 3px solid #FFFFFF;
-            box-shadow: 0 4px 15px rgba(255, 61, 113, 0.5);
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        /* Main Content */
-        .main-content {
-            padding: 30px 20px 60px;
-        }
-        .page-heading {
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .page-heading h2 {
-            font-size: 36px;
-            font-weight: 300;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #fff, #ccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .page-heading p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-        }
-        /* Product Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-        .product {
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .product::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: left 0.6s;
-        }
-        .product:hover::before {
-            left: 100%;
-        }
-        .product:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        .product-thumbnail {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .product-thumbnail:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-        .product-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin: 15px 0 10px 0;
-            color: #fff;
-            transition: color 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .product-title:hover {
-            color: #ff6b6b;
-        }
-        .price {
-            font-size: 16px;
-            font-weight: 700;
-            color: #ffd93d;
-            margin: 10px 0 15px 0;
-            transition: all 0.3s ease;
-        }
-        .price:hover {
-            color: #ffed4e;
-            transform: scale(1.05);
-        }
-        .add-to-cart {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 10px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            text-decoration: none;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-        .add-to-cart::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        .add-to-cart:hover::before {
-            left: 100%;
-        }
-        .add-to-cart:hover {
-            background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-        .add-to-cart:active {
-            transform: translateY(0);
-        }
-        .add-to-cart .arabic {
-            font-size: 10px;
-            display: block;
-            margin-top: 2px;
-        }
-        /* Check Reviews Button */
-        .check-reviews {
-            display: block;
-            max-width: 320px;
-            margin: 60px auto 40px auto;
-            padding: 16px 45px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            text-decoration: none;
-            text-align: center;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(33, 150, 243, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
-        }
-        .check-reviews::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
-        }
-        .check-reviews:hover::before {
-            left: 100%;
-        }
-        .check-reviews:hover {
-            background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-        .check-reviews .arabic {
-            font-size: 14px;
-            display: block;
-            margin-top: 5px;
-            letter-spacing: 1px;
-        }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-            color: rgba(255, 255, 255, 0.6);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 14px;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .store-name {
-                font-size: 16px;
-                letter-spacing: 1px;
-            }
-            .back-home {
-                font-size: 14px;
-                width: 40px;
-                height: 40px;
-                left: 15px;
-            }
-            .cart-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 20px;
-                padding: 15px;
-            }
-            .cart-container {
-                right: 15px;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 15px;
-            }
-            .product {
-                padding: 15px;
-            }
-            .page-heading h2 {
-                font-size: 28px;
-            }
-            .header {
-                padding: 15px 20px;
-            }
-            body {
-                padding-top: 85px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Drugs Shop - Premium Pharmacy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+/* Sticky Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    padding: 10px 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Updated Back Button - Dark Blue Rectangular with Round Corners */
+.back-home {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976D2 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.4);
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    width: auto;
+    height: auto;
+}
+
+.back-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.5s;
+}
+
+.back-home:hover::before {
+    left: 100%;
+}
+
+.back-home:hover {
+    background: linear-gradient(135deg, #0d47a1 0%, #1565C0 100%);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(13, 71, 161, 0.6);
+    border-color: rgba(33, 150, 243, 0.5);
+}
+
+/* Store Name - Centered with Link */
+.store-name {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #2196F3 0%, #42A5F5 50%, #2196F3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+    filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
+    animation: blueGlow 2s ease-in-out infinite alternate;
+    padding: 5px 15px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.store-name::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.store-name:hover::before {
+    transform: translateX(100%);
+}
+
+@keyframes blueGlow {
+    0% {
+        text-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+        filter: drop-shadow(0 0 10px rgba(33, 150, 243, 0.3));
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(33, 150, 243, 0.8);
+        filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.6));
+    }
+}
+
+.store-name:hover {
+    letter-spacing: 3px;
+    text-shadow: 0 0 25px rgba(33, 150, 243, 0.7);
+    filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
+}
+
+/* Main Content */
+.main-content {
+    padding: 30px 20px 60px;
+}
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-heading h2 {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-heading p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.product {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.6s;
+}
+
+.product:hover::before {
+    left: 100%;
+}
+
+.product:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.product-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-thumbnail:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.product-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+    color: #fff;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.product-title:hover {
+    color: #ff6b6b;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffd93d;
+    margin: 10px 0 15px 0;
+    transition: all 0.3s ease;
+}
+
+.price:hover {
+    color: #ffed4e;
+    transform: scale(1.05);
+}
+
+/* Updated Add to Cart -> BUY NOW Button */
+.add-to-cart {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.add-to-cart::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.add-to-cart:hover::before {
+    left: 100%;
+}
+
+.add-to-cart:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.add-to-cart:active {
+    transform: translateY(0);
+}
+
+.add-to-cart .arabic {
+    font-size: 10px;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Check Reviews Button */
+.check-reviews {
+    display: block;
+    max-width: 320px;
+    margin: 60px auto 40px auto;
+    padding: 16px 45px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(33, 150, 243, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+}
+
+.check-reviews::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.check-reviews:hover::before {
+    left: 100%;
+}
+
+.check-reviews:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.check-reviews .arabic {
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+/* WhatsApp Support Link in Footer */
+.whatsapp-support {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    background: #25D366;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-support:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .store-name {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    
+    .back-home {
+        font-size: 14px;
+        padding: 10px 15px;
+        left: 15px;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .product {
+        padding: 15px;
+    }
+    
+    .page-heading h2 {
+        font-size: 28px;
+    }
+    
+    .header {
+        padding: 15px 20px;
+    }
+    
+    body {
+        padding-top: 85px;
+    }
+}
+</style>
 </head>
 <body>
-    <!-- Sticky Header -->
-    <div class="header" id="header">
-        <a href="home.html" class="back-home"><i class="fas fa-arrow-left"></i></a>
-        <a href="home.html" class="store-name">Mohamed Drugs Shop</a>
-        <div class="cart-container">
-            <a href="cart.html" class="cart-icon"> 
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
-        </div>
+<!-- Sticky Header -->
+<div class="header" id="header">
+    <!-- Updated Back Button -->
+    <a href="https://mohameddrugs.shop" class="back-home">BACK</a>
+    
+    <!-- Store Name with New Link -->
+    <a href="https://mohameddrugs.shop" class="store-name">Mohamed Drugs Shop</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Page Heading with Arabic Translation -->
+    <div class="page-heading">
+        <h2>All Products in Egypt</h2>
+        <p>جميع المنتجات في مصر</p>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Page Heading -->
-        <div class="page-heading">
-            <h2>All Products in Egypt</h2>
-            <p>جميع المنتجات في مصر</p>
+    <!-- Product Grid (16 Products) -->
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/ff6b6b/ffffff?text=Medicine+A" alt="Premium Medicine A" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Premium Medicine A</a>
+            <p class="price">250 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
         </div>
+        
+        <!-- Product 2 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/4ecdc4/ffffff?text=Supplement+B" alt="Health Supplement B" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Health Supplement B</a>
+            <p class="price">400 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/ffd93d/ffffff?text=Vitamin+C" alt="Vitamin Complex C" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Vitamin Complex C</a>
+            <p class="price">150 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/6bcf7f/ffffff?text=Pain+Relief+D" alt="Pain Relief D" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Pain Relief D</a>
+            <p class="price">180 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/45b7d1/ffffff?text=Antibiotic+E" alt="Antibiotic E" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Antibiotic E</a>
+            <p class="price">320 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/9b59b6/ffffff?text=Herbal+F" alt="Herbal Extract F" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Herbal Extract F</a>
+            <p class="price">275 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 7 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/e67e22/ffffff?text=Digestive+G" alt="Digestive Aid G" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Digestive Aid G</a>
+            <p class="price">195 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 8 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/e74c3c/ffffff?text=Immunity+H" alt="Immunity Booster H" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Immunity Booster H</a>
+            <p class="price">350 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 9 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/34495e/ffffff?text=Sleep+Aid+I" alt="Sleep Aid I" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Sleep Aid I</a>
+            <p class="price">220 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 10 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/f39c12/ffffff?text=Energy+J" alt="Energy Boost J" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Energy Boost J</a>
+            <p class="price">290 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 11 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/d63031/ffffff?text=Heart+K" alt="Heart Health K" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Heart Health K</a>
+            <p class="price">380 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 12 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/00b894/ffffff?text=Joint+L" alt="Joint Care L" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Joint Care L</a>
+            <p class="price">260 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 13 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/fd79a8/ffffff?text=Skin+M" alt="Skin Care M" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Skin Care M</a>
+            <p class="price">310 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 14 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/00cec9/ffffff?text=Eye+N" alt="Eye Health N" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Eye Health N</a>
+            <p class="price">240 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 15 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/a29bfe/ffffff?text=Brain+O" alt="Brain Support O" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Brain Support O</a>
+            <p class="price">420 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+        
+        <!-- Product 16 -->
+        <div class="product">
+            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+                <img src="https://via.placeholder.com/300x150/55efc4/ffffff?text=Vitamin+P" alt="Vitamin P" class="product-thumbnail">
+            </a>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Vitamin P Complex</a>
+            <p class="price">280 EGP</p>
+            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+        </div>
+    </div>
+    
+    <!-- Check Customer Reviews Button -->
+    <a href="reviews.html" class="check-reviews">Check Customer Reviews<span class="arabic">تحقق من آراء العملاء</span></a>
+</div>
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            <!-- Product 1 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/ff6b6b/ffffff?text=Medicine+A" alt="Premium Medicine A" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Premium Medicine A</a>
-                <p class="price">250 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 2 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/4ecdc4/ffffff?text=Supplement+B" alt="Health Supplement B" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Health Supplement B</a>
-                <p class="price">400 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 3 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/ffd93d/ffffff?text=Vitamin+C" alt="Vitamin Complex C" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Vitamin Complex C</a>
-                <p class="price">150 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 4 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/6bcf7f/ffffff?text=Pain+Relief+D" alt="Pain Relief D" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Pain Relief D</a>
-                <p class="price">180 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 5 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/45b7d1/ffffff?text=Antibiotic+E" alt="Antibiotic E" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Antibiotic E</a>
-                <p class="price">320 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 6 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/9b59b6/ffffff?text=Herbal+F" alt="Herbal Extract F" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Herbal Extract F</a>
-                <p class="price">275 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 7 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/e67e22/ffffff?text=Digestive+G" alt="Digestive Aid G" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Digestive Aid G</a>
-                <p class="price">195 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 8 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/e74c3c/ffffff?text=Immunity+H" alt="Immunity Booster H" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Immunity Booster H</a>
-                <p class="price">350 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 9 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/34495e/ffffff?text=Sleep+Aid+I" alt="Sleep Aid I" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Sleep Aid I</a>
-                <p class="price">220 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 10 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/f39c12/ffffff?text=Energy+J" alt="Energy Boost J" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Energy Boost J</a>
-                <p class="price">290 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 11 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/d63031/ffffff?text=Heart+K" alt="Heart Health K" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Heart Health K</a>
-                <p class="price">380 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 12 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/00b894/ffffff?text=Joint+L" alt="Joint Care L" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Joint Care L</a>
-                <p class="price">260 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 13 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/fd79a8/ffffff?text=Skin+M" alt="Skin Care M" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Skin Care M</a>
-                <p class="price">310 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 14 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/00cec9/ffffff?text=Eye+N" alt="Eye Health N" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Eye Health N</a>
-                <p class="price">240 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to Cart<span class="arabic">أضف إلى العربة</span></a>
-            </div>
-            
-            <!-- Product 15 -->
-            <div class="product">
-                <a href="product-detail.html">
-                    <img src="https://via.placeholder.com/300x150/a29bfe/ffffff?text=Brain+O" alt="Brain Support O" class="product-thumbnail">
-                </a>
-                <a href="product-detail.html" class="product-title">Brain Support O</a>
-                <p class="price">420 EGP</p>
-                <a href="#" onclick="addToCart(event)" class="add-to-cart">Add to
+<!-- Footer -->
+<footer>
+    <!-- WhatsApp Customer Support -->
+    <a href="https://wa.me/message/PH72PE5NPDR2P1" class="whatsapp-support">
+        <i class="fab fa-whatsapp"></i>
+        <span>دعم العملاء</span>
+    </a>
+    <p>&copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products</p>
+</footer>
+
+<script>
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Premium Pharmacy Store loaded successfully');
+});
+</script>
+</body>
+</html>
