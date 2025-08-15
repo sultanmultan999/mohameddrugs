@@ -1450,6 +1450,20 @@
             });
         </script>
     
+<!-- Payment Methods Section -->
+<section id="payment-methods" style="text-align: center; padding: 40px 20px;">
+    <h2 class="section-title">Payment Methods</h2>
+    <p style="color: var(--text-light); margin-bottom: 30px;">We accept payments through the following services:</p>
+    <div class="payment-logos" style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png" alt="PayPal" style="height: 40px; background: white; padding: 5px; border-radius: 5px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Wise_logo.svg" alt="Wise" style="height: 40px; background: white; padding: 5px; border-radius: 5px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" style="height: 40px; background: white; padding: 5px; border-radius: 5px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Skrill_logo.svg" alt="Skrill" style="height: 40px; background: white; padding: 5px; border-radius: 5px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.svg" alt="Binance" style="height: 40px; background: white; padding: 5px; border-radius: 5px;">
+    </div>
+    <button id="pay-now-btn" class="review-btn" style="margin-top: 30px;">Pay Now</button>
+</section>
+
 <!-- About Us Section -->
 <section id="about-us" style="background-color: var(--card-bg); color: var(--text-light); padding: 40px 20px; margin-top: 40px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
     <h2 class="section-title">من نحن</h2>
@@ -1478,6 +1492,12 @@
         &copy; 2025 Mohamed Drugs Shop. All Rights Reserved.
     </div>
 </footer>
+
+<script>
+    document.getElementById('pay-now-btn').addEventListener('click', function() {
+        alert('Redirecting to payment gateway...');
+    });
+</script>
 
 </body>
 </html>
