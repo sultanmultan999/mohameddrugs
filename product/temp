@@ -1,1 +1,139 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Router Quick Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f8f9fa; }
+    .card { max-width: 420px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    input, button, select { width: 100%; padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
+    button { background: #007bff; color: white; cursor: pointer; border: none; }
+    button.secondary { background: #6c757d; color: white; }
+    button:hover { opacity: 0.95; }
+    label { font-weight: 600; margin-top: 8px; display:block; }
+    .note { font-size: 13px; color: #666; margin-top:8px; }
+    .row { display:flex; gap:8px; }
+    .row button { flex:1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Router Quick Login</h2>
+    <p class="note">Enter your Wi-Fi AP MAC (BSSID) and gateway IP. The page computes the password (uppercase MAC, remove colons, remove first 4 chars → last 8) and pre-fills the login form. Press <strong>Login</strong> to submit to your router.</p>
+
+    <label for="mac">Wi-Fi Device MAC (BSSID)</label>
+    <input id="mac" type="text" placeholder="e.g. A1:B2:C3:D4:E5:F6">
+
+    <label for="gateway">Gateway IP</label>
+    <input id="gateway" type="text" placeholder="e.g. 192.168.0.1">
+
+    <div class="row" style="margin-top:8px;">
+      <button onclick="generate()">Generate & Prefill</button>
+      <button class="secondary" onclick="clearAll()">Clear</button>
+    </div>
+
+    <form id="loginForm" method="post" style="margin-top:12px;">
+      <label>Username</label>
+      <input type="text" id="username" value="admin" autocomplete="username">
+      <label>Password</label>
+      <input type="text" id="password" autocomplete="current-password">
+      <button type="submit" style="margin-top:12px">Login (submit to gateway)</button>
+    </form>
+
+    <p class="note">If your router expects GET instead of POST or uses different field names, use the options below.</p>
+
+    <label for="method">Form method</label>
+    <select id="method">
+      <option value="post">POST</option>
+      <option value="get">GET</option>
+    </select>
+
+    <label for="userField">Username field name (optional)</label>
+    <input id="userField" type="text" placeholder="default: username">
+
+    <label for="passField">Password field name (optional)</label>
+    <input id="passField" type="text" placeholder="default: password">
+
+    <div class="row" style="margin-top:10px;">
+      <button onclick="applyAdvanced()">Apply</button>
+      <button class="secondary" onclick="resetAdvanced()">Reset</button>
+    </div>
+
+    <p class="note" style="margin-top:12px;">This tool does <strong>not</strong> bypass router security — it only pre-fills fields. Browsers block direct access to Wi-Fi details for privacy, so you must enter MAC/gateway manually (or use a local/native app to read them).</p>
+  </div>
+
+  <script>
+    // Remove non-hex characters and uppercase
+    function sanitizeMac(m) {
+      return m.replace(/[^A-Fa-f0-9]/g,'').toUpperCase();
+    }
+
+    // Generate password and prefill form
+    function generate() {
+      const macInput = document.getElementById('mac').value.trim();
+      const gateway = document.getElementById('gateway').value.trim();
+      if (!macInput) { alert('Enter MAC address'); return; }
+      const mac = sanitizeMac(macInput);
+      if (mac.length < 12) { alert('MAC seems invalid (need 12 hex digits)'); return; }
+      const pwd = mac.substring(4); // remove first 4 chars -> keep last 8
+      document.getElementById('username').value = 'admin';
+      document.getElementById('password').value = pwd;
+
+      // Set form action & method
+      const form = document.getElementById('loginForm');
+      if (gateway) {
+        // If gateway contains protocol already, respect it, else add http://
+        const hasProto = /^https?:\/\//i.test(gateway);
+        form.action = (hasProto ? '' : 'http://') + gateway;
+      } else {
+        form.removeAttribute('action');
+      }
+      form.method = document.getElementById('method').value || 'post';
+
+      applyFieldNamesToForm();
+      alert('Prefilled. Press Login to submit to your router (if action is set).');
+    }
+
+    function clearAll() {
+      document.getElementById('mac').value = '';
+      document.getElementById('gateway').value = '';
+      document.getElementById('username').value = 'admin';
+      document.getElementById('password').value = '';
+    }
+
+    function applyAdvanced() {
+      applyFieldNamesToForm();
+      const method = document.getElementById('method').value;
+      document.getElementById('loginForm').method = method;
+      alert('Advanced settings applied.');
+    }
+
+    function resetAdvanced() {
+      document.getElementById('userField').value = '';
+      document.getElementById('passField').value = '';
+      document.getElementById('method').value = 'post';
+      applyFieldNamesToForm();
+      alert('Advanced reset.');
+    }
+
+    function applyFieldNamesToForm() {
+      const userField = document.getElementById('userField').value.trim();
+      const passField = document.getElementById('passField').value.trim();
+      const username = document.getElementById('username');
+      const password = document.getElementById('password');
+      username.name = userField || 'username';
+      password.name = passField || 'password';
+    }
+
+    // Optionally: intercept submission to show final URL (for debug)
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      // If action missing, warn user
+      if (!this.action) {
+        e.preventDefault();
+        alert('Form action (gateway IP) is not set. Please fill Gateway IP first.');
+      }
+    });
+  </script>
+</body>
+</html>
