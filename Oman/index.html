@@ -256,9 +256,9 @@ body {
 
 .product-title {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     margin: 15px 0 10px 0;
-    color: #fff;
+    color: #FFD700;
     transition: color 0.3s ease;
     text-decoration: none;
     display: inline-block;
@@ -268,22 +268,9 @@ body {
     color: #ff6b6b;
 }
 
-.price {
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffd93d;
-    margin: 10px 0 15px 0;
-    transition: all 0.3s ease;
-}
-
-.price:hover {
-    color: #ffed4e;
-    transform: scale(1.05);
-}
-
-/* Updated Add to Cart -> BUY NOW Button */
-.add-to-cart {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+/* Updated WhatsApp Button */
+.whatsapp-button {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 10px 25px;
@@ -303,7 +290,7 @@ body {
     overflow: hidden;
 }
 
-.add-to-cart::before {
+.whatsapp-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -314,22 +301,22 @@ body {
     transition: left 0.5s;
 }
 
-.add-to-cart:hover::before {
+.whatsapp-button:hover::before {
     left: 100%;
 }
 
-.add-to-cart:hover {
-    background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+.whatsapp-button:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-.add-to-cart:active {
+.whatsapp-button:active {
     transform: translateY(0);
 }
 
-.add-to-cart .arabic {
+.whatsapp-button .arabic {
     font-size: 10px;
     display: block;
     margin-top: 2px;
@@ -411,25 +398,25 @@ footer {
     font-size: 14px;
 }
 
-/* WhatsApp Support Link in Footer */
-.whatsapp-support {
+/* Email Support Link in Footer */
+.email-support {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     margin-top: 20px;
-    background: #25D366;
+    background: #D44638;
     padding: 12px 25px;
     border-radius: 30px;
     text-decoration: none;
     color: white;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 15px rgba(212, 70, 56, 0.3);
     transition: all 0.3s ease;
 }
 
-.whatsapp-support:hover {
+.email-support:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 8px 20px rgba(212, 70, 56, 0.4);
 }
 
 /* Responsive Design */
@@ -483,176 +470,160 @@ footer {
 <div class="main-content">
     <!-- Page Heading with Arabic Translation -->
     <div class="page-heading">
-        <h2>All Products in Oman</h2>
-        <p>موقع ومنتجات طازجة في عُمان</p>
-    </div>
+        <h2>الموقع والتوصيل متاح في مصر</h2>
+ </div>
 
     <!-- Product Grid (16 Products) -->
     <div class="product-grid">
         <!-- Product 1 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images//Hashish.png" alt="Hashish (حشيش)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Hashish (حشيش)</a>
-            <p class="price">(3 grams) 21 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Hashish (حشيش)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 2 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Vape.jpg" alt="Vape (فيب)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Vape (فيب)</a>
-            <p class="price">15 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Vape (فيب)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 3 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Marijuana.png" alt="Marijuana (ماريجوانا)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Marijuana (ماريجوانا)</a>
-            <p class="price">5 (grams) 35 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Marijuana (ماريجوانا)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 4 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Heroin.png" alt="Heroin (هيروين)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Heroin (هيروين)</a>
-            <p class="price">(7 grams) 65 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Heroin (هيروين)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 5 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Cocaine.png" alt="Cocaine (كوكايين)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1"class="product-title">Cocaine (كوكايين)</a>
-            <p class="price">(1 gram) 34 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Cocaine (كوكايين)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 6 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Crystal Meth.png" alt="Crystal Meth (كريستال ميث / آيس)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Crystal Meth (كريستال ميث / آيس)</a>
-            <p class="price">23 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Crystal Meth (كريستال ميث / آيس)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 7 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/blotter paper.png" alt="Paper,ID Card/A4 (ورق)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Paper,ID Card/A4 (ورق)</a>
-            <p class="price">20 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Paper,ID Card/A4 (ورق)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 8 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/LSD Liquid.jpeg" alt="LSD Liquid (سائل LSD)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">LSD Liquid (سائل LSD)</a>
-            <p class="price">31 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">LSD Liquid (سائل LSD)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 9 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Magic Mushroom.png" alt="Magic Mushroom (فطر سحري)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Magic Mushroom (فطر سحري)</a>
-            <p class="price">25 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Magic Mushroom (فطر سحري)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 10 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Ecstasy.png" alt="Ecstasy (إكستاسي ) – MDMA pills" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Ecstasy (إكستاسي ) – MDMA pills</a>
-            <p class="price">18 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Ecstasy (إكستاسي ) – MDMA pills</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 11 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Tramadol.png" alt="Tramadol (ترامادول)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Tramadol (ترامادول)</a>
-            <p class="price">160 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Tramadol (ترامادول)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 12 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Captagon.png" alt="Captagon (كبتاجون)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Captagon (كبتاجون)</a>
-            <p class="price">20 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Captagon (كبتاجون)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 13 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Ketamine.png" alt="Ketamine (كيتامين)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Ketamine (كيتامين</a>
-            <p class="price">80 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Ketamine (كيتامين)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
          <!-- Product 15 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Morphine.jpeg" alt="Morphine (مورفين)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Morphine (مورفين)</a>
-            <p class="price">105 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Morphine (مورفين)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
         
         <!-- Product 16 -->
         <div class="product">
-            <a href="https://wa.me/message/PH72PE5NPDR2P1">
+            <a href="https://wa.me/message/MLCSOMFIRENBB1">
                 <img src="https://mohameddrugs.shop/images/Lyrica.jpeg" alt="Lyrica ( ليريكا)" class="product-thumbnail">
             </a>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="product-title">Lyrica ( ليريكا)</a>
-            <p class="price">85 OMR</p>
-            <a href="https://wa.me/message/PH72PE5NPDR2P1" class="add-to-cart">BUY NOW<span class="arabic">اشتري الآن</span></a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="product-title">Lyrica ( ليريكا)</a>
+            <a href="https://wa.me/message/MLCSOMFIRENBB1" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WHATSAPP<span class="arabic">واتساب</span></a>
         </div>
        
         <div>
         <a href="https://mohameddrugs.shop/#customer-comments" class="check-reviews">
   Check Customer Reviews <span class="arabic">تحقق من آراء العملاء</span>
 </a>
-        </iv>
+        </div>
 
 <!-- Footer -->
 <footer>
-    <!-- WhatsApp Customer Support -->
-    <a href="https://wa.me/message/PH72PE5NPDR2P1" class="whatsapp-support">
-        <i class="fab fa-whatsapp"></i>
-        <span>دعم العملاء</span>
+    <!-- Email Customer Support -->
+    <a href="mailto:mohameddrugsshop@gmail.com" class="email-support">
+        <i class="fas fa-envelope"></i>
+        <span>Email Us / راسلنا عبر البريد</span>
     </a>
-    <p>&copy; 2023 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products</p>
+    <p>&copy; 2025 Mohamed Drugs Shop. All rights reserved. | Premium Quality Healthcare Products</p>
 </footer>
 
 <script>
